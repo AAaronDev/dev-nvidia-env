@@ -1,0 +1,1242 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="concept"></meta>
+      <meta name="DC.Title" content="Compute Sanitizer API Reference manual"></meta>
+      <meta name="abstract" content="The reference manual for Compute Sanitizer API."></meta>
+      <meta name="description" content="The reference manual for Compute Sanitizer API."></meta>
+      <meta name="DC.Coverage" content="Developer Interfaces"></meta>
+      <meta name="DC.subject" content="Sanitizer Api Guide"></meta>
+      <meta name="keywords" content="Sanitizer Api Guide"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="abstract"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>Compute Sanitizer API Reference Manual :: Compute Sanitizer Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="../common/scripts/tynt/tynt.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="https://developer.nvidia.com/SanitizerApiGuide/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">Compute Sanitizer Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">Compute Sanitizer
+                  v2020.1.2</a></div>
+            <div class="category"><a href="index.html" title="Compute Sanitizer API Reference Manual">Compute Sanitizer API Reference Manual</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="#introduction">1.&nbsp;Introduction</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#about-sanitizer-api">1.1.&nbsp;Overview</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#usage">2.&nbsp;Usage</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#compatibility-and-requirements">2.1.&nbsp;Compatibility and Requirements</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#callback-api">2.2.&nbsp;Callback API</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#driver-runtime-api-callbacks">2.2.1.&nbsp;Driver and Runtime API Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#resource-callbacks">2.2.2.&nbsp;Resource Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#synchronization-callbacks">2.2.3.&nbsp;Synchronization Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#launch-callbacks">2.2.4.&nbsp;Launch Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#memcpy-callbacks">2.2.5.&nbsp;Memcpy Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#memset-callbacks">2.2.6.&nbsp;Memset Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#batch-memop-callbacks">2.2.7.&nbsp;Batch Memory Operations Callbacks</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#patching-api">2.3.&nbsp;Patching API</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#write-patch">2.3.1.&nbsp;Writing a Patch</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#insert-patch">2.3.2.&nbsp;Insert a Patch</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#memory-api">2.4.&nbsp;Memory API</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#limitations">3.&nbsp;Limitations</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#options">A.&nbsp;Copyright and Licenses</a></div>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="release-info">Compute Sanitizer API Reference Manual
+                  (<a href="../pdf/SanitizerApiGuide.pdf">PDF</a>)
+                  
+                  -
+                  
+                  v2020.1.2
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated August 6, 2020
+                  -
+                  <a href="mailto:devtools@nvidia.com?subject=Compute Sanitizer Documentation Feedback: Compute Sanitizer API Reference Manual">Send Feedback</a>
+                  -
+                  <span class="st_facebook"></span><span class="st_twitter"></span><span class="st_linkedin"></span><span class="st_reddit"></span><span class="st_slashdot"></span><span class="st_tumblr"></span><span class="st_sharethis"></span></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested0" id="abstract"><a name="abstract" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#abstract" name="abstract" shape="rect">Compute Sanitizer API Reference manual</a></h2>
+                  <div class="body conbody">
+                     <p class="shortdesc">The reference manual for Compute Sanitizer API.</p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="introduction"><a name="introduction" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#introduction" name="introduction" shape="rect">1.&nbsp;Introduction</a></h2>
+                  <div class="body conbody"></div>
+                  <div class="topic concept nested1" id="about-sanitizer-api"><a name="about-sanitizer-api" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#about-sanitizer-api" name="about-sanitizer-api" shape="rect">1.1.&nbsp;Overview</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The Compute Sanitizer API enables the creation of sanitizing and tracing tools that
+                           target CUDA applications. Examples of such tools are memory and race condition checkers.
+                           The Compute Sanitizer API is composed of three APIs: the callback API, the patching API
+                           and the memory API. It is delivered as a dynamic library on supported platforms. 
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="usage"><a name="usage" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#usage" name="usage" shape="rect">2.&nbsp;Usage</a></h2>
+                  <div class="body conbody"></div>
+                  <div class="topic concept nested1" id="compatibility-and-requirements"><a name="compatibility-and-requirements" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#compatibility-and-requirements" name="compatibility-and-requirements" shape="rect">2.1.&nbsp;Compatibility and Requirements</a></h3>
+                     <div class="body conbody">
+                        <p class="p">
+                           The Compute Sanitizer API
+                           requires CUDA 10.1 or newer. Compute Sanitizer API calls will fail with
+                           <samp class="ph codeph">SANITIZER_ERROR_NOT_INITIALIZED</samp> if the CUDA driver version is not
+                           compatible with the Compute Sanitizer version. 
+                        </p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="callback-api"><a name="callback-api" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#callback-api" name="callback-api" shape="rect">2.2.&nbsp;Callback API</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The Compute Sanitizer Callback API allows you to register a callback into user code. The
+                           callback is invoked when the application calls a CUDA runtime or driver function, or
+                           when certain events occur in the CUDA driver. The following terminology is used by the
+                           Callback API. 
+                        </p>
+                        <ul class="ul">
+                           <li class="li">
+                              <p class="p"><strong class="ph b">Callback domain:</strong>
+                                 Callbacks are grouped into domains to make it easier to associate callback
+                                 functions with groups of related CUDA functions or events.
+                                 The following callback domains are defined by <samp class="ph codeph">Sanitizer_CallbackDomain</samp>.
+                                 
+                              </p>
+                              <ol class="ol">
+                                 <li class="li">CUDA driver functions</li>
+                                 <li class="li">CUDA runtime functions</li>
+                                 <li class="li">CUDA resource tracking</li>
+                                 <li class="li">CUDA synchronization notification</li>
+                                 <li class="li">CUDA grid launches</li>
+                                 <li class="li">CUDA memcpy operations</li>
+                                 <li class="li">CUDA memset operations</li>
+                                 <li class="li">CUDA batch memory operations</li>
+                              </ol>
+                           </li>
+                           <li class="li">
+                              <p class="p"><strong class="ph b">Callback ID:</strong> Each callback is given a unique ID within the corresponding
+                                 callback domain in order to identify it within the callback function. The CUDA
+                                 driver API IDs are defined in <samp class="ph codeph">sanitizer_driver_cbid.h</samp> and the
+                                 CUDA runtime API IDs are defined in <samp class="ph codeph">sanitizer_runtime_cbid.h</samp>.
+                                 Other callback IDs are defined in <samp class="ph codeph">sanitizer_callbacks.h</samp>. All of
+                                 these headers are included as part of <samp class="ph codeph">sanitizer.h</samp>. 
+                              </p>
+                           </li>
+                           <li class="li">
+                              <p class="p"><strong class="ph b">Callback Function:</strong> The callback function must be of the type
+                                 <samp class="ph codeph">Sanitizer_CallbackFunc</samp>. This function type has two
+                                 arguments that specify the callback: the domain and the ID that identifies why
+                                 the callback is occurring. The type also has a <samp class="ph codeph">cbdata</samp> argument
+                                 that is used to pass data specific to the callback. 
+                              </p>
+                           </li>
+                           <li class="li">
+                              <p class="p"><strong class="ph b">Subscriber:</strong> A subscriber is used to associate each of the callback
+                                 functions with one or more CUDA API functions. There can be at most one
+                                 subscriber initialized with <samp class="ph codeph">sanitizerSubscribe</samp> at any time.
+                                 Before initializing a new subscriber, the existing one must be finalized with
+                                 <samp class="ph codeph">sanitizerUnsubscribe</samp> .
+                              </p>
+                           </li>
+                        </ul>
+                        <p class="p">Each callback domain is described in detail below. Unless explicitly stated, it is not
+                           supported to call any CUDA runtime or driver API from within a callback function. Doing
+                           so may cause the application to hang. However, it is supported to call <a class="xref" href="index.html#memory-api" shape="rect">Compute Sanitizer Memory APIs</a> from within callback
+                           functions. 
+                        </p>
+                     </div>
+                     <div class="topic concept nested2" id="driver-runtime-api-callbacks"><a name="driver-runtime-api-callbacks" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#driver-runtime-api-callbacks" name="driver-runtime-api-callbacks" shape="rect">2.2.1.&nbsp;Driver and Runtime API Callbacks</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Using the Callback API with the <samp class="ph codeph">SANITIZER_CB_DOMAIN_DRIVER_API</samp> or
+                              <samp class="ph codeph">SANITIZER_CB_DOMAIN_RUNTIME_API</samp> domains, a callback function can be
+                              associated with one or more CUDA API functions. When those CUDA functions are called in
+                              the application, the callback function is invoked as well. For these domains, the
+                              <samp class="ph codeph">cbdata</samp> argument to the callback function will be of the type
+                              <samp class="ph codeph">Sanitizer_CallbackData</samp>. 
+                           </p>
+                           <p class="p">You can call <samp class="ph codeph">cudaDeviceSynchronize</samp>, <samp class="ph codeph">cudaStreamSynchronize</samp>,
+                              <samp class="ph codeph">cuCtxSynchronize</samp> and <samp class="ph codeph">cuStreamSynchronize</samp> from
+                              within a driver or runtime API callback function. 
+                           </p>
+                           <p class="p">The following code shows a typical sequence used to associate a callback function with
+                              one or more CUDA API functions. For simplicity, error checking code was removed. 
+                           </p><pre xml:space="preserve">
+Sanitizer_SubscriberHandle handle;
+MyDataStruct *my_data = ...;
+...
+sanitizerSubscribe(&amp;handle, my_callback, my_data);
+sanitizerEnableDomain(1, handle, SANITIZER_CB_DOMAIN_RUNTIME_API);
+        </pre><p class="p">First, <samp class="ph codeph">sanitizerSubscribe</samp> is used to initialize a subscriber with the
+                              <samp class="ph codeph">my_callback</samp> callback function. Next,
+                              <samp class="ph codeph">sanitizerEnableDomain</samp> is used to associate that callback with all
+                              the CUDA runtime functions. Using this code sequence will cause
+                              <samp class="ph codeph">my_callback</samp> to be called twice each time any of the CUDA runtime
+                              API functions are invoked, once on entry to the CUDA function and once just before the
+                              CUDA function exits. Compute Sanitizer callback API functions
+                              <samp class="ph codeph">sanitizerEnableCallback</samp> and
+                              <samp class="ph codeph">sanitizerEnableAllDomains</samp> can also be used to associate CUDA API
+                              functions with a callback. 
+                           </p>
+                           <p class="p">The following code shows a typical callback function. </p><pre xml:space="preserve">
+void SANITIZERAPI
+my_callback(void *userdata,
+            Sanitizer_CallbackDomain domain,
+            Sanitizer_CallbackId cbid,
+            const void *cbdata)
+{
+    const Sanitizer_CallbackData *cbInfo = (Sanitizer_CallbackData *)cbdata;
+    MyDataStruct *my_data = (MyDataStruct *)userdata;
+
+    if ((domain == SANITIZER_CB_DOMAIN_RUNTIME_API) &amp;&amp;
+        (cbid == SANITIZER_RUNTIME_TRACE_CBID_cudaMemcpy_v3020) &amp;&amp;
+        (cbInfo-&gt;callbackSite == SANITIZER_API_ENTER))
+    {
+        cudaMemcpy_v3020_params *funcParams = (cudaMemcpy_v3020_params *)(cbInfo-&gt;functionParams);
+        size_t count = funcParams-&gt;count;
+        enum cudaMemcpyKind kind = funcParams-&gt;kind
+        ...
+    }
+    ...
+}
+        </pre><p class="p">In the callback function, <samp class="ph codeph">Sanitizer_CallbackDomain</samp> and
+                              <samp class="ph codeph">Sanitizer_CallbackId</samp> parameters can be used to determine which CUDA
+                              API function invocation is triggering this callback. In the example above, we are
+                              checking for the CUDA runtime <samp class="ph codeph">cudaMemcpy</samp> function. The
+                              <samp class="ph codeph">cbdata</samp> parameter holds a structure of useful information that can
+                              be used within the callback. In this case, we use the <samp class="ph codeph">callbackSite</samp>
+                              member of the structure to detect that the callback is occurring on entry to
+                              <samp class="ph codeph">cudaMemcpy</samp>, and we use the <samp class="ph codeph">functionParams</samp> member
+                              to access the parameters to <samp class="ph codeph">cudaMemcpy</samp>. To access the parameters, we
+                              first cast <samp class="ph codeph">functionParams</samp> to a structure type corresponding to the
+                              <samp class="ph codeph">cudaMemcpy</samp> function. These parameter structures are contained in
+                              <samp class="ph codeph">generated_cuda_runtime_api_meta.h</samp>,
+                              <samp class="ph codeph">generated_cuda_meta.h</samp> and a number of other files. 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="resource-callbacks"><a name="resource-callbacks" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#resource-callbacks" name="resource-callbacks" shape="rect">2.2.2.&nbsp;Resource Callbacks</a></h3>
+                        <div class="body conbody">
+                           <div class="p">Using the Callback API with the <samp class="ph codeph">SANITIZER_CB_DOMAIN_RESOURCE</samp> domain, a
+                              callback function can be associated with some CUDA resource creation and destruction
+                              events. For example, when a CUDA context is created, the callback function is invoked
+                              with a callback ID equal to <samp class="ph codeph">SANITIZER_CBID_RESOURCE_CONTEXT_CREATED</samp>.
+                              For this domain, the <samp class="ph codeph">cbdata</samp> argument is one of the following types: 
+                              <ul class="ul">
+                                 <li class="li"><samp class="ph codeph">Sanitizer_ResourceContextData</samp> for CUDA context creation and
+                                    destruction
+                                 </li>
+                                 <li class="li"><samp class="ph codeph">Sanitizer_ResourceStreamData</samp> for CUDA stream creation and
+                                    destruction
+                                 </li>
+                                 <li class="li"><samp class="ph codeph">Sanitizer_ResourceModuleData</samp> for CUDA module load and
+                                    unload
+                                 </li>
+                                 <li class="li"><samp class="ph codeph">Sanitizer_ResourceMemoryData</samp> for CUDA memory allocation and
+                                    de-allocation
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="synchronization-callbacks"><a name="synchronization-callbacks" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#synchronization-callbacks" name="synchronization-callbacks" shape="rect">2.2.3.&nbsp;Synchronization Callbacks</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Using the Callback API with the <samp class="ph codeph">SANITIZER_CB_DOMAIN_SYNCHRONIZE</samp> domain,
+                              a callback function can be associated with CUDA context and stream synchronizations. For
+                              example, when a CUDA context is synchronized, the callback function is invoked with a
+                              callback ID equal to <samp class="ph codeph">SANITIZER_CBID_SYNCHRONIZE_CONTEXT_SYNCHRONIZED</samp>.
+                              For this domain, the <samp class="ph codeph">cbdata</samp> argument is of the type
+                              <samp class="ph codeph">Sanitizer_SynchronizeData</samp>. 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="launch-callbacks"><a name="launch-callbacks" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#launch-callbacks" name="launch-callbacks" shape="rect">2.2.4.&nbsp;Launch Callbacks</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Using the Callback API with the <samp class="ph codeph">SANITIZER_CB_DOMAIN_LAUNCH</samp> domain, a
+                              callback function can be associated with CUDA kernel launches. For example, when a CUDA
+                              kernel launch has started, the callback function is invoked with a callback ID equal to
+                              <samp class="ph codeph">SANITIZER_CBID_LAUNCH_BEGIN</samp>. For this domain, the
+                              <samp class="ph codeph">cbdata</samp> argument is of the type
+                              <samp class="ph codeph">Sanitizer_LaunchData</samp>. 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="memcpy-callbacks"><a name="memcpy-callbacks" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#memcpy-callbacks" name="memcpy-callbacks" shape="rect">2.2.5.&nbsp;Memcpy Callbacks</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Using the Callback API with the <samp class="ph codeph">SANITIZER_CB_DOMAIN_MEMCPY</samp> domain, a
+                              callback function can be associated with CUDA memcpy operations. For example, when a
+                              <samp class="ph codeph">cudaMemcpy</samp> API function is called, the callback function is invoked
+                              with a callback ID equal to <samp class="ph codeph">SANITIZER_CBID_MEMCPY_STARTING</samp>. For this
+                              domain, the <samp class="ph codeph">cbdata</samp> argument is of the type
+                              <samp class="ph codeph">Sanitizer_MemcpyData</samp>. 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="memset-callbacks"><a name="memset-callbacks" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#memset-callbacks" name="memset-callbacks" shape="rect">2.2.6.&nbsp;Memset Callbacks</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Using the Callback API with the <samp class="ph codeph">SANITIZER_CB_DOMAIN_MEMSET</samp> domain, a
+                              callback function can be associated with CUDA memset operations. For example, when a
+                              <samp class="ph codeph">cudaMemset</samp> API function is called, the callback function is invoked
+                              with a callback ID equal to <samp class="ph codeph">SANITIZER_CBID_MEMSET_STARTING</samp>. For this
+                              domain, the <samp class="ph codeph">cbdata</samp> argument is of the type
+                              <samp class="ph codeph">Sanitizer_MemsetData</samp>. 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="batch-memop-callbacks"><a name="batch-memop-callbacks" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#batch-memop-callbacks" name="batch-memop-callbacks" shape="rect">2.2.7.&nbsp;Batch Memory Operations Callbacks</a></h3>
+                        <div class="body conbody">
+                           <p class="p">
+                              Using the Callback API with the <samp class="ph codeph">SANITIZER_CB_DOMAIN_BATCH_MEMOP</samp> domain, a callback function
+                              can be associated with CUDA batch memory operations. For example, when a <samp class="ph codeph">cuStreamWriteValue</samp> API
+                              function is called, the callback function is invoked with a callback ID equal to
+                              <samp class="ph codeph">SANITIZER_CBID_BATCH_MEMOP_WRITE</samp>. For this domain, the <samp class="ph codeph">cbdata</samp> argument
+                              is of the type <samp class="ph codeph">Sanitizer_BatchMemopData</samp>.
+                              
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="patching-api"><a name="patching-api" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#patching-api" name="patching-api" shape="rect">2.3.&nbsp;Patching API</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The Compute Sanitizer Patching API allows you to load patch functions and insert them
+                           into user code. Patch functions will be invoked when the application's CUDA code
+                           executes certain instructions or calls certain CUDA device functions. The following
+                           terminology is used by the Patching API: 
+                        </p>
+                        <ul class="ul">
+                           <li class="li"><strong class="ph b">Instruction ID</strong>: Each patchable event is given a unique ID than can be passed
+                              to patching API functions to specify that these events should be patched.
+                              Instruction IDs are defined by <samp class="ph codeph">Sanitizer_InstructionId</samp>.
+                           </li>
+                           <li class="li"><strong class="ph b">Instrumentation point</strong>: A location in the original CUDA code that is being
+                              instrumented by the Compute Sanitizer API. Upon execution, the user code path is
+                              modified so that a patch gets executed either before or after the patched event. All
+                              patches are executed prior to the event, with the exception of device-side malloc. 
+                           </li>
+                           <li class="li"><strong class="ph b">Patch</strong>: A CUDA <samp class="ph codeph">__device__</samp> function that the Compute Sanitizer
+                              will insert into another existing CUDA code. Patch function signatures must match
+                              the one expected by the API (see below for the expected signature types). 
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="topic concept nested2" id="write-patch"><a name="write-patch" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#write-patch" name="write-patch" shape="rect">2.3.1.&nbsp;Writing a Patch</a></h3>
+                        <div class="body conbody">
+                           <p class="p">The patch must follow the function signature required by the Compute Sanitizer API for a
+                              given instruction ID. The mapping of instruction ID to function signature is documented
+                              in the comments of <samp class="ph codeph">Sanitizer_InstructionId</samp> in
+                              <samp class="ph codeph">sanitizer_patching.h</samp>. For instance, if we wish to patch a memory
+                              access using the instruction ID <samp class="ph codeph">SANITIZER_INSTRUCTION_MEMORY_ACCESS</samp>, we
+                              need to use the <samp class="ph codeph">SanitizerCallbackMemoryAccess</samp> type. 
+                           </p><pre xml:space="preserve">
+extern "C" __device__
+SanitizerPatchResult SANITIZERAPI my_memory_access_callback(
+    void* userdata,
+    uint64_t pc,
+    void* ptr,
+    uint32_t accessSize,
+    uint32_t flags)
+{
+    MyDeviceDataStruct *my_data = (MyDeviceDataStruct *)userdata
+
+    if ((flags &amp; SANITIZER_MEMORY_DEVICE_FLAG_WRITE) != 0)
+        // log write
+    else
+        // log read
+
+    return SANITIZER_PATCH_SUCCESS;
+}
+        </pre><p class="p">In this patch, we log write and read accesses to a structure we allocated previously.
+                              <samp class="ph codeph">extern "C"</samp> ensures that the patch name will not be mangled,
+                              allowing us to use its name as a string directly in calls to
+                              <samp class="ph codeph">sanitizerPatchInstructions</samp> (see <a class="xref" href="index.html#insert-patch" shape="rect">below</a>). 
+                           </p>
+                           <p class="p">There can be multiple patches defined in a single CUDA file. This file must then be
+                              compiled using the following nvcc options: 
+                           </p><pre xml:space="preserve">
+$ nvcc --cubin --keep-device-functions -Xptxas --compile-as-tools-patch MySanitizerPatches.cu -o MySanitizerPatches.cubin
+        </pre><p class="p">The <samp class="ph codeph">--cubin</samp> option can be replaced by <samp class="ph codeph">--fatbin</samp> if a
+                              fatbin is preferred over a cubin as the output file. 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="insert-patch"><a name="insert-patch" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#insert-patch" name="insert-patch" shape="rect">2.3.2.&nbsp;Insert a Patch</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Once the patch has been generated, it can be inserted into user code by using the
+                              following procedure: 
+                           </p>
+                           <ol class="ol">
+                              <li class="li"><strong class="ph b">Load the patch</strong>. There are two APIs used to load the patch:
+                                 <samp class="ph codeph">sanitizerAddPatchesFromFile</samp> and
+                                 <samp class="ph codeph">sanitizerAddPatches</samp>. They use the same input format as
+                                 <samp class="ph codeph">cuModuleLoad</samp> and <samp class="ph codeph">cuModuleLoadData</samp>,
+                                 respectively. 
+                              </li>
+                              <li class="li"><strong class="ph b">Select which instructions to patch</strong> by using the
+                                 <samp class="ph codeph">sanitizerPatchInstructions</samp> API. 
+                              </li>
+                              <li class="li"><strong class="ph b">Patch user code</strong> by using the <samp class="ph codeph">sanitizerPatchModule</samp> API.
+                                 
+                              </li>
+                              <li class="li">
+                                 Optionally, <strong class="ph b">set the callback data for patches</strong> by using the <samp class="ph codeph">sanitizerSetCallbackData</samp> API.
+                                 
+                              </li>
+                           </ol>
+                           <p class="p">
+                              The following code shows a typical sequence using these APIs. For simplicity, error checking was removed.
+                              
+                           </p><pre xml:space="preserve">
+CUcontext ctx = ... // current CUDA context
+sanitizerAddPatchesFromFile("MySanitizerPatches.cubin", ctx);
+
+CUmodule module = ... // module containing the user code
+sanitizerPatchInstructions(SANITIZER_INSTRUCTION_MEMORY_ACCESS, module, "my_memory_access_callback");
+
+sanitizerPatchModule(module);
+
+MyDeviceDataTracker *deviceDataTracker;
+cudaMalloc(&amp;deviceDataTracker, sizeof(*deviceDataTracker));
+
+CUfunction function = ... // kernel to be launched for which we want to set the callbackdata for the patches
+sanitizerSetCallbackData(function, deviceDataTracker);
+        </pre><p class="p">
+                              All subsequent launches using code from this CUDA module will be instrumented and
+                              <samp class="ph codeph">my_memory_access_callback</samp> will be invoked before every memory
+                              access. However, the callback data is only set for all subsequent launches of the given kernel.
+                              An easy way to have a kernel <samp class="ph codeph">CUfunction</samp>, is through the Sanitizer launch callbacks.
+                              Instrumentation can be removed by using the <samp class="ph codeph">sanitizerUnpatchModule</samp> API.
+                              
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="memory-api"><a name="memory-api" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#memory-api" name="memory-api" shape="rect">2.4.&nbsp;Memory API</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The Compute Sanitizer Memory API provides replacement functions for the CUDA Memory API
+                           that can be safely called from within Compute Sanitizer <a class="xref" href="index.html#callback-api" shape="rect">callbacks</a>. 
+                        </p>
+                        <ul class="ul">
+                           <li class="li"><samp class="ph codeph">sanitizerAlloc</samp> is a replacement for
+                              <samp class="ph codeph">cudaMalloc</samp>.
+                           </li>
+                           <li class="li"><samp class="ph codeph">sanitizerFree</samp> is a replacement for <samp class="ph codeph">cudaFree</samp>.
+                           </li>
+                           <li class="li"><samp class="ph codeph">sanitizerMemcpyHostToDeviceAsync</samp> is a replacement for
+                              <samp class="ph codeph">cudaMemcpyAsync</samp> for host-to-device copies.
+                           </li>
+                           <li class="li"><samp class="ph codeph">sanitizerMemcpyDeviceToHost</samp> is a replacement for
+                              <samp class="ph codeph">cudaMemcpy</samp> for device-to-host copies.
+                           </li>
+                           <li class="li"><samp class="ph codeph">sanitizerMemset</samp> is a replacement for
+                              <samp class="ph codeph">cudaMemset</samp>.
+                           </li>
+                        </ul>
+                        <p class="p">These functions can also be called in normal user code, where they can be mixed with the
+                           CUDA API. For instance, memory allocated with <samp class="ph codeph">sanitizerAlloc</samp> can be
+                           freed with <samp class="ph codeph">cudaFree</samp>. However, since only CUDA API calls will cause
+                           <a class="xref" href="index.html#callback-api" shape="rect">callbacks</a> to be invoked, this can lead to an
+                           incoherent tracking state and should be avoided. 
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="limitations"><a name="limitations" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#limitations" name="limitations" shape="rect">3.&nbsp;Limitations</a></h2>
+                  <div class="body conbody">
+                     <p class="p">
+                        No known issues at this time.
+                        
+                     </p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="options"><a name="options" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#options" name="options" shape="rect">Copyright and Licenses</a></h2>
+                  <div class="body conbody">
+                     <p class="p"><strong class="ph b"><u class="ph u">NVIDIA CORPORATION</u></strong></p>
+                     <p class="p"><dfn class="term">NVIDIA SOFTWARE LICENSE AGREEMENT</dfn></p>
+                     <p class="p">
+                        IMPORTANT - READ BEFORE DOWNLOADING, INSTALLING, COPYING OR USING THE LICENSED SOFTWARE
+                        
+                     </p>
+                     <p class="p">
+                        This Software License Agreement ("SLA"), made and entered into as of the time and date of
+                        click through action ("Effective Date"), is a legal agreement between you and NVIDIA Corporation
+                        ("NVIDIA") and governs the use of the NVIDIA computer software and the documentation made
+                        available for use with such NVIDIA software. By downloading, installing, copying, or otherwise
+                        using the NVIDIA software and/or documentation, you agree to be bound by the terms of this SLA.
+                        If you do not agree to the terms of this SLA, do not download, install, copy or use the NVIDIA
+                        software or documentation. IF YOU ARE ENTERING INTO THIS SLA ON BEHALF OF A COMPANY OR OTHER
+                        LEGAL ENTITY, YOU REPRESENT THAT YOU HAVE THE LEGAL AUTHORITY TO BIND THE ENTITY TO THIS SLA,
+                        IN WHICH CASE "YOU" WILL MEAN THE ENTITY YOU REPRESENT. IF YOU DON'T HAVE SUCH AUTHORITY, OR IF
+                        YOU DON'T ACCEPT ALL THE TERMS AND CONDITIONS OF THIS SLA, THEN NVIDIA DOES NOT AGREE TO LICENSE
+                        THE LICENSED SOFTWARE TO YOU, AND YOU MAY NOT DOWNLOAD, INSTALL, COPY OR USE IT.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">1. LICENSE.</strong></p>
+                     <p class="p">
+                        1.1 <u class="ph u">License Grant.</u>
+                        Subject to the terms of the AGREEMENT, NVIDIA hereby grants you a non-exclusive, non-transferable
+                        license, without the right to sublicense (except as expressly set forth in a Supplement), during
+                        the applicable license term unless earlier terminated as provided below, to have Authorized Users
+                        install and use the Software, including modifications (if expressly permitted in a Supplement),
+                        in accordance with the Documentation. You are only licensed to activate and use Licensed Software
+                        for which you a have a valid license, even if during the download or installation you are
+                        presented with other product options. No Orders are binding on NVIDIA until accepted by NVIDIA.
+                        Your Orders are subject to the AGREEMENT.
+                        
+                     </p>
+                     <p class="p"><u class="ph u">SLA Supplements:</u>
+                        Certain Licensed Software licensed under this SLA may be subject to additional terms and conditions
+                        that will be presented to you in a Supplement for acceptance prior to the delivery of such Licensed
+                        Software under this SLA and the applicable Supplement. Licensed Software will only be delivered to
+                        you upon your acceptance of all applicable terms.
+                        
+                     </p>
+                     <p class="p">
+                        1.2 <u class="ph u">Limited Purpose Licenses.</u>
+                        If your license is provided for one of the purposes indicated below, then notwithstanding contrary
+                        terms in Section 1.1 or in a Supplement, such licenses are for internal use and do not include any
+                        right or license to sub-license and distribute the Licensed Software or its output in any way in
+                        any public release, however limited, and/or in any manner that provides third parties with use of
+                        or access to the Licensed Software or its functionality or output, including (but not limited to)
+                        external alpha or beta testing or development phases. Further:
+                        
+                     </p>
+                     <p class="p">
+                        (i) <u class="ph u">Evaluation License.</u>
+                        You may use evaluation licenses solely for your internal evaluation of the Licensed Software for
+                        broader adoption within your Enterprise or in connection with a NVIDIA product purchase decision,
+                        and such licenses have an expiration date as indicated by NVIDIA in its sole discretion (or ninety
+                        days from the date of download if no other duration is indicated).
+                        
+                     </p>
+                     <p class="p">
+                        (ii) <u class="ph u">Educational/Academic License.</u>
+                        You may use educational/academic licenses solely for educational purposes and all users must be
+                        enrolled or employed by an academic institution. If you do not meet NVIDIA's academic program
+                        requirements for educational institutions, you have no rights under this license.
+                        
+                     </p>
+                     <p class="p">
+                        (iii) <u class="ph u">Test/Development License.</u>
+                        You may use test/development licenses solely for your internal development, testing and/or
+                        debugging of your software applications or for interoperability testing with the Licensed Software,
+                        and such licenses have an expiration date as indicated by NVIDIA in its sole discretion (or one
+                        year from the date of download if no other duration is indicated).
+                        
+                     </p>
+                     <p class="p">
+                        1.3 <u class="ph u">Pre-Release Licenses.</u>
+                        With respect to alpha, beta, preview, and other pre-release Software and Documentation
+                        ("Pre-Release Licensed Software") delivered to you under the AGREEMENT you acknowledge and agree
+                        that such Pre-Release Licensed Software (i) may not be fully functional, may contain errors or
+                        design flaws, and may have reduced or different security, privacy, accessibility, availability,
+                        and reliability standards relative to commercially provided NVIDIA software and documentation,
+                        and (ii) use of such Pre-Release Licensed Software may result in unexpected results, loss of data,
+                        project delays or other unpredictable damage or loss. THEREFORE, PRE-RELEASE LICENSED SOFTWARE
+                        IS NOT INTENDED FOR USE, AND SHOULD NOT BE USED, IN PRODUCTION OR BUSINESS-CRITICAL SYSTEMS.
+                        NVIDIA has no obligation to make available a commercial version of any Pre-Release Licensed
+                        Software and NVIDIA has the right to abandon development of Pre-Release Licensed Software at any
+                        time without liability.
+                        
+                     </p>
+                     <p class="p">
+                        1.4 <u class="ph u">Enterprise and Contractor Usage.</u>
+                        You may allow your Enterprise employees and Contractors to access and use the Licensed Software
+                        pursuant to the terms of the AGREEMENT solely to perform work on your behalf, provided further
+                        that with respect to Contractors: (i) you obtain a written agreement from each Contractor which
+                        contains terms and obligations with respect to access to and use of Licensed Software no less
+                        protective of NVIDIA than those set forth in the AGREEMENT, and (ii) such Contractor's access
+                        and use expressly excludes any sublicensing or distribution rights for the Licensed Software.
+                        You are responsible for the compliance with the terms and conditions of the AGREEMENT by your
+                        Enterprise and Contractors. Any act or omission that, if committed by you, would constitute a
+                        breach of the AGREEMENT shall be deemed to constitute a breach of the AGREEMENT if committed by
+                        your Enterprise or Contractors.
+                        
+                     </p>
+                     <p class="p">
+                        1.5 <u class="ph u">Services.</u>
+                        Except as expressly indicated in an Order, NVIDIA is under no obligation to provide support for
+                        the Licensed Software or to provide any patches, maintenance, updates or upgrades under the
+                        AGREEMENT. Unless patches, maintenance, updates or upgrades are provided with their separate
+                        governing terms and conditions, they constitute Licensed Software licensed to you under the
+                        AGREEMENT.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">2. LIMITATIONS.</strong></p>
+                     <p class="p">
+                        2.1 <u class="ph u">License Restrictions.</u>
+                        Except as expressly authorized in the AGREEMENT, you agree that you will not (nor authorize third
+                        parties to): (i) copy and use Software that was licensed to you for use in one or more NVIDIA
+                        hardware products in other unlicensed products (provided that copies solely for backup purposes
+                        are allowed); (ii) reverse engineer, decompile, disassemble (except to the extent applicable laws
+                        specifically require that such activities be permitted) or attempt to derive the source code,
+                        underlying ideas, algorithm or structure of Software provided to you in object code form; (iii)
+                        sell, transfer, assign, distribute, rent, loan, lease, sublicense or otherwise make available
+                        the Licensed Software or its functionality to third parties (a) as an application services
+                        provider or service bureau, (b) by operating hosted/virtual system environments, (c) by hosting,
+                        time sharing or providing any other type of services, or (d) otherwise by means of the internet;
+                        (iv) modify, translate or otherwise create any derivative works of any Licensed Software; (v)
+                        remove, alter, cover or obscure any proprietary notice that appears on or with the Licensed
+                        Software or any copies thereof; (vi) use the Licensed Software, or allow its use, transfer,
+                        transmission or export in violation of any applicable export control laws, rules or regulations;
+                        (vii) distribute, permit access to, or sublicense the Licensed Software as a stand-alone product;
+                        (viii) bypass, disable, circumvent or remove any form of copy protection, encryption, security or
+                        digital rights management or authentication mechanism used by NVIDIA in connection with the
+                        Licensed Software, or use the Licensed Software together with any authorization code, serial
+                        number, or other copy protection device not supplied by NVIDIA directly or through an authorized
+                        reseller; (ix) use the Licensed Software for the purpose of developing competing products or
+                        technologies or assisting a third party in such activities; (x) use the Licensed Software with
+                        any system or application where the use or failure of such system or application can reasonably
+                        be expected to threaten or result in personal injury, death, or catastrophic loss including,
+                        without limitation, use in connection with any nuclear, avionics, navigation, military, medical,
+                        life support or other life critical application ("Critical Applications"), unless the parties
+                        have entered into a Critical Applications agreement; (xi) distribute any modification or
+                        derivative work you make to the Licensed Software under or by reference to the same name as used
+                        by NVIDIA; or (xii) use the Licensed Software in any manner that would cause the Licensed
+                        Software to become subject to an Excluded License. Nothing in the AGREEMENT shall be construed
+                        to give you a right to use, or otherwise obtain access to, any source code from which the Software
+                        or any portion thereof is compiled or interpreted. You acknowledge that NVIDIA does not design,
+                        test, manufacture or certify the Licensed Software for use in the context of a Critical
+                        Application and NVIDIA shall not be liable to you or any third party, in whole or in part, for
+                        any claims or damages arising from such use. You agree to defend, indemnify and hold harmless
+                        NVIDIA and its Affiliates, and their respective employees, contractors, agents, officers and
+                        directors, from and against any and all claims, damages, obligations, losses, liabilities,
+                        costs or debt, fines, restitutions and expenses (including but not limited to attorney's fees
+                        and costs incident to establishing the right of indemnification) arising out of or related to
+                        you and your Enterprise, and their respective employees, contractors, agents, distributors,
+                        resellers, end users, officers and directors use of Licensed Software outside of the scope of
+                        the AGREEMENT or any other breach of the terms of the AGREEMENT.
+                        
+                     </p>
+                     <p class="p">
+                        2.2 <u class="ph u">Third Party License Obligations.</u>
+                        The Licensed Software may come bundled with, or otherwise include or be distributed with, third
+                        party software licensed by an NVIDIA supplier and/or open source software provided under an open
+                        source license (collectively, "Third Party Software"). Notwithstanding anything to the contrary
+                        herein, Third Party Software is licensed to you subject to the terms and conditions of the software
+                        license agreement accompanying such Third Party Software whether in the form of a discrete
+                        agreement, click-through license, or electronic license terms accepted at the time of installation
+                        and any additional terms or agreements provided by the third party licensor ("Third Party License
+                        Terms"). Use of the Third Party Software by you shall be governed by such Third Party License Terms,
+                        or if no Third Party License Terms apply, then the Third Party Software is provided to you as-is,
+                        without support or warranty or indemnity obligations, for use in or with the Licensed Software and
+                        not otherwise used separately. Copyright to Third Party Software is held by the copyright holders
+                        indicated in the Third Party License Terms.
+                        
+                     </p>
+                     <p class="p"><u class="ph u">Audio/Video Encoders and Decoders.</u>
+                        You acknowledge and agree that it is your sole responsibility to obtain any additional third party
+                        licenses required to make, have made, use, have used, sell, import, and offer for sale your
+                        products or services that include or incorporate any Third Party Software and content relating to
+                        audio and/or video encoders and decoders from, including but not limited to, Microsoft, Thomson,
+                        Fraunhofer IIS, Sisvel S.p.A., MPEG-LA, and Coding Technologies as NVIDIA does not grant to you
+                        under the AGREEMENT any necessary patent or other rights with respect to audio and/or video
+                        encoders and decoders.
+                        
+                     </p>
+                     <p class="p">
+                        2.3 <u class="ph u">Limited Rights.</u>
+                        Your rights in the Licensed Software are limited to those expressly granted under the AGREEMENT
+                        and no other licenses are granted whether by implication, estoppel or otherwise. NVIDIA reserves
+                        all rights, title and interest in and to the Licensed Software not expressly granted under the
+                        AGREEMENT.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">3. CONFIDENTIALITY.</strong>
+                        Neither party will use the other party's Confidential Information, except as necessary for the
+                        performance of the AGREEMENT, nor will either party disclose such Confidential Information to any
+                        third party, except to personnel of NVIDIA and its Affiliates, you, your Enterprise, your Enterprise
+                        Contractors, and each party's legal and financial advisors that have a need to know such Confidential
+                        Information for the performance of the AGREEMENT, provided that each such personnel, employee and
+                        Contractors are subject to a written agreement that includes confidentiality obligations consistent
+                        with those set forth herein. Each party will use all reasonable efforts to maintain the
+                        confidentiality of all of the other party's Confidential Information in its possession or control,
+                        but in no event less than the efforts that it ordinarily uses with respect to its own Confidential
+                        Information of similar nature and importance. The foregoing obligations will not restrict either
+                        party from disclosing the other party's Confidential Information or the terms and conditions of the
+                        AGREEMENT as required under applicable securities regulations or pursuant to the order or requirement
+                        of a court, administrative agency, or other governmental body, provided that the party required to
+                        make such disclosure (i) gives reasonable notice to the other party to enable it to contest such
+                        order or requirement prior to its disclosure (whether through protective orders or otherwise),
+                        (ii) uses reasonable effort to obtain confidential treatment or similar protection to the fullest
+                        extent possible to avoid such public disclosure, and (iii) discloses only the minimum amount of
+                        information necessary to comply with such requirements.
+                        
+                     </p>
+                     <p class="p">
+                        NVIDIA Confidential Information under the AGREEMENT includes output from Licensed Software developer
+                        tools identified as "Pro" versions, where the output reveals functionality or performance data
+                        pertinent to NVIDIA hardware or software products.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">4. OWNERSHIP.</strong>
+                        You are not obligated to disclose to NVIDIA any modifications that you, your Enterprise or your
+                        Contractors make to the Licensed Software as permitted under the AGREEMENT. As between the parties,
+                        all modifications are owned by NVIDIA and licensed to you under the AGREEMENT unless otherwise
+                        expressly provided in a Supplement. The Licensed Software and all modifications owned by NVIDIA,
+                        and the respective Intellectual Property Rights therein, are and will remain the sole and
+                        exclusive property of NVIDIA or its licensors. You shall not engage in any act or omission that
+                        would impair NVIDIA's and/or its licensors' Intellectual Property Rights in the Licensed Software
+                        or any other materials, information, processes or subject matter proprietary to NVIDIA. NVIDIA's
+                        licensors are intended third party beneficiaries with the right to enforce provisions of the
+                        AGREEMENT with respect to their Confidential Information and/or Intellectual Property Rights.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">5. FEEDBACK.</strong>
+                        You may, but you are not obligated, to provide Feedback to NVIDIA. You hereby grant NVIDIA and
+                        its Affiliates a perpetual, non-exclusive, worldwide, irrevocable license to use, reproduce,
+                        modify, license, sublicense (through multiple tiers of sublicensees), distribute (through multiple
+                        tiers of distributors) and otherwise commercialize any Feedback that you voluntarily provide
+                        without the payment of any royalties or fees to you. NVIDIA has no obligation to respond to
+                        Feedback or to incorporate Feedback into the Licensed Software.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">6. NO WARRANTIES.</strong>
+                        THE LICENSED SOFTWARE AND ANY CONFIDENTIAL INFORMATION AND/OR SERVICES ARE PROVIDED BY NVIDIA
+                        "AS IS" AND "WITH ALL FAULTS," AND NVIDIA AND ITS AFFILIATES EXPRESSLY DISCLAIM ALL WARRANTIES
+                        OF ANY KIND OR NATURE, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, ANY
+                        WARRANTIES OF OPERABILITY, CONDITION, VALUE, ACCURACY OF DATA, OR QUALITY, AS WELL AS ANY WARRANTIES
+                        OF MERCHANTABILITY, SYSTEM INTEGRATION, WORKMANSHIP, SUITABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+                        TITLE, NON-INFRINGEMENT, OR THE ABSENCE OF ANY DEFECTS THEREIN, WHETHER LATENT OR PATENT. NO
+                        WARRANTY IS MADE ON THE BASIS OF TRADE USAGE, COURSE OF DEALING OR COURSE OF TRADE. WITHOUT LIMITING
+                        THE FOREGOING, NVIDIA AND ITS AFFILIATES DO NOT WARRANT THAT THE LICENSED SOFTWARE OR ANY CONFIDENTIAL
+                        INFORMATION AND/OR SERVICES PROVIDED UNDER THE AGREEMENT WILL MEET YOUR REQUIREMENTS OR THAT THE
+                        OPERATION THEREOF WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT ALL ERRORS WILL BE CORRECTED.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">7. LIMITATION OF LIABILITY.</strong>
+                        TO THE MAXIMUM EXTENT PERMITTED BY LAW, NVIDIA AND ITS AFFILIATES SHALL NOT BE LIABLE FOR ANY SPECIAL,
+                        INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES, OR ANY LOST PROFITS, LOSS OF USE, LOSS OF DATA OR LOSS
+                        OF GOODWILL, OR THE COSTS OF PROCURING SUBSTITUTE PRODUCTS, ARISING OUT OF OR IN CONNECTION WITH THE
+                        AGREEMENT OR THE USE OR PERFORMANCE OF THE LICENSED SOFTWARE AND ANY CONFIDENTIAL INFORMATION AND/OR
+                        SERVICES PROVIDED UNDER THE AGREEMENT, WHETHER SUCH LIABILITY ARISES FROM ANY CLAIM BASED UPON BREACH
+                        OF CONTRACT, BREACH OF WARRANTY, TORT (INCLUDING NEGLIGENCE), PRODUCT LIABILITY OR ANY OTHER CAUSE OF
+                        ACTION OR THEORY OF LIABILITY. IN NO EVENT WILL NVIDIA'S AND ITS AFFILIATES TOTAL CUMULATIVE LIABILITY
+                        UNDER OR ARISING OUT OF THE AGREEMENT EXCEED THE NET AMOUNTS RECEIVED BY NVIDIA OR ITS AFFILIATES FOR
+                        YOUR USE OF THE PARTICULAR LICENSED SOFTWARE DURING THE TWELVE (12) MONTHS BEFORE THE LIABILITY AROSE 
+                        or up to US$10.00 if you acquired the Licensed Software for no charge). THE NATURE OF THE LIABILITY,
+                        THE NUMBER OF CLAIMS OR SUITS OR THE NUMBER OF PARTIES WITHIN YOUR ENTERPRISE THAT ACCEPTED THE TERMS
+                        OF THE AGREEMENT SHALL NOT ENLARGE OR EXTEND THIS LIMIT. THE FOREGOING LIMITATIONS SHALL APPLY
+                        REGARDLESS OF WHETHER NVIDIA, ITS AFFILIATES OR ITS LICENSORS HAVE BEEN ADVISED OF THE POSSIBILITY OF
+                        SUCH DAMAGES AND REGARDLESS OF WHETHER ANY REMEDY FAILS ITS ESSENTIAL PURPOSE. YOU ACKNOWLEDGE THAT
+                        NVIDIA'S OBLIGATIONS UNDER THE AGREEMENT ARE FOR THE BENEFIT OF YOU ONLY. The disclaimers, exclusions
+                        and limitations of liability set forth in the AGREEMENT form an essential basis of the bargain between
+                        the parties, and, absent any such disclaimers, exclusions or limitations of liability, the provisions
+                        of the AGREEMENT, including, without limitation, the economic terms, would be substantially different.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">8. TERM AND TERMINATION.</strong></p>
+                     <p class="p">
+                        8.1 <u class="ph u">AGREEMENT, Licenses and Services.</u>
+                        This SLA shall become effective upon the Effective Date, each Supplement upon their acceptance, and
+                        both this SLA and Supplements shall continue in effect until your last access or use of the Licensed
+                        Software and/or services hereunder, unless earlier terminated as provided in this "Term and
+                        Termination" section. Each Licensed Software license ends at the earlier of (a) the expiration of the
+                        applicable license term, or (b) termination of such license or the AGREEMENT. Each service ends at
+                        the earlier of (x) the expiration of the applicable service term, (y) termination of such service or
+                        the AGREEMENT, or (z) expiration or termination of the associated license and no credit or refund will
+                        be provided upon the expiration or termination of the associated license for any service fees paid.
+                        
+                     </p>
+                     <p class="p">
+                        8.2 <u class="ph u">Termination and Effect of Expiration or Termination.</u>
+                        NVIDIA may terminate the AGREEMENT in whole or in part: (i) if you breach any term of the AGREEMENT
+                        and fail to cure such breach within thirty (30) days following notice thereof from NVIDIA (or
+                        immediately if you violate NVIDIA's Intellectual Property Rights); (ii) if you become the subject of
+                        a voluntary or involuntary petition in bankruptcy or any proceeding relating to insolvency,
+                        receivership, liquidation or composition for the benefit of creditors, if that petition or proceeding
+                        is not dismissed with prejudice within sixty (60) days after filing, or if you cease to do business;
+                        or (iii) if you commence or participate in any legal proceeding against NVIDIA, with respect to the
+                        Licensed Software that is the subject of the proceeding during the pendency of such legal proceeding.
+                        If you or your authorized NVIDIA reseller fail to pay license fees or service fees when due then
+                        NVIDIA may, in its sole discretion, suspend or terminate your license grants, services and any other
+                        rights provided under the AGREEMENT for the affected Licensed Software, in addition to any other
+                        remedies NVIDIA may have at law or equity. Upon any expiration or termination of the AGREEMENT, a
+                        license or a service provided hereunder, (a) any amounts owed to NVIDIA become immediately due and
+                        payable, (b) you must promptly discontinue use of the affected Licensed Software and/or service, and
+                        (c) you must promptly destroy or return to NVIDIA all copies of the affected Licensed Software and
+                        all portions thereof in your possession or control, and each party will promptly destroy or return
+                        to the other all of the other party's Confidential Information within its possession or control.
+                        Upon written request, you will certify in writing that you have complied with your obligations under
+                        this section. Upon expiration or termination of the AGREEMENT all provisions survive except for the
+                        license grant provisions.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">9. CONSENT TO COLLECTION AND USE OF INFORMATION.</strong></p>
+                     <p class="p">
+                        You hereby agree and acknowledge that the Software may access and collect data about your Enterprise
+                        computer systems as well as configures the systems in order to (a) properly optimize such systems for
+                        use with the Software, (b) deliver content through the Software, (c) improve NVIDIA products and
+                        services, and (d) deliver marketing communications. Data collected by the Software includes, but is
+                        not limited to, system (i) hardware configuration and ID, (ii) operating system and driver
+                        configuration, (iii) installed applications, (iv) applications settings, performance, and usage data,
+                        and (iv) usage metrics of the Software. To the extent that you use the Software, you hereby consent
+                        to all of the foregoing, and represent and warrant that you have the right to grant such consent. In
+                        addition, you agree that you are solely responsible for maintaining appropriate data backups and
+                        system restore points for your Enterprise systems, and that NVIDIA will have no responsibility for
+                        any damage or loss to such systems (including loss of data or access) arising from or relating to (a)
+                        any changes to the configuration, application settings, environment variables, registry, drivers, BIOS,
+                        or other attributes of the systems (or any part of such systems) initiated through the Software; or 
+                        b) installation of any Software or third party software patches initiated through the Software.
+                        In certain systems you may change your system update preferences by unchecking "Automatically check
+                        for updates" in the "Preferences" tab of the control panel for the Software.
+                        
+                     </p>
+                     <p class="p">
+                        In connection with the receipt of the Licensed Software or services you may receive access to links
+                        to third party websites and services and the availability of those links does not imply any
+                        endorsement by NVIDIA. NVIDIA encourages you to review the privacy statements on those sites and
+                        services that you choose to visit so that you can understand how they may collect, use and share
+                        personal information of individuals. NVIDIA is not responsible or liable for: (i) the availability
+                        or accuracy of such links; or (ii) the products, services or information available on or through such
+                        links; or (iii) the privacy statements or practices of sites and services controlled by other
+                        companies or organizations.
+                        
+                     </p>
+                     <p class="p">
+                        To the extent that you or members of your Enterprise provide to NVIDIA during registration or
+                        otherwise personal data, you acknowledge that such information will be collected, used and disclosed
+                        by NVIDIA in accordance with NVIDIA's privacy policy, available at URL
+                        <a class="xref" href="http://www.nvidia.com/object/privacy_policy.html" target="_blank" shape="rect">
+                           http://www.nvidia.com/object/privacy_policy.html</a>.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">10. GENERAL.</strong></p>
+                     <p class="p">
+                        This SLA, any Supplements incorporated hereto, and Orders constitute the entire agreement of the
+                        parties with respect to the subject matter hereto and supersede all prior negotiations, conversations,
+                        or discussions between the parties relating to the subject matter hereto, oral or written, and all
+                        past dealings or industry custom. Any additional and/or conflicting terms and conditions on purchase
+                        order(s) or any other documents issued by you are null, void, and invalid. Any amendment or waiver
+                        under the AGREEMENT must be in writing and signed by representatives of both parties.
+                        
+                     </p>
+                     <p class="p">
+                        The AGREEMENT and the rights and obligations thereunder may not be assigned by you, in whole or in
+                        part, including by merger, consolidation, dissolution, operation of law, or any other manner, without
+                        written consent of NVIDIA, and any purported assignment in violation of this provision shall be void
+                        and of no effect. NVIDIA may assign, delegate or transfer the AGREEMENT and its rights and obligations
+                        hereunder, and if to a non-Affiliate you will be notified.
+                        
+                     </p>
+                     <p class="p">
+                        Each party acknowledges and agrees that the other is an independent contractor in the performance of
+                        the AGREEMENT, and each party is solely responsible for all of its employees, agents, contractors,
+                        and labor costs and expenses arising in connection therewith. The parties are not partners, joint
+                        ventures or otherwise affiliated, and neither has any authority to make any statements, representations
+                        or commitments of any kind to bind the other party without prior written consent.
+                        
+                     </p>
+                     <p class="p">
+                        Neither party will be responsible for any failure or delay in its performance under the AGREEMENT
+                        (except for any payment obligations) to the extent due to causes beyond its reasonable control for
+                        so long as such force majeure event continues in effect.
+                        
+                     </p>
+                     <p class="p">
+                        The AGREEMENT will be governed by and construed under the laws of the State of Delaware and the United
+                        States without regard to the conflicts of law provisions thereof and without regard to the United
+                        Nations Convention on Contracts for the International Sale of Goods. The parties consent to the
+                        personal jurisdiction of the federal and state courts located in Santa Clara County, California. You
+                        acknowledge and agree that a breach of any of your promises or agreements contained in the AGREEMENT
+                        may result in irreparable and continuing injury to NVIDIA for which monetary damages may not be an
+                        adequate remedy and therefore NVIDIA is entitled to seek injunctive relief as well as such other and
+                        further relief as may be appropriate. If any court of competent jurisdiction determines that any
+                        provision of the AGREEMENT is illegal, invalid or unenforceable, the remaining provisions will remain
+                        in full force and effect. Unless otherwise specified, remedies are cumulative.
+                        
+                     </p>
+                     <p class="p">
+                        The Licensed Software has been developed entirely at private expense and is "commercial items"
+                        consisting of "commercial computer software" and "commercial computer software documentation" provided
+                        with RESTRICTED RIGHTS. Use, duplication or disclosure by the U.S. Government or a U.S. Government
+                        subcontractor is subject to the restrictions set forth in the AGREEMENT pursuant to DFARS 227.7202-3(a)
+                        or as set forth in subparagraphs (c)(1) and (2) of the Commercial Computer Software - Restricted
+                        Rights clause at FAR 52.227-19, as applicable. Contractor/manufacturer is NVIDIA, 2788 San Tomas
+                        Expressway, Santa Clara, CA 95051.
+                        
+                     </p>
+                     <p class="p">
+                        You acknowledge that the Licensed Software described under the AGREEMENT is subject to export control
+                        under the U.S. Export Administration Regulations (EAR) and economic sanctions regulations administered
+                        by the U.S. Department of Treasury's Office of Foreign Assets Control (OFAC). Therefore, you may not
+                        export, reexport or transfer in-country the Licensed Software without first obtaining any license or
+                        other approval that may be required by BIS and/or OFAC. You are responsible for any violation of the
+                        U.S. or other applicable export control or economic sanctions laws, regulations and requirements
+                        related to the Licensed Software. By accepting this SLA, you confirm that you are not a resident or
+                        citizen of any country currently embargoed by the U.S. and that you are not otherwise prohibited from
+                        receiving the Licensed Software.
+                        
+                     </p>
+                     <p class="p">
+                        Any notice delivered by NVIDIA to you under the AGREEMENT will be delivered via mail, email or fax.
+                        Please direct your legal notices or other correspondence to NVIDIA Corporation, 2788 San Tomas
+                        Expressway, Santa Clara, California 95051, United States of America, Attention: Legal Department.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b">GLOSSARY OF TERMS</strong></p>
+                     <p class="p">
+                        Certain capitalized terms, if not otherwise defined elsewhere in this SLA, shall have the meanings
+                        set forth below:
+                        
+                     </p>
+                     <p class="p">
+                        a. <u class="ph u">"Affiliate"</u>
+                        means any legal entity that Owns, is Owned by, or is commonly Owned with a party. "Own" means having
+                        more than 50% ownership or the right to direct the management of the entity.
+                        
+                     </p>
+                     <p class="p">
+                        b. <u class="ph u">"AGREEMENT"</u>
+                        means this SLA and all associated Supplements entered by the parties referencing this SLA.
+                        
+                     </p>
+                     <p class="p">
+                        c. <u class="ph u">"Authorized Users"</u>
+                        means your Enterprise individual employees and any of your Enterprise's Contractors, subject to the
+                        terms of the "Enterprise and Contractors Usage" section.
+                        
+                     </p>
+                     <p class="p">
+                        d. <u class="ph u">"Confidential Information"</u>
+                        means the Licensed Software (unless made publicly available by NVIDIA without confidentiality
+                        obligations), and any NVIDIA business, marketing, pricing, research and development, know-how,
+                        technical, scientific, financial status, proposed new products or other information disclosed by
+                        NVIDIA to you which, at the time of disclosure, is designated in writing as confidential or
+                        proprietary (or like written designation), or orally identified as confidential or proprietary or
+                        is otherwise reasonably identifiable by parties exercising reasonable business judgment, as
+                        confidential. Confidential Information does not and will not include information that: (i) is or
+                        becomes generally known to the public through no fault of or breach of the AGREEMENT by the
+                        receiving party; (ii) is rightfully known by the receiving party at the time of disclosure without
+                        an obligation of confidentiality; (iii) is independently developed by the receiving party without
+                        use of the disclosing party's Confidential Information; or (iv) is rightfully obtained by the
+                        receiving party from a third party without restriction on use or disclosure.
+                        
+                     </p>
+                     <p class="p">
+                        e. <u class="ph u">"Contractor"</u>
+                        means an individual who works primarily for your Enterprise on a contractor basis from your
+                        secure network.
+                        
+                     </p>
+                     <p class="p">
+                        f. <u class="ph u">"Documentation"</u>
+                        means the NVIDIA documentation made available for use with the Software, including (without
+                        limitation) user manuals, datasheets, operations instructions, installation guides, release
+                        notes and other materials provided to you under the AGREEMENT.
+                        
+                     </p>
+                     <p class="p">
+                        g. <u class="ph u">"Enterprise"</u>
+                        means you or any company or legal entity for which you accepted the terms of this SLA, and
+                        their subsidiaries of which your company or legal entity owns more than fifty percent (50%)
+                        of the issued and outstanding equity.
+                        
+                     </p>
+                     <p class="p">
+                        h. <u class="ph u">"Excluded License"</u>
+                        includes, without limitation, a software license that requires as a condition of use,
+                        modification, and/or distribution that software be (i) disclosed or distributed in source
+                        code form; (ii) licensed for the purpose of making derivative works; or (iii)
+                        redistributable at no charge.
+                        
+                     </p>
+                     <p class="p">
+                        i. <u class="ph u">"Feedback"</u>
+                        means any and all suggestions, feature requests, comments or other feedback regarding the
+                        Licensed Software, including possible enhancements or modifications thereto.
+                        
+                     </p>
+                     <p class="p">
+                        j. <u class="ph u">"Intellectual Property Rights"</u>
+                        means all patent, copyright, trademark, trade secret, trade dress, trade names, utility
+                        models, mask work, moral rights, rights of attribution or integrity service marks, master
+                        recording and music publishing rights, performance rights, author's rights, database rights,
+                        registered design rights and any applications for the protection or registration of these
+                        rights, or other intellectual or industrial property rights or proprietary rights,
+                        howsoever arising and in whatever media, whether now known or hereafter devised, whether or
+                        not registered, (including all claims and causes of action for infringement, misappropriation
+                        or violation and all rights in any registrations and renewals), worldwide and whether
+                        existing now or in the future.
+                        
+                     </p>
+                     <p class="p">
+                        k. <u class="ph u">"Licensed Software"</u>
+                        means Software, Documentation and all modifications owned by NVIDIA.
+                        
+                     </p>
+                     <p class="p">
+                        l. <u class="ph u">"Order"</u>
+                        means a purchase order issued by you, a signed purchase agreement with you, or other
+                        ordering document issued by you to NVIDIA or a NVIDIA authorized reseller (including any
+                        on-line acceptance process) that references and incorporates the AGREEMENT and is
+                        accepted by NVIDIA.
+                        
+                     </p>
+                     <p class="p">
+                        m. <u class="ph u">"Software"</u>
+                        means the NVIDIA software programs licensed to you under the AGREEMENT including, without
+                        limitation, libraries, sample code, utility programs and programming code.
+                        
+                     </p>
+                     <p class="p">
+                        n. <u class="ph u">"Supplement"</u>
+                        means the additional terms and conditions beyond those stated in this SLA that apply to
+                        certain Licensed Software licensed hereunder.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b"><u class="ph u">MICROSOFT DETOURS</u></strong></p>
+                     <p class="p">
+                        Microsoft Detours is used under the Professional license (
+                        <a class="xref" href="http://research.microsoft.com/en-us/projects/detours/" target="_blank" shape="rect">
+                           http://research.microsoft.com/en-us/projects/detours/</a>). 
+                        
+                     </p>
+                     <p class="p">
+                        NVIDIA agrees to include in all copies of the NVIDIA Applications a proprietary rights notice that
+                        includes a reference to Microsoft software being included in such applications. NVIDIA shall not
+                        remove or obscure, but shall retain in the Software, any copyright, trademark, or patent notices
+                        that appear in the Software.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b"><u class="ph u">BREAKPAD</u></strong></p>
+                     <p class="p">
+                        Copyright 2006, Google Inc. All rights reserved.
+                        
+                     </p>
+                     <div class="p">
+                        Redistribution and use in source and binary forms, with or without modification, are permitted
+                        provided that the following conditions are met:
+                        
+                        <ul class="ul">
+                           <li class="li">
+                              Redistributions of source code must retain the above copyright notice, this list of conditions
+                              and the following disclaimer.
+                              
+                           </li>
+                           <li class="li">
+                              Redistributions in binary form must reproduce the above copyright notice, this list of
+                              conditions and the following disclaimer in the documentation and/or other materials provided
+                              with the distribution.
+                              
+                           </li>
+                           <li class="li">
+                              Neither the name of Google Inc. nor the names of its contributors may be used to endorse or
+                              promote products derived from this software without specific prior written permission.
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     <p class="p">
+                        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+                        WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                        A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+                        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+                        NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+                        INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+                        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+                        IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                        
+                     </p>
+                     <p class="p"><strong class="ph b"><u class="ph u">PROTOBUF</u></strong></p>
+                     <p class="p">
+                        Copyright 2014, Google Inc. All rights reserved.
+                        
+                     </p>
+                     <div class="p">
+                        Redistribution and use in source and binary forms, with or without modification, are permitted
+                        provided that the following conditions are met:
+                        
+                        <ul class="ul">
+                           <li class="li">
+                              Redistributions of source code must retain the above copyright notice, this list of conditions
+                              and the following disclaimer.
+                              
+                           </li>
+                           <li class="li">
+                              Redistributions in binary form must reproduce the above copyright notice, this list of
+                              conditions and the following disclaimer in the documentation and/or other materials provided
+                              with the distribution.
+                              
+                           </li>
+                           <li class="li">
+                              Neither the name of Google Inc. nor the names of its contributors may be used to endorse or
+                              promote products derived from this software without specific prior written permission.
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     <p class="p">
+                        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+                        WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                        A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+                        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+                        NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+                        INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+                        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+                        IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                        
+                     </p>
+                     <p class="p">
+                        Code generated by the Protocol Buffer compiler is owned by the owner of the input file used when
+                        generating it. This code is not standalone and requires a support library to be linked with it.
+                        This support library is itself covered by the above license.
+                        
+                     </p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="notices-header"><a name="notices-header" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#notices-header" name="notices-header" shape="rect">Notices</a></h2>
+                  <div class="topic reference nested1" id="notice"><a name="notice" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#notice" name="notice" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Notice</h3>
+                           <p class="p">ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND
+                              SEPARATELY, "MATERIALS") ARE BEING PROVIDED "AS IS." NVIDIA MAKES NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE
+                              WITH RESPECT TO THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS
+                              FOR A PARTICULAR PURPOSE. 
+                           </p>
+                           <p class="p">Information furnished is believed to be accurate and reliable. However, NVIDIA Corporation assumes no responsibility for the
+                              consequences of use of such information or for any infringement of patents or other rights of third parties that may result
+                              from its use. No license is granted by implication of otherwise under any patent rights of NVIDIA Corporation. Specifications
+                              mentioned in this publication are subject to change without notice. This publication supersedes and replaces all other information
+                              previously supplied. NVIDIA Corporation products are not authorized as critical components in life support devices or systems
+                              without express written approval of NVIDIA Corporation.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="trademarks"><a name="trademarks" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#trademarks" name="trademarks" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Trademarks</h3>
+                           <p class="p">NVIDIA and the NVIDIA logo are trademarks or registered trademarks of NVIDIA Corporation
+                              in the U.S. and other countries.  Other company and product names may be trademarks of
+                              the respective companies with which they are associated.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="copyright-past-to-present"><a name="copyright-past-to-present" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#copyright-past-to-present" name="copyright-past-to-present" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Copyright</h3>
+                           <p class="p">© <span class="ph">2019</span>-<span class="ph">2020</span> NVIDIA
+                              Corporation. All rights reserved.
+                           </p>
+                           <p class="p">This product includes software developed by the Syncro Soft SRL (http://www.sync.ro/).</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script></body>
+</html>

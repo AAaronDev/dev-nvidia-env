@@ -1,0 +1,1236 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="cuda_reference"></meta>
+      <meta name="DC.Title" content="Changelog"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="r_changelog"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUPTI :: CUPTI Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="../common/scripts/tynt/tynt.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="https://developer.nvidia.com/Cupti/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUPTI Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUPTI
+                  v11.0</a></div>
+            <div class="category"><a href="index.html" title="CUPTI">CUPTI</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="r_overview.html#r_overview">Overview</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="r_overview.html#r_whats_new">What's New</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="r_main.html#r_main">1.&nbsp;Usage</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_compatibility_requirements">1.1.&nbsp;CUPTI Compatibility and Requirements</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_initialization">1.2.&nbsp;CUPTI Initialization</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_activity">1.3.&nbsp;CUPTI Activity API</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_source_correlation">1.3.1.&nbsp;SASS Source Correlation</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_pc_sampling">1.3.2.&nbsp;PC Sampling</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_nvlink">1.3.3.&nbsp;NVLink</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_openacc">1.3.4.&nbsp;OpenACC</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#unique_743830542">1.3.5.&nbsp;External Correlation</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_dynamic_detach">1.3.6.&nbsp;Dynamic Attach and Detach</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_callback_api">1.4.&nbsp;CUPTI Callback API</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_driver_runtime_api_callback">1.4.1.&nbsp;Driver and Runtime API Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_resource_callbacks">1.4.2.&nbsp;Resource Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_synchronization_callbacks">1.4.3.&nbsp;Synchronization Callbacks</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_nvtx_callbacks">1.4.4.&nbsp;NVIDIA Tools Extension Callbacks</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_event_api">1.5.&nbsp;CUPTI Event API</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_collecting_kernel_execution_events">1.5.1.&nbsp;Collecting Kernel Execution Events</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_sampling_events">1.5.2.&nbsp;Sampling Events</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_metric_api">1.6.&nbsp;CUPTI Metric API</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#metrics-reference">1.6.1.&nbsp;Metrics Reference</a></div>
+                              <ul>
+                                 <li>
+                                    <div class="section-link"><a href="r_main.html#metrics-reference-3x">1.6.1.1.&nbsp;Metrics for Capability 3.x</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="r_main.html#metrics-reference-5x">1.6.1.2.&nbsp;Metrics for Capability 5.x</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="r_main.html#metrics-reference-6x">1.6.1.3.&nbsp;Metrics for Capability 6.x</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="r_main.html#metrics-reference-7x">1.6.1.4.&nbsp;Metrics for Capability 7.0</a></div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_profiler">1.7.&nbsp;CUPTI Profiling API</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_multi_pass_collection">1.7.1.&nbsp;Multi Pass Collection</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_range_profiling">1.7.2.&nbsp;Range Profiling</a></div>
+                              <ul>
+                                 <li>
+                                    <div class="section-link"><a href="r_main.html#r_profiler_auto_range">1.7.2.1.&nbsp;Auto Range</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="r_main.html#r_profiler_user_range">1.7.2.2.&nbsp;User Range</a></div>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_profiler_definitions">1.7.3.&nbsp;CUPTI Profiler Definitions</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_host_metrics_api">1.8.&nbsp;Perfworks Metrics API</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_host_derived_metrics_api">1.8.1.&nbsp;Derived metrics</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_host_raw_metrics_api">1.8.2.&nbsp;Raw Metrics</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#metrics_map_table_70">1.8.3.&nbsp;Metrics Mapping Table</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#events_map_table_70">1.8.4.&nbsp;Events Mapping Table</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_profiling_migration">1.9.&nbsp;Migration to the new Profiling API</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_overhead">1.10.&nbsp;CUPTI overhead</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_overhead_tracing">1.10.1.&nbsp;Tracing Overhead</a></div>
+                              <ul>
+                                 <li>
+                                    <div class="section-link"><a href="r_main.html#r_overhead_tracing_execution">1.10.1.1.&nbsp;Execution overhead</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="r_main.html#r_overhead_tracing_memory">1.10.1.2.&nbsp;Memory overhead</a></div>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="r_main.html#r_overhead_profiling">1.10.2.&nbsp;Profiling Overhead</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_mig">1.11.&nbsp;Multi Instance GPU</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="r_main.html#r_samples">1.12.&nbsp;Samples</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="r_library_support.html#r_library_support">2.&nbsp;Library Support</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="r_library_support.html#r_library_support_optix">2.1.&nbsp;OptiX</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="modules.html#modules">3.&nbsp;Modules</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="modules.html#group__CUPTI__RESULT__API">3.1.&nbsp;CUPTI Result Codes</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="modules.html#group__CUPTI__VERSION__API">3.2.&nbsp;CUPTI Version</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="modules.html#group__CUPTI__ACTIVITY__API">3.3.&nbsp;CUPTI Activity API</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="modules.html#group__CUPTI__CALLBACK__API">3.4.&nbsp;CUPTI Callback API</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="modules.html#group__CUPTI__EVENT__API">3.5.&nbsp;CUPTI Event API</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="modules.html#group__CUPTI__METRIC__API">3.6.&nbsp;CUPTI Metric API</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="modules.html#group__CUPTI__PROFILER__API">3.7.&nbsp;CUPTI Profiler API</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="annotated.html#annotated">4.&nbsp;Data Structures</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Activity">4.1.&nbsp;CUpti_Activity</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityAPI">4.2.&nbsp;CUpti_ActivityAPI</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityAutoBoostState">4.3.&nbsp;CUpti_ActivityAutoBoostState</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityBranch">4.4.&nbsp;CUpti_ActivityBranch</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityBranch2">4.5.&nbsp;CUpti_ActivityBranch2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityCdpKernel">4.6.&nbsp;CUpti_ActivityCdpKernel</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityContext">4.7.&nbsp;CUpti_ActivityContext</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityCudaEvent">4.8.&nbsp;CUpti_ActivityCudaEvent</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityDevice">4.9.&nbsp;CUpti_ActivityDevice</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityDevice2">4.10.&nbsp;CUpti_ActivityDevice2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityDeviceAttribute">4.11.&nbsp;CUpti_ActivityDeviceAttribute</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityEnvironment">4.12.&nbsp;CUpti_ActivityEnvironment</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityEvent">4.13.&nbsp;CUpti_ActivityEvent</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityEventInstance">4.14.&nbsp;CUpti_ActivityEventInstance</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityExternalCorrelation">4.15.&nbsp;CUpti_ActivityExternalCorrelation</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityFunction">4.16.&nbsp;CUpti_ActivityFunction</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityGlobalAccess">4.17.&nbsp;CUpti_ActivityGlobalAccess</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityGlobalAccess2">4.18.&nbsp;CUpti_ActivityGlobalAccess2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityGlobalAccess3">4.19.&nbsp;CUpti_ActivityGlobalAccess3</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityInstantaneousEvent">4.20.&nbsp;CUpti_ActivityInstantaneousEvent</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityInstantaneousEventInstance">4.21.&nbsp;CUpti_ActivityInstantaneousEventInstance</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityInstantaneousMetric">4.22.&nbsp;CUpti_ActivityInstantaneousMetric</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityInstantaneousMetricInstance">4.23.&nbsp;CUpti_ActivityInstantaneousMetricInstance</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityInstructionCorrelation">4.24.&nbsp;CUpti_ActivityInstructionCorrelation</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityInstructionExecution">4.25.&nbsp;CUpti_ActivityInstructionExecution</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityKernel">4.26.&nbsp;CUpti_ActivityKernel</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityKernel2">4.27.&nbsp;CUpti_ActivityKernel2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityKernel3">4.28.&nbsp;CUpti_ActivityKernel3</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityKernel4">4.29.&nbsp;CUpti_ActivityKernel4</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityKernel5">4.30.&nbsp;CUpti_ActivityKernel5</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMarker">4.31.&nbsp;CUpti_ActivityMarker</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMarker2">4.32.&nbsp;CUpti_ActivityMarker2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMarkerData">4.33.&nbsp;CUpti_ActivityMarkerData</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMemcpy">4.34.&nbsp;CUpti_ActivityMemcpy</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMemcpy3">4.35.&nbsp;CUpti_ActivityMemcpy3</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMemcpyPtoP">4.36.&nbsp;CUpti_ActivityMemcpyPtoP</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMemcpyPtoP2">4.37.&nbsp;CUpti_ActivityMemcpyPtoP2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMemory">4.38.&nbsp;CUpti_ActivityMemory</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMemset">4.39.&nbsp;CUpti_ActivityMemset</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMemset2">4.40.&nbsp;CUpti_ActivityMemset2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMetric">4.41.&nbsp;CUpti_ActivityMetric</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityMetricInstance">4.42.&nbsp;CUpti_ActivityMetricInstance</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityModule">4.43.&nbsp;CUpti_ActivityModule</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityName">4.44.&nbsp;CUpti_ActivityName</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityNvLink">4.45.&nbsp;CUpti_ActivityNvLink</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityNvLink2">4.46.&nbsp;CUpti_ActivityNvLink2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityNvLink3">4.47.&nbsp;CUpti_ActivityNvLink3</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#unionCUpti__ActivityObjectKindId">4.48.&nbsp;CUpti_ActivityObjectKindId</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityOpenAcc">4.49.&nbsp;CUpti_ActivityOpenAcc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityOpenAccData">4.50.&nbsp;CUpti_ActivityOpenAccData</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityOpenAccLaunch">4.51.&nbsp;CUpti_ActivityOpenAccLaunch</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityOpenAccOther">4.52.&nbsp;CUpti_ActivityOpenAccOther</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityOpenMp">4.53.&nbsp;CUpti_ActivityOpenMp</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityOverhead">4.54.&nbsp;CUpti_ActivityOverhead</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityPcie">4.55.&nbsp;CUpti_ActivityPcie</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityPCSampling">4.56.&nbsp;CUpti_ActivityPCSampling</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityPCSampling2">4.57.&nbsp;CUpti_ActivityPCSampling2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityPCSampling3">4.58.&nbsp;CUpti_ActivityPCSampling3</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityPCSamplingConfig">4.59.&nbsp;CUpti_ActivityPCSamplingConfig</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityPCSamplingRecordInfo">4.60.&nbsp;CUpti_ActivityPCSamplingRecordInfo</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityPreemption">4.61.&nbsp;CUpti_ActivityPreemption</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivitySharedAccess">4.62.&nbsp;CUpti_ActivitySharedAccess</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivitySourceLocator">4.63.&nbsp;CUpti_ActivitySourceLocator</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityStream">4.64.&nbsp;CUpti_ActivityStream</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivitySynchronization">4.65.&nbsp;CUpti_ActivitySynchronization</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityUnifiedMemoryCounter">4.66.&nbsp;CUpti_ActivityUnifiedMemoryCounter</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityUnifiedMemoryCounter2">4.67.&nbsp;CUpti_ActivityUnifiedMemoryCounter2</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ActivityUnifiedMemoryCounterConfig">4.68.&nbsp;CUpti_ActivityUnifiedMemoryCounterConfig</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__CallbackData">4.69.&nbsp;CUpti_CallbackData</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__EventGroupSet">4.70.&nbsp;CUpti_EventGroupSet</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__EventGroupSets">4.71.&nbsp;CUpti_EventGroupSets</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__GraphData">4.72.&nbsp;CUpti_GraphData</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#unionCUpti__MetricValue">4.73.&nbsp;CUpti_MetricValue</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ModuleResourceData">4.74.&nbsp;CUpti_ModuleResourceData</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__NvtxData">4.75.&nbsp;CUpti_NvtxData</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__BeginPass__Params">4.76.&nbsp;CUpti_Profiler_BeginPass_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__BeginSession__Params">4.77.&nbsp;CUpti_Profiler_BeginSession_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__CounterDataImage__CalculateScratchBufferSize__Params">4.78.&nbsp;CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__CounterDataImage__CalculateSize__Params">4.79.&nbsp;CUpti_Profiler_CounterDataImage_CalculateSize_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__CounterDataImage__Initialize__Params">4.80.&nbsp;CUpti_Profiler_CounterDataImage_Initialize_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__CounterDataImage__InitializeScratchBuffer__Params">4.81.&nbsp;CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__CounterDataImageOptions">4.82.&nbsp;CUpti_Profiler_CounterDataImageOptions</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__DeInitialize__Params">4.83.&nbsp;CUpti_Profiler_DeInitialize_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__DisableProfiling__Params">4.84.&nbsp;CUpti_Profiler_DisableProfiling_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__EnableProfiling__Params">4.85.&nbsp;CUpti_Profiler_EnableProfiling_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__EndPass__Params">4.86.&nbsp;CUpti_Profiler_EndPass_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__EndSession__Params">4.87.&nbsp;CUpti_Profiler_EndSession_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__FlushCounterData__Params">4.88.&nbsp;CUpti_Profiler_FlushCounterData_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__GetCounterAvailability__Params">4.89.&nbsp;CUpti_Profiler_GetCounterAvailability_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__Initialize__Params">4.90.&nbsp;CUpti_Profiler_Initialize_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__IsPassCollected__Params">4.91.&nbsp;CUpti_Profiler_IsPassCollected_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__SetConfig__Params">4.92.&nbsp;CUpti_Profiler_SetConfig_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__Profiler__UnsetConfig__Params">4.93.&nbsp;CUpti_Profiler_UnsetConfig_Params</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__ResourceData">4.94.&nbsp;CUpti_ResourceData</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="annotated.html#structCUpti__SynchronizeData">4.95.&nbsp;CUpti_SynchronizeData</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="functions.html#functions">5.&nbsp;Data Fields</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="r_limitations.html#r_limitations">6.&nbsp;Limitations</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="r_changelog.html#r_changelog">7.&nbsp;Changelog</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="notices-header.html#notices-header">Notices</a></div>
+                  <ul></ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="breadcrumbs"><a href="r_limitations.html" shape="rect">&lt; Previous</a> | <a href="notices-header.html" shape="rect">Next &gt;</a></div>
+               <div id="release-info">CUPTI
+                  (<a href="../pdf/Cupti.pdf">PDF</a>)
+                  
+                  -
+                  
+                  v11.0
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated May 28, 2020
+                  -
+                  <a href="mailto:devtools@nvidia.com?subject=CUPTI Documentation Feedback: CUPTI">Send Feedback</a>
+                  -
+                  <span class="st_facebook"></span><span class="st_twitter"></span><span class="st_linkedin"></span><span class="st_reddit"></span><span class="st_slashdot"></span><span class="st_tumblr"></span><span class="st_sharethis"></span></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested1" id="r_changelog"><a name="r_changelog" shape="rect">
+                     <!-- --></a><h2 class="topictitle2">7.&nbsp;Changelog</h2>
+                  <div class="body refbody">
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 11.0</h2>
+                        <div class="p">CUPTI contains below change as part of the CUDA Toolkit 11.0 release.
+                           
+                           <ul class="ul">
+                              <li class="li">CUPTI adds tracing and profiling support for devices with compute capability 8.0 i.e. NVIDIA A100 GPUs
+                                 and systems that are based on A100.
+                              </li>
+                              <li class="li">Enhancements for CUDA Graph:
+                                 
+                                 <ul class="ul">
+                                    <li class="li">Support to correlate the CUDA Graph node with the GPU activities: kernel, memcpy, memset.
+                                       
+                                       <ul class="ul">
+                                          <li class="li">Added a new field <tt class="ph tt">graphNodeId</tt> for Node Id in the activity records for kernel, memcpy, memset and P2P transfers.
+                                             Activity records <tt class="ph tt">CUpti_ActivityKernel4</tt>, <tt class="ph tt">CUpti_ActivityMemcpy2</tt>, <tt class="ph tt">CUpti_ActivityMemset</tt> and
+                                             <tt class="ph tt">CUpti_ActivityMemcpyPtoP</tt> are deprecated and replaced by new activity records <tt class="ph tt">CUpti_ActivityKernel5</tt>,
+                                             <tt class="ph tt">CUpti_ActivityMemcpy3</tt>, <tt class="ph tt">CUpti_ActivityMemset2</tt> and <tt class="ph tt">CUpti_ActivityMemcpyPtoP2</tt>.
+                                          </li>
+                                          <li class="li"><tt class="ph tt">graphNodeId</tt> is the unique ID for the graph node.
+                                          </li>
+                                          <li class="li"><tt class="ph tt">graphNodeId</tt> can be queried using the new CUPTI API <tt class="ph tt">cuptiGetGraphNodeId()</tt>.
+                                          </li>
+                                          <li class="li">Callback <tt class="ph tt">CUPTI_CBID_RESOURCE_GRAPHNODE_CREATED</tt> is issued between a pair of the API enter and exit callbacks.
+                                          </li>
+                                       </ul>
+                                    </li>
+                                    <li class="li">Introduced new callback <tt class="ph tt">CUPTI_CBID_RESOURCE_GRAPHNODE_CLONED</tt> to indicate the cloning of the CUDA Graph node.
+                                    </li>
+                                    <li class="li">Retain CUDA driver performance optimization in case memset node is sandwiched between kernel nodes.
+                                       CUPTI no longer disables the conversion of memset nodes into kernel nodes for CUDA graphs.
+                                    </li>
+                                    <li class="li">Added support for cooperative kernels in CUDA graphs.</li>
+                                 </ul>
+                              </li>
+                              <li class="li">Fixed issues in the API <tt class="ph tt">cuptiFinalize()</tt> including the issue which may cause the application to crash.
+                                 This API provides ability for safe and full detach of CUPTI during the execution of the application.
+                                 More details in the section <a class="xref" href="r_main.html#r_dynamic_detach" shape="rect">Dynamic Detach</a>.
+                                 
+                              </li>
+                              <li class="li">Added support to trace Optix applications. Refer the <a class="xref" href="r_library_support.html#r_library_support_optix" shape="rect">Optix Profiling</a> section.
+                              </li>
+                              <li class="li">PC sampling overhead is reduced by avoiding the reconfiguration of the GPU when PC sampling period doesn't change
+                                 between successive kernels. This is applicable for devices with compute capability 7.0 and higher.
+                              </li>
+                              <li class="li">CUPTI overhead is associated with the thread rather than process. Object kind of the overhead record
+                                 <tt class="ph tt">CUpti_ActivityOverhead</tt> is switched to <tt class="ph tt">CUPTI_ACTIVITY_OBJECT_THREAD</tt>.
+                              </li>
+                              <li class="li">Added error code <tt class="ph tt">CUPTI_ERROR_MULTIPLE_SUBSCRIBERS_NOT_SUPPORTED</tt> to indicate the presense of another
+                                 CUPTI subscriber. API <tt class="ph tt">cuptiSubscribe()</tt> returns the new error code than <tt class="ph tt">CUPTI_ERROR_MAX_LIMIT_REACHED</tt>.
+                              </li>
+                              <li class="li">Added a new enum <tt class="ph tt">CUpti_FuncShmemLimitConfig</tt> to indicate whether user has opted in for maximun dynamic shared memory size
+                                 on devices with compute capability 7.x by using function attributes <tt class="ph tt">CU_FUNC_ATTRIBUTE_MAX_DYNAMIC_SHARED_SIZE_BYTES</tt>
+                                 or <tt class="ph tt">cudaFuncAttributeMaxDynamicSharedMemorySize</tt> with CUDA driver and runtime respectively.
+                                 Field <tt class="ph tt">shmemLimitConfig</tt> in the kernel activity record <tt class="ph tt">CUpti_ActivityKernel5</tt> shows the user choice.
+                                 This helps in correct occupancy calulation. Value <tt class="ph tt">FUNC_SHMEM_LIMIT_OPTIN</tt> in the enum <tt class="ph tt">cudaOccFuncShmemConfig</tt>
+                                 is the corresponding option in the CUDA occupancy calculator.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 10.2</h2>
+                        <div class="p">CUPTI contains below changes as part of the CUDA Toolkit 10.2 release.
+                           
+                           <ul class="ul">
+                              <li class="li">CUPTI allows tracing features for non-root and non-admin users on desktop platforms.
+                                 Note that events and metrics profiling is still restricted for non-root and non-admin users.
+                                 More details about the issue and the solutions can be found on this
+                                 <a class="xref" href="https://developer.nvidia.com/nvidia-development-tools-solutions-ERR_NVGPUCTRPERM-permission-issue-performance-counters" target="_blank" shape="rect">web page</a>.
+                              </li>
+                              <li class="li">Added support for tracing features on the virtual GPUs (vGPU).</li>
+                              <li class="li">CUPTI no longer turns off the performance characteristics of CUDA Graph when tracing
+                                 the application.
+                              </li>
+                              <li class="li">CUPTI now shows memset nodes in the CUDA graph.</li>
+                              <li class="li">Fixed the incorrect timing issue for the asynchronous cuMemset/cudaMemset activity.</li>
+                              <li class="li">Several performance improvements are done in the tracing path.</li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 10.1 Update 2</h2>
+                        <div class="p">CUPTI contains below changes as part of the CUDA Toolkit 10.1 Update 2 release.
+                           
+                           <ul class="ul">
+                              <li class="li">This release is focused on bug fixes and stability of the CUPTI.</li>
+                              <li class="li">A security vulnerability issue required profiling tools to disable all the features
+                                 for non-root or non-admin users. As a result, CUPTI cannot profile the application when
+                                 using a Windows 419.17 or Linux 418.43 or later driver. More details about the issue
+                                 and the solutions can be found on this
+                                 <a class="xref" href="https://developer.nvidia.com/nvidia-development-tools-solutions-ERR_NVGPUCTRPERM-permission-issue-performance-counters" target="_blank" shape="rect">web page</a>.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 10.1 Update 1</h2>
+                        <div class="p">CUPTI contains below change as part of the CUDA Toolkit 10.1 Update 1 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Support for the IBM POWER platform is added for the
+                                 
+                                 <ul class="ul">
+                                    <li class="li">Profiling APIs in the header cupti_profiler_target.h</li>
+                                    <li class="li">Perfworks metric APIs in the headers nvperf_host.h and nvperf_target.h</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 10.1</h2>
+                        <div class="p">CUPTI contains below changes as part of the CUDA Toolkit 10.1 release.
+                           
+                           <ul class="ul">
+                              <li class="li">This release is focused on bug fixes and performance improvements.
+                                 
+                              </li>
+                              <li class="li">The new set of profiling APIs and Perfworks metric APIs which were introduced
+                                 in the CUDA Toolkit 10.0 are now integrated into the CUPTI library distributed in
+                                 the CUDA Toolkit. Refer to the sections
+                                 <a class="xref" href="r_main.html#r_profiler" shape="rect">CUPTI Profiling API</a> and
+                                 <a class="xref" href="r_main.html#r_host_metrics_api" shape="rect">Perfworks Metric APIs</a> for documentation
+                                 of the new APIs.
+                                 
+                              </li>
+                              <li class="li">Event collection mode <tt class="ph tt">CUPTI_EVENT_COLLECTION_MODE_CONTINUOUS</tt> is now
+                                 supported on all device classes including Geforce and Quadro.
+                                 
+                              </li>
+                              <li class="li">Support for the NVTX string registration API <tt class="ph tt">nvtxDomainRegisterStringA().</tt></li>
+                              <li class="li">Added enum <tt class="ph tt">CUpti_PcieGen</tt> to list PCIE generations.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 10.0</h2>
+                        <div class="p">CUPTI contains below changes as part of the CUDA Toolkit 10.0 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Added tracing support for devices with compute capability 7.5.</li>
+                              <li class="li">A new set of metric APIs are added for devices with compute capability 7.0 and higher.
+                                 These provide low and deterministic profiling overhead on the target system. These APIs
+                                 are currently supported only on Linux x86 64-bit and Windows 64-bit platforms.
+                                 Refer to the <a class="xref" href="https://developer.nvidia.com/cupti" target="_blank" shape="rect">
+                                    CUPTI web page</a> for documentation and details to download the package with support for
+                                 these new APIs.
+                                 Note that both the old and new metric APIs are supported for compute capability 7.0. This is
+                                 to enable transition of code to the new metric APIs. But one cannot mix the usage of the old
+                                 and new metric APIs.
+                                 
+                              </li>
+                              <li class="li">CUPTI supports profiling of OpenMP applications. OpenMP profiling
+                                 information is provided in the form of new activity records <tt class="ph tt">CUpti_ActivityOpenMp</tt>.
+                                 New API <tt class="ph tt">cuptiOpenMpInitialize</tt> is used to initialize profiling for supported
+                                 OpenMP runtimes.
+                                 
+                              </li>
+                              <li class="li">Activity record for kernel <tt class="ph tt">CUpti_ActivityKernel4</tt> provides shared memory size set
+                                 by the CUDA driver.
+                                 
+                              </li>
+                              <li class="li">Tracing support for CUDA kernels, memcpy and memset nodes launched by a CUDA Graph.
+                                 
+                              </li>
+                              <li class="li">Added support for resource callbacks for resources associated with the CUDA Graph.
+                                 Refer enum <tt class="ph tt">CUpti_CallbackIdResource</tt> for new callback IDs.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 9.2</h2>
+                        <div class="p">CUPTI contains below changes as part of the CUDA Toolkit 9.2 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Added support to query PCI devices information which can be used to construct the PCIE topology.
+                                 See activity kind <tt class="ph tt">CUPTI_ACTIVITY_KIND_PCIE</tt> and related activity record <tt class="ph tt">CUpti_ActivityPcie</tt>.
+                                 
+                              </li>
+                              <li class="li">To view and analyze bandwidth of memory transfers over PCIe topologies, new set of metrics
+                                 to collect total data bytes transmitted and recieved through PCIe are added. Those give
+                                 accumulated count for all devices in the system. These metrics are collected at the device level
+                                 for the entire application. And those are made available for devices with compute capability 5.2
+                                 and higher.
+                                 
+                              </li>
+                              <li class="li">CUPTI added support for new metrics:
+                                 
+                                 <ul class="ul">
+                                    <li class="li">Instruction executed for different types of load and store</li>
+                                    <li class="li">Total number of cached global/local load requests from SM to texture cache</li>
+                                    <li class="li">Global atomic/non-atomic/reduction bytes written to L2 cache from texture cache</li>
+                                    <li class="li">Surface atomic/non-atomic/reduction bytes written to L2 cache from texture cache</li>
+                                    <li class="li">Hit rate at L2 cache for all requests from texture cache</li>
+                                    <li class="li">Device memory (DRAM) read and write bytes</li>
+                                    <li class="li">The utilization level of the multiprocessor function units that execute tensor core
+                                       instructions for devices with compute capability 7.0
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li class="li">A new attribute <tt class="ph tt">CUPTI_EVENT_ATTR_PROFILING_SCOPE</tt> is added under
+                                 enum <tt class="ph tt">CUpti_EventAttribute</tt> to query the profiling scope of a event.
+                                 Profiling scope indicates if the event can be collected at the context
+                                 level or device level or both. See Enum <tt class="ph tt">CUpti_EventProfilingScope</tt> for
+                                 avaiable profiling scopes.
+                                 
+                              </li>
+                              <li class="li">A new error code <tt class="ph tt">CUPTI_ERROR_VIRTUALIZED_DEVICE_NOT_SUPPORTED</tt> is added to
+                                 indicate that tracing and profiling on virtualized GPU is not supported.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 9.1</h2>
+                        <div class="p">List of changes done as part of the CUDA Toolkit 9.1 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Added a field for correlation ID in the activity record
+                                 <tt class="ph tt">CUpti_ActivityStream</tt>.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 9.0</h2>
+                        <div class="p">List of changes done as part of the CUDA Toolkit 9.0 release.
+                           
+                           <ul class="ul">
+                              <li class="li">CUPTI extends tracing and profiling support for devices with compute
+                                 capability 7.0.
+                                 
+                              </li>
+                              <li class="li">Usage of compute device memory can be tracked through CUPTI. A new activity record
+                                 <tt class="ph tt">CUpti_ActivityMemory</tt> and activity kind <tt class="ph tt">CUPTI_ACTIVITY_KIND_MEMORY</tt> are
+                                 added to track the allocation and freeing of memory. This activity record includes
+                                 fields like virtual base address, size, PC (program counter), timestamps for memory
+                                 allocation and free calls.
+                                 
+                              </li>
+                              <li class="li">Unified memory profiling adds new events for thrashing, throttling, remote map and
+                                 device-to-device migration on 64 bit Linux platforms. New events are added
+                                 under enum <tt class="ph tt">CUpti_ActivityUnifiedMemoryCounterKind</tt>.
+                                 Enum <tt class="ph tt">CUpti_ActivityUnifiedMemoryRemoteMapCause</tt> lists possible causes for remote map events.
+                                 
+                              </li>
+                              <li class="li">PC sampling supports wide range of sampling periods ranging from 2^5 cycles to 2^31 cycles
+                                 per sample. This can be controlled through new field <tt class="ph tt">samplingPeriod2</tt> in the PC sampling
+                                 configuration struct <tt class="ph tt">CUpti_ActivityPCSamplingConfig</tt>.
+                                 
+                              </li>
+                              <li class="li">Added API <tt class="ph tt">cuptiDeviceSupported()</tt> to check support for a compute device.
+                                 
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityKernel3</tt> for kernel execution has been deprecated
+                                 and replaced by new activity record <tt class="ph tt">CUpti_ActivityKernel4</tt>. New record gives
+                                 information about queued and submit timestamps which can help to determine software
+                                 and hardware latencies associated with the kernel launch. These timestamps are not collected
+                                 by default. Use API <tt class="ph tt">cuptiActivityEnableLatencyTimestamps()</tt> to enable collection.
+                                 New field <tt class="ph tt">launchType</tt> of type <tt class="ph tt">CUpti_ActivityLaunchType</tt> can be used to
+                                 determine if it is a cooperative CUDA kernel launch.
+                                 
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityPCSampling2</tt> for PC sampling has been deprecated
+                                 and replaced by new activity record <tt class="ph tt">CUpti_ActivityPCSampling3</tt>. New record accomodates
+                                 64-bit PC Offset supported on devices of compute capability 7.0 and higher.
+                                 
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityNvLink</tt> for NVLink attributes has been deprecated
+                                 and replaced by new activity record <tt class="ph tt">CUpti_ActivityNvLink2</tt>. New record accomodates
+                                 increased port numbers between two compute devices.
+                                 
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityGlobalAccess2</tt> for source level global accesses
+                                 has been deprecated and replaced by new activity record <tt class="ph tt">CUpti_ActivityGlobalAccess3</tt>.
+                                 New record accomodates 64-bit PC Offset supported on devices of compute capability 7.0 and higher.
+                                 
+                              </li>
+                              <li class="li">New attributes <tt class="ph tt">CUPTI_ACTIVITY_ATTR_PROFILING_SEMAPHORE_POOL_SIZE</tt> and
+                                 <tt class="ph tt">CUPTI_ACTIVITY_ATTR_PROFILING_SEMAPHORE_POOL_LIMIT</tt> are added in the activity attribute
+                                 enum <tt class="ph tt">CUpti_ActivityAttribute</tt> to set and get the profiling semaphore pool size and
+                                 the pool limit.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 8.0</h2>
+                        <div class="p">List of changes done as part of the CUDA Toolkit 8.0 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Sampling of the program counter (PC) is enhanced to point out the true
+                                 latency issues, it indicates if the stall reasons for warps are actually causing
+                                 stalls in the issue pipeline. Field <tt class="ph tt">latencySamples</tt> of new activity record
+                                 <tt class="ph tt">CUpti_ActivityPCSampling2</tt> provides true latency samples. This field is valid
+                                 for devices with compute capability 6.0 and higher.
+                                 See section <a class="xref" href="r_main.html#r_pc_sampling" shape="rect">PC Sampling</a> for more details.
+                                 
+                              </li>
+                              <li class="li">Support for NVLink topology information such as the pair of devices connected via NVLink,
+                                 peak bandwidth, memory access permissions etc is provided through new activity record
+                                 <tt class="ph tt">CUpti_ActivityNvLink</tt>. NVLink performance metrics for data transmitted/received,
+                                 transmit/receive throughput and respective header overhead for each physical link.
+                                 See section <a class="xref" href="r_main.html#r_nvlink" shape="rect">NVLink</a> for more details.
+                                 
+                              </li>
+                              <li class="li">CUPTI supports profiling of OpenACC applications. OpenACC profiling
+                                 information is provided in the form of new activity records <tt class="ph tt">CUpti_ActivityOpenAccData</tt>,
+                                 <tt class="ph tt">CUpti_ActivityOpenAccLaunch</tt> and <tt class="ph tt">CUpti_ActivityOpenAccOther</tt>.
+                                 This aids in correlating OpenACC constructs on the CPU with the corresponding 
+                                 activity taking place on the GPU, and mapping it back to the source code.
+                                 New API <tt class="ph tt">cuptiOpenACCInitialize</tt> is used to initialize profiling for supported OpenACC runtimes.
+                                 See section <a class="xref" href="r_main.html#r_openacc" shape="rect">OpenACC</a> for more details.
+                                 
+                              </li>
+                              <li class="li">Unified memory profiling provides GPU page fault events on devices with
+                                 compute capability 6.0 and 64 bit Linux platforms. Enum <tt class="ph tt">CUpti_ActivityUnifiedMemoryAccessType</tt>
+                                 lists memory access types for GPU page fault events and enum <tt class="ph tt">CUpti_ActivityUnifiedMemoryMigrationCause</tt>
+                                 lists migration causes for data transfer events.
+                                 
+                              </li>
+                              <li class="li">Unified Memory profiling support is extended to Mac platform.
+                                 
+                              </li>
+                              <li class="li">Support for 16-bit floating point (FP16) data format profiling. New metrics inst_fp_16,
+                                 flop_count_hp_add, flop_count_hp_mul, flop_count_hp_fma, flop_count_hp, flop_hp_efficiency, 
+                                 half_precision_fu_utilization are supported.
+                                 Peak FP16 flops per cycle for device can be queried using the enum
+                                 <tt class="ph tt">CUPTI_DEVICE_ATTR_FLOP_HP_PER_CYCLE</tt> added to <tt class="ph tt">CUpti_DeviceAttribute</tt>.
+                                 
+                              </li>
+                              <li class="li">Added new activity kinds <tt class="ph tt">CUPTI_ACTIVITY_KIND_SYNCHRONIZATION</tt>,
+                                 <tt class="ph tt">CUPTI_ACTIVITY_KIND_STREAM</tt> and <tt class="ph tt">CUPTI_ACTIVITY_KIND_CUDA_EVENT</tt>,
+                                 to support the tracing of CUDA synchronization constructs such as context, stream and
+                                 CUDA event synchronization. Synchronization details are provided in the form of new activity
+                                 record <tt class="ph tt">CUpti_ActivitySynchronization</tt>. Enum <tt class="ph tt">CUpti_ActivitySynchronizationType</tt>
+                                 lists different types of CUDA synchronization constructs.
+                                 
+                              </li>
+                              <li class="li">APIs <tt class="ph tt">cuptiSetThreadIdType()</tt>/<tt class="ph tt">cuptiGetThreadIdType()</tt> to set/get
+                                 the mechanism used to fetch the thread-id used in CUPTI records.
+                                 Enum <tt class="ph tt">CUpti_ActivityThreadIdType</tt> lists all supported mechanisms.
+                                 
+                              </li>
+                              <li class="li">Added API <tt class="ph tt">cuptiComputeCapabilitySupported()</tt> to check the support for a specific
+                                 compute capability by the CUPTI.
+                                 
+                              </li>
+                              <li class="li">Added support to establish correlation between an external API (such as OpenACC, OpenMP)
+                                 and CUPTI API activity records. APIs <tt class="ph tt">cuptiActivityPushExternalCorrelationId()</tt> and
+                                 <tt class="ph tt">cuptiActivityPopExternalCorrelationId()</tt> should be used to push and pop external
+                                 correlation ids for the calling thread. Generated records of type
+                                 <tt class="ph tt">CUpti_ActivityExternalCorrelation</tt> contain both external and CUPTI assigned correlation ids.
+                                 
+                              </li>
+                              <li class="li">Added containers to store the information of events and metrics in the form of activity records
+                                 <tt class="ph tt">CUpti_ActivityInstantaneousEvent</tt>, <tt class="ph tt">CUpti_ActivityInstantaneousEventInstance</tt>,
+                                 <tt class="ph tt">CUpti_ActivityInstantaneousMetric</tt> and <tt class="ph tt">CUpti_ActivityInstantaneousMetricInstance</tt>.
+                                 These activity records are not produced by the CUPTI, these are included for completeness and
+                                 ease-of-use. Profilers built on top of CUPTI that sample events may choose to use these records
+                                 to store the collected event data.
+                                 
+                              </li>
+                              <li class="li">Support for domains and annotation of synchronization objects added in NVTX v2.
+                                 New activity record <tt class="ph tt">CUpti_ActivityMarker2</tt> and enums to indicate various
+                                 stages of synchronization object i.e.
+                                 <tt class="ph tt">CUPTI_ACTIVITY_FLAG_MARKER_SYNC_ACQUIRE</tt>,
+                                 <tt class="ph tt">CUPTI_ACTIVITY_FLAG_MARKER_SYNC_ACQUIRE_SUCCESS</tt>,
+                                 <tt class="ph tt">CUPTI_ACTIVITY_FLAG_MARKER_SYNC_ACQUIRE_FAILED</tt> and
+                                 <tt class="ph tt">CUPTI_ACTIVITY_FLAG_MARKER_SYNC_RELEASE</tt> are added.
+                                 
+                              </li>
+                              <li class="li">Unused field <tt class="ph tt">runtimeCorrelationId</tt> of the activity record <tt class="ph tt">CUpti_ActivityMemset</tt>
+                                 is broken into two fields <tt class="ph tt">flags</tt> and <tt class="ph tt">memoryKind</tt> to indicate the asynchronous
+                                 behaviour and the kind of the memory used for the memset operation.
+                                 It is supported by the new flag <tt class="ph tt">CUPTI_ACTIVITY_FLAG_MEMSET_ASYNC</tt> added in
+                                 the enum <tt class="ph tt">CUpti_ActivityFlag</tt>.
+                                 
+                              </li>
+                              <li class="li">Added flag <tt class="ph tt">CUPTI_ACTIVITY_MEMORY_KIND_MANAGED</tt> in the enum <tt class="ph tt">CUpti_ActivityMemoryKind</tt>
+                                 to indicate managed memory.
+                                 
+                              </li>
+                              <li class="li">API <tt class="ph tt">cuptiGetStreamId</tt> has been deprecated. A new API <tt class="ph tt">cuptiGetStreamIdEx</tt> is
+                                 introduced to provide the stream id based on the legacy or per-thread default stream flag.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 7.5</h2>
+                        <div class="p">List of changes done as part of the CUDA Toolkit 7.5 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Device-wide sampling of the program counter (PC) is enabled by default.
+                                 This was a preview feature in the CUDA Toolkit 7.0 release and it was not enabled by default.
+                                 
+                              </li>
+                              <li class="li">Ability to collect all events and metrics accurately in presence of multiple contexts on
+                                 the GPU is extended for devices with compute capability 5.x.
+                                 
+                              </li>
+                              <li class="li">API <tt class="ph tt">cuptiGetLastError</tt> is introduced to return the last error that has been
+                                 produced by any of the CUPTI API calls or the callbacks in the same host thread.
+                                 
+                              </li>
+                              <li class="li">Unified memory profiling is supported with MPS (Multi-Process Service)
+                                 
+                              </li>
+                              <li class="li">Callback is provided to collect replay information after every kernel run during 
+                                 kernel replay. See API <tt class="ph tt">cuptiKernelReplaySubscribeUpdate</tt> and callback type
+                                 <tt class="ph tt">CUpti_KernelReplayUpdateFunc</tt>.
+                                 
+                              </li>
+                              <li class="li">Added new attributes in enum <tt class="ph tt">CUpti_DeviceAttribute</tt> to query maximum shared
+                                 memory size for different cache preferences for a device function.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 7.0</h2>
+                        <div class="p">List of changes done as part of the CUDA Toolkit 7.0 release.
+                           
+                           <ul class="ul">
+                              <li class="li">CUPTI supports device-wide sampling of the program counter (PC). Program counters along
+                                 with the stall reasons from all active warps are sampled at a fixed frequency in the round robin order.
+                                 Activity record <tt class="ph tt">CUpti_ActivityPCSampling</tt> enabled using activity kind
+                                 <tt class="ph tt">CUPTI_ACTIVITY_KIND_PC_SAMPLING</tt> outputs stall reason along with PC and other related information.
+                                 Enum <tt class="ph tt">CUpti_ActivityPCSamplingStallReason</tt> lists all the stall reasons. Sampling period is
+                                 configurable and can be tuned using API <tt class="ph tt">cuptiActivityConfigurePCSampling</tt>.
+                                 This feature is available on devices with compute capability 5.2.
+                                 
+                              </li>
+                              <li class="li">Added new activity record <tt class="ph tt">CUpti_ActivityInstructionCorrelation</tt>
+                                 which can be used to dump source locator records for all the PCs of the function.
+                                 
+                              </li>
+                              <li class="li">All events and metrics for devices with compute capability 3.x and 5.0 can be
+                                 collected accurately in presence of multiple contexts on the GPU. In previous releases only some
+                                 events and metrics could be collected accurately when multiple contexts were executing on the GPU.
+                                 
+                              </li>
+                              <li class="li">Unified memory profiling is enhanced by providing fine grain data transfers to and from the GPU,
+                                 coupled with more accurate timestamps with each transfer. This information is provided through
+                                 new activity record <tt class="ph tt">CUpti_ActivityUnifiedMemoryCounter2</tt>, deprecating old record
+                                 <tt class="ph tt">CUpti_ActivityUnifiedMemoryCounter</tt>.
+                                 
+                              </li>
+                              <li class="li">MPS tracing and profiling support is extended on multi-gpu setups.
+                                 
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityDevice</tt> for device information has been deprecated
+                                 and replaced by new activity record <tt class="ph tt">CUpti_ActivityDevice2</tt>. New record adds device UUID
+                                 which can be used to uniquely identify the device across profiler runs.
+                                 
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityKernel2</tt> for kernel execution has been deprecated
+                                 and replaced by new activity record <tt class="ph tt">CUpti_ActivityKernel3</tt>. New record gives
+                                 information about Global Partitioned Cache Configuration requested and executed. Partitioned
+                                 global caching has an impact on occupancy calculation. If it is ON, then a CTA can only use a
+                                 half SM, and thus a half of the registers available per SM. The new fields apply for devices
+                                 with compute capability 5.2 and higher. Note that this change was done in CUDA 6.5 release
+                                 with support for compute capabilty 5.2.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 6.5</h2>
+                        <div class="p">List of changes done as part of the CUDA Toolkit 6.5 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Instruction classification is done for source-correlated Instruction Execution
+                                 activity <tt class="ph tt">CUpti_ActivityInstructionExecution</tt>.
+                                 See <tt class="ph tt">CUpti_ActivityInstructionClass</tt> for instruction classes.
+                                 
+                              </li>
+                              <li class="li">Two new device attributes are added to the activity <tt class="ph tt">CUpti_DeviceAttribute</tt>:
+                                 
+                                 <ul class="ul">
+                                    <li class="li"><tt class="ph tt">CUPTI_DEVICE_ATTR_FLOP_SP_PER_CYCLE</tt> gives peak single precision
+                                       flop per cycle for the GPU.
+                                       
+                                    </li>
+                                    <li class="li"><tt class="ph tt">CUPTI_DEVICE_ATTR_FLOP_DP_PER_CYCLE</tt> gives peak double precision
+                                       flop per cycle for the GPU.
+                                       
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li class="li">Two new metric properties are added:
+                                 
+                                 <ul class="ul">
+                                    <li class="li"><tt class="ph tt">CUPTI_METRIC_PROPERTY_FLOP_SP_PER_CYCLE</tt> gives peak single precision
+                                       flop per cycle for the GPU.
+                                       
+                                    </li>
+                                    <li class="li"><tt class="ph tt">CUPTI_METRIC_PROPERTY_FLOP_DP_PER_CYCLE</tt> gives peak double precision
+                                       flop per cycle for the GPU.
+                                       
+                                    </li>
+                                 </ul>
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityGlobalAccess</tt> for source level global access
+                                 information has been deprecated and replaced by new activity record
+                                 <tt class="ph tt">CUpti_ActivityGlobalAccess2</tt>. New record additionally gives information needed
+                                 to map SASS assembly instructions to CUDA C source code. And it also provides ideal L2
+                                 transactions count based on the access pattern.
+                                 
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityBranch</tt> for source level branch information
+                                 has been deprecated and replaced by new activity record <tt class="ph tt">CUpti_ActivityBranch2</tt>.
+                                 New record additionally gives information needed to map SASS assembly instructions
+                                 to CUDA C source code.
+                                 
+                              </li>
+                              <li class="li">Sample <tt class="ph tt">sass_source_map</tt> is added to demonstrate the mapping of SASS
+                                 assembly instructions to CUDA C source code.
+                                 
+                              </li>
+                              <li class="li">Default event collection mode is changed to Kernel (<tt class="ph tt">CUPTI_EVENT_COLLECTION_MODE_KERNEL</tt>)
+                                 from Continuous (<tt class="ph tt">CUPTI_EVENT_COLLECTION_MODE_CONTINUOUS</tt>). Also Continuous mode
+                                 is supported only on Tesla devices.
+                                 
+                              </li>
+                              <li class="li">Profiling results might be inconsistent when auto boost is enabled. Profiler tries to
+                                 disable auto boost by default, it might fail to do so in some conditions, but profiling
+                                 will continue. A new API <tt class="ph tt">cuptiGetAutoBoostState</tt> is added to query the auto boost
+                                 state of the device. This API returns error <tt class="ph tt">CUPTI_ERROR_NOT_SUPPORTED</tt>
+                                 on devices that don't support auto boost. Note that auto boost is supported only on certain
+                                 Tesla devices from the Kepler+ family.
+                                 
+                              </li>
+                              <li class="li">Activity record <tt class="ph tt">CUpti_ActivityKernel2</tt> for kernel execution has been deprecated
+                                 and replaced by new activity record <tt class="ph tt">CUpti_ActivityKernel3</tt>. New record additionally gives
+                                 information about Global Partitioned Cache Configuration requested and executed. The new fields
+                                 apply for devices with 5.2 Compute Capability.
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 6.0</h2>
+                        <div class="p">List of changes done as part of the CUDA Toolkit 6.0 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Two new CUPTI activity kinds have been introduced to
+                                 enable two new types of source-correlated data
+                                 collection. The <tt class="ph tt">Instruction Execution</tt> kind
+                                 collects SASS-level instruction execution counts,
+                                 divergence data, and predication data. The <tt class="ph tt">Shared
+                                    Access</tt> kind collects source correlated data
+                                 indication inefficient shared memory accesses.
+                                 
+                              </li>
+                              <li class="li">CUPTI provides support for CUDA applications
+                                 using Unified Memory. A new activity record reports Unified Memory activity
+                                 such as transfers to and from a GPU and the number of Unified Memory
+                                 related page faults.
+                                 
+                              </li>
+                              <li class="li">CUPTI recognized and reports the special MPS
+                                 context that is used by CUDA applications running on a
+                                 system with MPS enabled.
+                                 
+                              </li>
+                              <li class="li">The CUpti_ActivityContext activity record
+                                 <tt class="ph tt">CUpti_ActivityContext</tt> has been updated to
+                                 introduce a new field into the structure in a
+                                 backwards compatible manner.
+                                 The 32-bit <tt class="ph tt">computeApiKind</tt> field was replaced with
+                                 two 16 bit fields, <tt class="ph tt">computeApiKind</tt> and
+                                 <tt class="ph tt">defaultStreamId</tt>. Because all valid
+                                 <tt class="ph tt">computeApiKind</tt> values fit within 16 bits, and because
+                                 all supported CUDA platforms are little-endian, persisted
+                                 context record data read with the new structure will have the
+                                 correct value for <tt class="ph tt">computeApiKind</tt> and have a value of
+                                 zero for <tt class="ph tt">defaultStreamId</tt>. The CUPTI client is
+                                 responsible for versioning the persisted context data to
+                                 recognize when the <tt class="ph tt">defaultStreamId</tt> field is valid.
+                                 
+                              </li>
+                              <li class="li">To ensure that metric values are calculated as
+                                 accurately as possible, a new metric API is introduced.
+                                 Function <tt class="ph tt">cuptiMetricGetRequiredEventGroupSets</tt>
+                                 can be used to get the groups of events that should be
+                                 collected at the same time.
+                                 
+                              </li>
+                              <li class="li">Execution overheads introduced by CUPTI have been
+                                 dramatically decreased.
+                                 
+                              </li>
+                              <li class="li">The new activity buffer API introduced in CUDA
+                                 Toolkit 5.5 is required. The legacy
+                                 <tt class="ph tt">cuptiActivityEnqueueBuffer</tt> and
+                                 <tt class="ph tt">cuptiActivityDequeueBuffer</tt> functions have been
+                                 removed.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <h2 class="title sectiontitle">CUPTI changes in CUDA 5.5</h2>
+                        <div class="p">List of changes done as part of CUDA Toolkit 5.5 release.
+                           
+                           <ul class="ul">
+                              <li class="li">Applications that use CUDA Dynamic Parallelism can
+                                 be profiled using CUPTI. Device-side kernel launches
+                                 are reported using a new activity kind.
+                              </li>
+                              <li class="li">Device attributes such as power usage, clocks,
+                                 thermals, etc. are reported via a new activity
+                                 kind.
+                              </li>
+                              <li class="li">A new activity buffer API uses callbacks to request
+                                 and return buffers of activity records. The existing
+                                 <tt class="ph tt">cuptiActivityEnqueueBuffer</tt> and
+                                 <tt class="ph tt">cuptiActivityDequeueBuffer</tt> functions are still
+                                 supported but are deprecated and will be removed in a
+                                 future release.
+                              </li>
+                              <li class="li">The Event API supports kernel replay so that any
+                                 number of events can be collected during a single run of
+                                 the application.
+                              </li>
+                              <li class="li">A new metric API <tt class="ph tt">cuptiMetricGetValue2</tt> allows
+                                 metric values to be calculated for any device, even if
+                                 that device is not available on the system.
+                              </li>
+                              <li class="li">CUDA peer-to-peer memory copies are reported
+                                 explicitly via the activity API. In previous releases
+                                 these memory copies were only partially reported.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script></body>
+</html>

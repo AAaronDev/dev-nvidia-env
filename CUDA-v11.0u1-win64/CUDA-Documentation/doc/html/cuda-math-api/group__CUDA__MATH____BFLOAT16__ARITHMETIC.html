@@ -1,0 +1,539 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="cppModule"></meta>
+      <meta name="DC.Title" content="Bfloat16 Arithmetic Functions"></meta>
+      <meta name="abstract" content=""></meta>
+      <meta name="description" content=""></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="group__CUDA__MATH____BFLOAT16__ARITHMETIC"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUDA Math API :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/scripts/tynt/tynt.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/cuda-math-api/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v11.0.228</a></div>
+            <div class="category"><a href="index.html" title="CUDA Math API">CUDA Math API</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="modules.html#modules">1.&nbsp;Modules</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__INTRINSIC__HALF.html#group__CUDA__MATH__INTRINSIC__HALF">1.1.&nbsp;Half Precision Intrinsics</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____HALF__ARITHMETIC.html#group__CUDA__MATH____HALF__ARITHMETIC">1.1.1.&nbsp;Half Arithmetic Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____HALF2__ARITHMETIC.html#group__CUDA__MATH____HALF2__ARITHMETIC">1.1.2.&nbsp;Half2 Arithmetic Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____HALF__COMPARISON.html#group__CUDA__MATH____HALF__COMPARISON">1.1.3.&nbsp;Half Comparison Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____HALF2__COMPARISON.html#group__CUDA__MATH____HALF2__COMPARISON">1.1.4.&nbsp;Half2 Comparison Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____HALF__MISC.html#group__CUDA__MATH____HALF__MISC">1.1.5.&nbsp;Half Precision Conversion And Data Movement</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____HALF__FUNCTIONS.html#group__CUDA__MATH____HALF__FUNCTIONS">1.1.6.&nbsp;Half Math Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____HALF2__FUNCTIONS.html#group__CUDA__MATH____HALF2__FUNCTIONS">1.1.7.&nbsp;Half2 Math Functions</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__INTRINSIC__BFLOAT16.html#group__CUDA__MATH__INTRINSIC__BFLOAT16">1.2.&nbsp;Bfloat16 Precision Intrinsics</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____BFLOAT16__ARITHMETIC.html#group__CUDA__MATH____BFLOAT16__ARITHMETIC">1.2.1.&nbsp;Bfloat16 Arithmetic Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____BFLOAT162__ARITHMETIC.html#group__CUDA__MATH____BFLOAT162__ARITHMETIC">1.2.2.&nbsp;Bfloat162 Arithmetic Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____BFLOAT16__COMPARISON.html#group__CUDA__MATH____BFLOAT16__COMPARISON">1.2.3.&nbsp;Bfloat16 Comparison Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____BFLOAT162__COMPARISON.html#group__CUDA__MATH____BFLOAT162__COMPARISON">1.2.4.&nbsp;Bfloat162 Comparison Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____BFLOAT16__MISC.html#group__CUDA__MATH____BFLOAT16__MISC">1.2.5.&nbsp;Bfloat16 Precision Conversion And Data Movement</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____BFLOAT16__FUNCTIONS.html#group__CUDA__MATH____BFLOAT16__FUNCTIONS">1.2.6.&nbsp;Bfloat16 Math Functions</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__MATH____BFLOAT162__FUNCTIONS.html#group__CUDA__MATH____BFLOAT162__FUNCTIONS">1.2.7.&nbsp;Bfloat162 Math Functions</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH.html#group__CUDA__MATH">1.3.&nbsp;Mathematical Functions</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__SINGLE.html#group__CUDA__MATH__SINGLE">1.4.&nbsp;Single Precision Mathematical Functions</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__DOUBLE.html#group__CUDA__MATH__DOUBLE">1.5.&nbsp;Double Precision Mathematical Functions</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__INTRINSIC__SINGLE.html#group__CUDA__MATH__INTRINSIC__SINGLE">1.6.&nbsp;Single Precision Intrinsics</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__INTRINSIC__DOUBLE.html#group__CUDA__MATH__INTRINSIC__DOUBLE">1.7.&nbsp;Double Precision Intrinsics</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__INTRINSIC__INT.html#group__CUDA__MATH__INTRINSIC__INT">1.8.&nbsp;Integer Intrinsics</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__INTRINSIC__CAST.html#group__CUDA__MATH__INTRINSIC__CAST">1.9.&nbsp;Type Casting Intrinsics</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MATH__INTRINSIC__SIMD.html#group__CUDA__MATH__INTRINSIC__SIMD">1.10.&nbsp;SIMD Intrinsics</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="notices-header.html#notices-header">Notices</a></div>
+                  <ul></ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="breadcrumbs"><a href="group__CUDA__MATH__INTRINSIC__BFLOAT16.html" shape="rect">&lt; Previous</a> | <a href="group__CUDA__MATH____BFLOAT162__ARITHMETIC.html" shape="rect">Next &gt;</a></div>
+               <div id="release-info">CUDA Math API
+                  (<a href="../../pdf/CUDA_Math_API.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v11.0.228
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated August 3, 2020
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: CUDA Math API">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic reference apiRef apiPackage cppModule" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC" shape="rect">
+                     <!-- --></a><h2 class="topictitle2 cppModule">1.2.1.&nbsp;Bfloat16 Arithmetic Functions</h2>
+                  <h2 class="module_header">[<a class="xref xref apiRelation cppModuleModule" href="group__CUDA__MATH__INTRINSIC__BFLOAT16.html#group__CUDA__MATH__INTRINSIC__BFLOAT16" shape="rect">Bfloat16 Precision Intrinsics</a>]
+                  </h2>
+                  <div class="section">
+                     <p>To use these functions include the header file <tt class="ph tt code">cuda_bf16.h</tt> in your program. 
+                     </p>
+                  </div>
+                  <h3 class="fake_sectiontitle member_header">Functions</h3>
+                  <dl class="members">
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat162&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g3884fc28f98c2dee7c7b7fab157b5fca" shape="rect">__h2div</a> (  const __nv_bfloat162<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat162<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat162</tt> vector division in round-to-nearest-even mode. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1ga92be50abc6bfc96515ce84cad6799b7" shape="rect">__habs</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Calculates the absolute value of input <tt class="ph tt code">nv_bfloat16</tt> number and returns the result. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g598c23c0f33ee75c611a3360ff047e99" shape="rect">__hadd</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> addition in round-to-nearest-even mode. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1gc69cc0d6b5c469d65692a13feecd1366" shape="rect">__hadd_sat</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> addition in round-to-nearest-even mode, with saturation to [0.0, 1.0]. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g2fabf3e8ba6ad07a1da7725923fa6dd5" shape="rect">__hdiv</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> division in round-to-nearest-even mode. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g463bf603ed3b2eba19de9ab7d37aad44" shape="rect">__hfma</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">c</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> fused multiply-add in round-to-nearest-even mode. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g041f56fc4bf63903fc3a80d88ae7f1f7" shape="rect">__hfma_relu</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">c</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> fused multiply-add in round-to-nearest-even mode with relu saturation. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g631359a3631d5aa6b7f9f99cddf412d2" shape="rect">__hfma_sat</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">c</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> fused multiply-add in round-to-nearest-even mode, with saturation to [0.0, 1.0]. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1gb042eb27b078a86d2003b508465328a2" shape="rect">__hmul</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> multiplication in round-to-nearest-even mode. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g383103e3a3fc3554a40ba1ae8899e3de" shape="rect">__hmul_sat</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> multiplication in round-to-nearest-even mode, with saturation to [0.0, 1.0]. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g8230dcb3cf37d30c545bab1b5b4929c9" shape="rect">__hneg</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Negates input <tt class="ph tt code">nv_bfloat16</tt> number and returns the result. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g81e789ce16cf37f9a73d0cdc8ae2aac9" shape="rect">__hsub</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> subtraction in round-to-nearest-even mode. </span></dd>
+                     <dt><span class="member_long_type"><span class="keyword keyword apiItemName">__device__</span>
+                           ​ __nv_bfloat16&nbsp;</span><span class="member_name_long_type"><a href="#group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g05325ca863df90557b53a3c2f50072ff" shape="rect">__hsub_sat</a> (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Performs <tt class="ph tt code">nv_bfloat16</tt> subtraction in round-to-nearest-even mode, with saturation to [0.0, 1.0]. </span></dd>
+                  </dl>
+                  <div class="description">
+                     <h3 class="sectiontitle">Functions</h3>
+                     <dl class="description">
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g3884fc28f98c2dee7c7b7fab157b5fca" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g3884fc28f98c2dee7c7b7fab157b5fca" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat162 __h2div (  const __nv_bfloat162<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat162<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat162</tt> vector division in round-to-nearest-even mode. 
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Divides <tt class="ph tt code">nv_bfloat162</tt> input vector <tt class="ph tt code">a</tt> by input vector <tt class="ph tt code">b</tt> in round-to-nearest mode. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1ga92be50abc6bfc96515ce84cad6799b7" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1ga92be50abc6bfc96515ce84cad6799b7" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __habs (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Calculates the absolute value of input <tt class="ph tt code">nv_bfloat16</tt> number and returns the result. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">a</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read.</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return">nv_bfloat16 
+                                 <ul>
+                                    <li>The 
+                                       <p class="p">absolute value of a. </p>
+                                    </li>
+                                 </ul>
+                              </p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Calculates the absolute value of input <tt class="ph tt code">nv_bfloat16</tt> number and returns the result. 
+                                 
+                              </p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g598c23c0f33ee75c611a3360ff047e99" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g598c23c0f33ee75c611a3360ff047e99" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hadd (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> addition in round-to-nearest-even mode. 
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Performs <tt class="ph tt code">nv_bfloat16</tt> addition of inputs <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, in round-to-nearest-even mode. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1gc69cc0d6b5c469d65692a13feecd1366" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1gc69cc0d6b5c469d65692a13feecd1366" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hadd_sat (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> addition in round-to-nearest-even mode, with saturation to [0.0, 1.0]. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">a</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">b</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read.</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return">nv_bfloat16 
+                                 <ul>
+                                    <li>The 
+                                       <p class="p">sum of <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, with respect to saturation. 
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Performs <tt class="ph tt code">nv_bfloat16</tt> add of inputs <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, in round-to-nearest-even mode, and clamps the result to range [0.0, 1.0]. NaN results are flushed to +0.0. 
+                                 
+                              </p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g2fabf3e8ba6ad07a1da7725923fa6dd5" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g2fabf3e8ba6ad07a1da7725923fa6dd5" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hdiv (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> division in round-to-nearest-even mode. 
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Divides <tt class="ph tt code">nv_bfloat16</tt> input <tt class="ph tt code">a</tt> by input <tt class="ph tt code">b</tt> in round-to-nearest mode. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g463bf603ed3b2eba19de9ab7d37aad44" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g463bf603ed3b2eba19de9ab7d37aad44" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hfma (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">c</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> fused multiply-add in round-to-nearest-even mode. 
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Performs <tt class="ph tt code">nv_bfloat16</tt> multiply on inputs <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, then performs a <tt class="ph tt code">nv_bfloat16</tt> add of the result with <tt class="ph tt code">c</tt>, rounding the result once in round-to-nearest-even mode. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g041f56fc4bf63903fc3a80d88ae7f1f7" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g041f56fc4bf63903fc3a80d88ae7f1f7" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hfma_relu (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">c</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> fused multiply-add in round-to-nearest-even mode with relu saturation. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">a</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">b</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">c</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read.</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return">nv_bfloat16 
+                                 <ul>
+                                    <li>The 
+                                       <p class="p">result of fused multiply-add operation on <tt class="ph tt code">a</tt>, <tt class="ph tt code">b</tt>, and <tt class="ph tt code">c</tt> with relu saturation. 
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Performs <tt class="ph tt code">nv_bfloat16</tt> multiply on inputs <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, then performs a <tt class="ph tt code">nv_bfloat16</tt> add of the result with <tt class="ph tt code">c</tt>, rounding the result once in round-to-nearest-even mode. Then negative result is clamped to 0. NaN result is converted to
+                                 canonical NaN. 
+                                 
+                              </p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g631359a3631d5aa6b7f9f99cddf412d2" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g631359a3631d5aa6b7f9f99cddf412d2" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hfma_sat (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">c</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> fused multiply-add in round-to-nearest-even mode, with saturation to [0.0, 1.0]. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">a</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">b</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">c</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read.</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return">nv_bfloat16 
+                                 <ul>
+                                    <li>The 
+                                       <p class="p">result of fused multiply-add operation on <tt class="ph tt code">a</tt>, <tt class="ph tt code">b</tt>, and <tt class="ph tt code">c</tt>, with respect to saturation. 
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Performs <tt class="ph tt code">nv_bfloat16</tt> multiply on inputs <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, then performs a <tt class="ph tt code">nv_bfloat16</tt> add of the result with <tt class="ph tt code">c</tt>, rounding the result once in round-to-nearest-even mode, and clamps the result to range [0.0, 1.0]. NaN results are flushed
+                                 to +0.0. 
+                                 
+                              </p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1gb042eb27b078a86d2003b508465328a2" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1gb042eb27b078a86d2003b508465328a2" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hmul (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> multiplication in round-to-nearest-even mode. 
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Performs <tt class="ph tt code">nv_bfloat16</tt> multiplication of inputs <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, in round-to-nearest mode. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g383103e3a3fc3554a40ba1ae8899e3de" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g383103e3a3fc3554a40ba1ae8899e3de" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hmul_sat (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> multiplication in round-to-nearest-even mode, with saturation to [0.0, 1.0]. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">a</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">b</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read.</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return">nv_bfloat16 
+                                 <ul>
+                                    <li>The 
+                                       <p class="p">result of multiplying <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, with respect to saturation. 
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Performs <tt class="ph tt code">nv_bfloat16</tt> multiplication of inputs <tt class="ph tt code">a</tt> and <tt class="ph tt code">b</tt>, in round-to-nearest mode, and clamps the result to range [0.0, 1.0]. NaN results are flushed to +0.0. 
+                                 
+                              </p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g8230dcb3cf37d30c545bab1b5b4929c9" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g8230dcb3cf37d30c545bab1b5b4929c9" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hneg (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Negates input <tt class="ph tt code">nv_bfloat16</tt> number and returns the result. 
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Negates input <tt class="ph tt code">nv_bfloat16</tt> number and returns the result. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g81e789ce16cf37f9a73d0cdc8ae2aac9" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g81e789ce16cf37f9a73d0cdc8ae2aac9" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hsub (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> subtraction in round-to-nearest-even mode. 
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Subtracts <tt class="ph tt code">nv_bfloat16</tt> input <tt class="ph tt code">b</tt> from input <tt class="ph tt code">a</tt> in round-to-nearest mode. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g05325ca863df90557b53a3c2f50072ff" id="group__CUDA__MATH____BFLOAT16__ARITHMETIC_1g05325ca863df90557b53a3c2f50072ff" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__device__</span>
+                              ​ __nv_bfloat16 __hsub_sat (  const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">a</span>, const __nv_bfloat16<span>&nbsp;</span><span class="keyword keyword apiItemName">b</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Performs <tt class="ph tt code">nv_bfloat16</tt> subtraction in round-to-nearest-even mode, with saturation to [0.0, 1.0]. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">a</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">b</span></tt></dt>
+                                 <dd>- nv_bfloat16. Is only being read.</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return">nv_bfloat16 
+                                 <ul>
+                                    <li>The 
+                                       <p class="p">result of subtraction of <tt class="ph tt code">b</tt> from <tt class="ph tt code">a</tt>, with respect to saturation. 
+                                       </p>
+                                    </li>
+                                 </ul>
+                              </p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Subtracts <tt class="ph tt code">nv_bfloat16</tt> input <tt class="ph tt code">b</tt> from input <tt class="ph tt code">a</tt> in round-to-nearest mode, and clamps the result to range [0.0, 1.0]. NaN results are flushed to +0.0. 
+                                 
+                              </p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

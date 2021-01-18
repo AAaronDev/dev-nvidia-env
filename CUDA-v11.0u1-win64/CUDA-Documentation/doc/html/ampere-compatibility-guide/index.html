@@ -1,0 +1,484 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="concept"></meta>
+      <meta name="DC.Title" content="NVIDIA Ampere GPU Architecture Compatibility Guide for CUDA Applications"></meta>
+      <meta name="abstract" content="The guide to building CUDA applications for GPUs based on the NVIDIA Ampere GPU Architecture."></meta>
+      <meta name="description" content="The guide to building CUDA applications for GPUs based on the NVIDIA Ampere GPU Architecture."></meta>
+      <meta name="DC.Coverage" content="Programming Guides"></meta>
+      <meta name="DC.subject" content="CUDA Ampere, CUDA Ampere compatibility, CUDA Ampere cubin, CUDA Ampere PTX, CUDA Ampere nvcc"></meta>
+      <meta name="keywords" content="CUDA Ampere, CUDA Ampere compatibility, CUDA Ampere cubin, CUDA Ampere PTX, CUDA Ampere nvcc"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="abstract"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>NVIDIA Ampere GPU Architecture Compatibility Guide :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/scripts/tynt/tynt.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/ampere-compatibility-guide/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v11.0.228</a></div>
+            <div class="category"><a href="index.html" title="NVIDIA Ampere GPU Architecture Compatibility Guide">NVIDIA Ampere GPU Architecture Compatibility Guide</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="#ampere-compatibility">1.&nbsp;NVIDIA Ampere GPU Architecture Compatibility</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#about-this-document">1.1.&nbsp;About this Document</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#application-compatibility-on-ampere">1.2.&nbsp;Application Compatibility on the NVIDIA Ampere GPU Architecture</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#verifying-ampere-compatibility">1.3.&nbsp;Verifying Ampere Compatibility for Existing Applications</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#verifying-ampere-compatibility-using-cuda-10-2">1.3.1.&nbsp;Applications Built Using CUDA Toolkit 10.2 or Earlier</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#verifying-ampere-compatibility-using-cuda-11-0">1.3.2.&nbsp;Applications Built Using CUDA Toolkit 11.0</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#building-applications-with-ampere-support">1.4.&nbsp;Building Applications with the NVIDIA Ampere GPU Architecture Support</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#building-ampere-compatible-apps-using-cuda-10-0">1.4.1.&nbsp;Building Applications Using CUDA Toolkit 10.x or Earlier</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#building-ampere-compatible-apps-using-cuda-11-0">1.4.2.&nbsp;Building Applications Using CUDA Toolkit 11.0</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#independent-thread-scheduling-compatibility">1.4.3.&nbsp;Independent Thread Scheduling Compatibility</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#revision-history">A.&nbsp;Revision History</a></div>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="release-info">NVIDIA Ampere GPU Architecture Compatibility Guide
+                  (<a href="../../pdf/NVIDIA_Ampere_GPU_Architecture_Compatibility_Guide.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v11.0.228
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated August 3, 2020
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: NVIDIA Ampere GPU Architecture Compatibility Guide">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested0" id="abstract"><a name="abstract" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#abstract" name="abstract" shape="rect">NVIDIA Ampere GPU Architecture Compatibility Guide for CUDA Applications</a></h2>
+                  <div class="body conbody">
+                     <p class="shortdesc">The guide to building CUDA applications for GPUs based on
+                        the NVIDIA Ampere GPU Architecture.
+                     </p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" xml:lang="en-US" id="ampere-compatibility"><a name="ampere-compatibility" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#ampere-compatibility" name="ampere-compatibility" shape="rect">1.&nbsp;NVIDIA Ampere GPU Architecture Compatibility</a></h2>
+                  <div class="topic concept nested1" xml:lang="en-US" id="about-this-document"><a name="about-this-document" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#about-this-document" name="about-this-document" shape="rect">1.1.&nbsp;About this Document</a></h3>
+                     <div class="body conbody">
+                        <p class="p">This application note, <cite class="cite">NVIDIA Ampere GPU Architecture
+                              Compatibility Guide for CUDA Applications</cite>, is intended to help
+                           developers ensure that their NVIDIA<sup>®</sup> CUDA<sup>®</sup> applications will run on the NVIDIA<sup>®</sup> Ampere Architecture based GPUs. This document
+                           provides guidance to developers who are familiar with programming in CUDA
+                           C++ and want to make sure that their software applications are compatible
+                           with the NVIDIA Ampere GPU architecture.
+                        </p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="application-compatibility-on-ampere"><a name="application-compatibility-on-ampere" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#application-compatibility-on-ampere" name="application-compatibility-on-ampere" shape="rect">1.2.&nbsp;Application Compatibility on the NVIDIA Ampere GPU
+                           Architecture</a></h3>
+                     <div class="body conbody">
+                        <p class="p">A CUDA application binary (with one or more GPU kernels) can contain
+                           the compiled GPU code in two forms, binary <dfn class="term">cubin</dfn> objects and
+                           forward-compatible <dfn class="term">PTX</dfn> assembly for each kernel. Both cubin
+                           and PTX are generated for a certain target compute capability. A cubin
+                           generated for a certain compute capability is supported to run on any GPU
+                           with the same major revision and same or higher minor revision of compute
+                           capability. For example, a cubin generated for compute capability 7.0 is
+                           supported to run on a GPU with compute capability 7.5, however a cubin
+                           generated for compute capability 7.5 is <em class="ph i">not</em> supported to run on a
+                           GPU with compute capability 7.0, and a cubin generated with compute
+                           capability 7.x is <em class="ph i">not</em> supported to run on a GPU with compute
+                           capability 8.x.
+                        </p>
+                        <p class="p">Kernel can also be compiled to a PTX form. At the application load
+                           time, PTX is compiled to cubin and the cubin is used for kernel execution.
+                           Unlike cubin, PTX is forward-compatible. Meaning PTX is supported to run
+                           on any GPU with compute capability higher than the compute capability
+                           assumed for generation of that PTX. For example, PTX code generated for
+                           compute capability 7.x is supported to run on compute capability 7.x or
+                           any higher revision (major or minor), including compute capability 8.x.
+                           Therefore although it is optional, <strong class="ph b">it is recommended that all
+                              applications should include PTX of the kernels to ensure
+                              forward-compatibility.</strong> To read more about cubin and PTX
+                           compatibilities see <cite class="cite">Compilation with NVCC</cite> from the <cite class="cite">
+                              Programming Guide</cite>.
+                        </p>
+                        <p class="p">When a CUDA application launches a kernel on a GPU, the CUDA Runtime
+                           determines the compute capability of the GPU in the system and uses this
+                           information to find the best matching cubin or PTX version of the kernel.
+                           If a cubin compatible with that GPU is present in the binary, the cubin is
+                           used as-is for execution. Otherwise, the CUDA Runtime first generates
+                           compatible cubin by JIT-compiling <a name="fnsrc_1" href="#fntarg_1" shape="rect"><sup>1</sup></a> the
+                           PTX and then the cubin is used for the execution. If neither compatible
+                           cubin nor PTX is available, kernel launch results in a failure.
+                        </p>
+                        <p class="p">Application binaries that include PTX version of kernels, should work
+                           as-is on the NVIDIA Ampere architecture based GPUs. In such cases,
+                           rebuilding the application is not required. However application binaries
+                           which do not include PTX (only include cubins), need to be rebuilt to run
+                           on the NVIDIA Ampere architecture based GPUs. To know more about building
+                           compatible applications read <a class="xref" href="index.html#building-applications-with-ampere-support" shape="rect">Building Applications with the NVIDIA Ampere GPU Architecture Support</a></p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="verifying-ampere-compatibility"><a name="verifying-ampere-compatibility" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#verifying-ampere-compatibility" name="verifying-ampere-compatibility" shape="rect">1.3.&nbsp;Verifying Ampere Compatibility for Existing Applications</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The first step towards making a CUDA application compatible with the
+                           NVIDIA Ampere GPU architecture is to check if the application binary
+                           already contains compatible GPU code (at least the PTX). The following
+                           sections explain how to accomplish this for an already built CUDA
+                           application.
+                        </p>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="verifying-ampere-compatibility-using-cuda-10-2"><a name="verifying-ampere-compatibility-using-cuda-10-2" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#verifying-ampere-compatibility-using-cuda-10-2" name="verifying-ampere-compatibility-using-cuda-10-2" shape="rect">1.3.1.&nbsp;Applications Built Using CUDA Toolkit 10.2 or Earlier</a></h3>
+                        <div class="body conbody">
+                           <div class="p">CUDA applications built using CUDA Toolkit versions 2.1 through
+                              10.2 are compatible with NVIDIA Ampere architecture based GPUs as long
+                              as they are built to include PTX versions of their kernels. This can
+                              be tested by forcing the PTX to JIT-compile at application load time
+                              with following the steps:
+                              
+                              <ul class="ul">
+                                 <li class="li">Download and install the latest driver from <a class="xref" href="http://www.nvidia.com/drivers" target="_blank" shape="rect">http://www.nvidia.com/drivers</a>.
+                                 </li>
+                                 <li class="li">Set the environment variable
+                                    <samp class="ph codeph">CUDA_FORCE_PTX_JIT=1</samp>.
+                                 </li>
+                                 <li class="li">Launch the application.</li>
+                              </ul>
+                           </div>
+                           <p class="p"> With <samp class="ph codeph">CUDA_FORCE_PTX_JIT=1</samp>, GPU binary code
+                              embedded in an application binary is ignored. Instead PTX code for
+                              each kernel is JIT-compiled to produce GPU binary code. An application
+                              fails to execute if it does not include PTX. This means the
+                              application is not compatible with the NVIDIA Ampere GPU architecture
+                              and needs to be rebuilt for compatibility. On the other hand, if the
+                              application works properly with this environment variable set, then
+                              the application is compatible with the NVIDIA Ampere GPU
+                              architecture.
+                           </p>
+                           <div class="note note"><span class="notetitle">Note:</span> Be sure to unset the <samp class="ph codeph">CUDA_FORCE_PTX_JIT</samp>
+                              environment variable after testing is done.
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="verifying-ampere-compatibility-using-cuda-11-0"><a name="verifying-ampere-compatibility-using-cuda-11-0" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#verifying-ampere-compatibility-using-cuda-11-0" name="verifying-ampere-compatibility-using-cuda-11-0" shape="rect">1.3.2.&nbsp;Applications Built Using CUDA Toolkit 11.0</a></h3>
+                        <div class="body conbody">
+                           <p class="p">CUDA applications built using CUDA Toolkit 11.0 are compatible with
+                              the NVIDIA Ampere GPU architecture as long as they are built to
+                              include kernels in native cubin (compute capability 8.0) or PTX form
+                              or both.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="building-applications-with-ampere-support"><a name="building-applications-with-ampere-support" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#building-applications-with-ampere-support" name="building-applications-with-ampere-support" shape="rect">1.4.&nbsp;Building Applications with the NVIDIA Ampere GPU Architecture
+                           Support</a></h3>
+                     <div class="body conbody">
+                        <div class="p">Depending on the version of the CUDA Toolkit used for building the
+                           application, it can be built to include PTX and/or native cubin for the
+                           NVIDIA Ampere GPU architecture. Although it is enough to just include
+                           PTX, including native cubin also has the following advantages:
+                           
+                           <ul class="ul">
+                              <li class="li">It saves the end user the time it takes to JIT-compile kernels
+                                 that are available only as PTX. All kernels which do not have native
+                                 cubins are JIT-compiled from PTX, including kernels from all the
+                                 libraries linked to the application, even if those kernels are never
+                                 launched by the application. Especially when using large libraries,
+                                 this JIT compilation can take a significant amount of time. The CUDA
+                                 driver caches the cubins generated as a result of the PTX JIT, so
+                                 this is mostly a one-time cost for a user, but it is time best
+                                 avoided whenever possible.
+                              </li>
+                              <li class="li">PTX JIT-compiled kernels often cannot take advantage of
+                                 architectural features of newer GPUs, meaning that native-compiled
+                                 cubins may be faster or of greater accuracy.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="building-ampere-compatible-apps-using-cuda-10-0"><a name="building-ampere-compatible-apps-using-cuda-10-0" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#building-ampere-compatible-apps-using-cuda-10-0" name="building-ampere-compatible-apps-using-cuda-10-0" shape="rect">1.4.1.&nbsp;Building Applications Using CUDA Toolkit 10.x or Earlier</a></h3>
+                        <div class="body conbody">
+                           <div class="section">
+                              <p class="p">The <samp class="ph codeph">nvcc</samp> compiler included with versions 10.x
+                                 (10.0, 10.1 and 10.2) of the CUDA Toolkit can generate cubins native
+                                 to the Volta and Turing architectures (compute capability 7.x). When
+                                 using CUDA Toolkit 10.x, to ensure that <samp class="ph codeph">nvcc</samp> will
+                                 generate cubin files for all recent GPU architectures as well as a
+                                 PTX version for forward compatibility with future GPU architectures,
+                                 specify the appropriate <samp class="ph codeph">-gencode=</samp> parameters on the
+                                 <samp class="ph codeph">nvcc</samp> command line as shown in the examples
+                                 below.
+                              </p>
+                           </div>
+                           <div class="example">
+                              <h4 class="title sectiontitle">Windows</h4><pre class="pre screen" xml:space="preserve">nvcc.exe -ccbin "C:\vs2010\VC\bin"
+  -Xcompiler "/EHsc /W3 /nologo /O2 /Zi /MT"
+  -gencode=arch=compute_52,code=sm_52
+  -gencode=arch=compute_60,code=sm_60
+  -gencode=arch=compute_61,code=sm_61
+  -gencode=arch=compute_70,code=sm_70
+  -gencode=arch=compute_75,code=sm_75
+  -gencode=arch=compute_75,code=compute_75
+  --compile -o "Release\mykernel.cu.obj" "mykernel.cu"</pre></div>
+                           <div class="example">
+                              <h4 class="title sectiontitle">Mac/Linux</h4><pre class="pre screen" xml:space="preserve">/usr/local/cuda/bin/nvcc
+  -gencode=arch=compute_52,code=sm_52
+  -gencode=arch=compute_60,code=sm_60
+  -gencode=arch=compute_61,code=sm_61
+  -gencode=arch=compute_70,code=sm_70
+  -gencode=arch=compute_75,code=sm_75
+  -gencode=arch=compute_75,code=compute_75
+  -O2 -o mykernel.o -c mykernel.cu</pre></div>
+                           <div class="section">
+                              <p class="p">Alternatively, the simplified <samp class="ph codeph"> nvcc</samp> command-line
+                                 option <samp class="ph codeph">-arch=sm_XX</samp> can be used. It is a shorthand
+                                 equivalent to the following more explicit <samp class="ph codeph">-gencode=</samp>
+                                 command-line options used above. <samp class="ph codeph">-arch=sm_XX</samp>
+                                 expands to the following:
+                              </p><pre class="pre screen" xml:space="preserve">-gencode=arch=compute_XX,code=sm_XX
+-gencode=arch=compute_XX,code=compute_XX</pre><p class="p">However, while the <samp class="ph codeph">-arch=sm_XX</samp> command-line
+                                 option does result in inclusion of a PTX back-end target binary by
+                                 default, it can only specify a single target cubin architecture at a
+                                 time, and it is not possible to use multiple <samp class="ph codeph">-arch=</samp>
+                                 options on the same <samp class="ph codeph">nvcc</samp> command line, which is why
+                                 the examples above use <samp class="ph codeph">-gencode=</samp> explicitly.
+                              </p>
+                           </div>
+                           <div class="section">
+                              <p class="p">For CUDA toolkits prior to 10.0, one or more of the
+                                 <samp class="ph codeph">-gencode</samp> options will need to be removed according
+                                 to the architectures supported by the specific toolkit version (for
+                                 example, CUDA toolkit 9.x supports architectures up to _60 and _61).
+                                 The final <samp class="ph codeph">-gencode</samp> to generate PTX would also need
+                                 to be update – for further information and examples see the
+                                 documentation for the specific CUDA toolkit version. 
+                              </p>
+                           </div>
+                           <div class="section">
+                              <div class="note note"><span class="notetitle">Note:</span><samp class="ph codeph">compute_XX</samp> refers to a PTX version
+                                 and <samp class="ph codeph">sm_XX</samp> refers to a cubin version. The
+                                 <samp class="ph codeph">arch=</samp> clause of the <samp class="ph codeph">-gencode=</samp>
+                                 command-line option to <samp class="ph codeph">nvcc</samp> specifies the
+                                 front-end compilation target and must always be a PTX version. The
+                                 <samp class="ph codeph">code=</samp> clause specifies the back-end compilation
+                                 target and can either be cubin or PTX or both.  <strong class="ph b">Only the
+                                    back-end target version(s) specified by the <samp class="ph codeph">code=</samp>
+                                    clause will be retained in the resulting binary; at least one
+                                    should be PTX to provide compatibility with future
+                                    architectures.</strong></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="building-ampere-compatible-apps-using-cuda-11-0"><a name="building-ampere-compatible-apps-using-cuda-11-0" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#building-ampere-compatible-apps-using-cuda-11-0" name="building-ampere-compatible-apps-using-cuda-11-0" shape="rect">1.4.2.&nbsp;Building Applications Using CUDA Toolkit 11.0</a></h3>
+                        <div class="body conbody">
+                           <div class="section">
+                              <p class="p">With versions 11.0 of the CUDA Toolkit, <samp class="ph codeph">nvcc</samp> can
+                                 generate cubin native to the NVIDIA Ampere GPU architecture (compute
+                                 capability 8.0). When using CUDA Toolkit 11.0, to ensure that
+                                 <samp class="ph codeph">nvcc</samp> will generate cubin files for all recent GPU
+                                 architectures as well as a PTX version for forward compatibility
+                                 with future GPU architectures, specify the appropriate <samp class="ph codeph">
+                                    -gencode=</samp> parameters on the <samp class="ph codeph">nvcc</samp> command
+                                 line as shown in the examples below.
+                              </p>
+                           </div>
+                           <div class="example">
+                              <h4 class="title sectiontitle">Windows</h4><pre class="pre screen" xml:space="preserve">nvcc.exe -ccbin "C:\vs2010\VC\bin"
+  -Xcompiler "/EHsc /W3 /nologo /O2 /Zi /MT"
+  -gencode=arch=compute_52,code=sm_52
+  -gencode=arch=compute_60,code=sm_60
+  -gencode=arch=compute_61,code=sm_61
+  -gencode=arch=compute_70,code=sm_70
+  -gencode=arch=compute_75,code=sm_75
+  -gencode=arch=compute_80,code=sm_80
+  -gencode=arch=compute_80,code=compute_80
+  --compile -o "Release\mykernel.cu.obj" "mykernel.cu"</pre></div>
+                           <div class="example">
+                              <h4 class="title sectiontitle">Mac/Linux</h4><pre class="pre screen" xml:space="preserve">/usr/local/cuda/bin/nvcc
+  -gencode=arch=compute_52,code=sm_52
+  -gencode=arch=compute_60,code=sm_60
+  -gencode=arch=compute_61,code=sm_61
+  -gencode=arch=compute_70,code=sm_70
+  -gencode=arch=compute_75,code=sm_75
+  -gencode=arch=compute_80,code=sm_80
+  -gencode=arch=compute_80,code=compute_80
+  -O2 -o mykernel.o -c mykernel.cu</pre></div>
+                           <div class="section">
+                              <div class="note note"><span class="notetitle">Note:</span><samp class="ph codeph">compute_XX</samp> refers to a PTX version
+                                 and <samp class="ph codeph">sm_XX</samp> refers to a cubin version. The
+                                 <samp class="ph codeph">arch=</samp> clause of the <samp class="ph codeph">-gencode=</samp>
+                                 command-line option to <samp class="ph codeph">nvcc</samp> specifies the
+                                 front-end compilation target and must always be a PTX version. The
+                                 <samp class="ph codeph">code=</samp> clause specifies the back-end compilation
+                                 target and can either be cubin or PTX or both.  <strong class="ph b">Only the
+                                    back-end target version(s) specified by the <samp class="ph codeph">code=</samp>
+                                    clause will be retained in the resulting binary; at least one
+                                    should be PTX to provide compatibility with future
+                                    architectures.</strong></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="independent-thread-scheduling-compatibility"><a name="independent-thread-scheduling-compatibility" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#independent-thread-scheduling-compatibility" name="independent-thread-scheduling-compatibility" shape="rect">1.4.3.&nbsp;Independent Thread Scheduling Compatibility</a></h3>
+                        <div class="body conbody">
+                           <p class="p">NVIDIA GPUs since Volta architecture have <dfn class="term">Independent
+                                 Thread Scheduling</dfn> among threads in a warp. If the developer
+                              made assumptions about warp-synchronicity<a name="fnsrc_2" href="#fntarg_2" shape="rect"><sup>2</sup></a>, this feature can
+                              alter the set of threads participating in the executed code compared
+                              to previous architectures. Please see <cite class="cite">Compute Capability
+                                 7.0</cite> in the <cite class="cite">Programming Guide</cite> for details and
+                              corrective actions. To aid migration to the NVIDIA Ampere GPU
+                              architecture, developers can opt-in to the Pascal scheduling model
+                              with the following combination of compiler options.
+                           </p><pre class="pre screen" xml:space="preserve">nvcc -gencode=arch=compute_60,code=sm_80 ...</pre></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic reference nested0" id="revision-history"><a name="revision-history" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#revision-history" name="revision-history" shape="rect">A.&nbsp;Revision History</a></h2>
+                  <div class="body refbody">
+                     <div class="section">
+                        <h2 class="title sectiontitle">Version 1.0</h2>
+                        <ul class="ul">
+                           <li class="li">Initial public release.</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="notices-header"><a name="notices-header" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#notices-header" name="notices-header" shape="rect">Notices</a></h2>
+                  <div class="topic reference nested1" id="notice"><a name="notice" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#notice" name="notice" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Notice</h3>
+                           <p class="p">ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND
+                              SEPARATELY, "MATERIALS") ARE BEING PROVIDED "AS IS." NVIDIA MAKES NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE
+                              WITH RESPECT TO THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS
+                              FOR A PARTICULAR PURPOSE. 
+                           </p>
+                           <p class="p">Information furnished is believed to be accurate and reliable. However, NVIDIA Corporation assumes no responsibility for the
+                              consequences of use of such information or for any infringement of patents or other rights of third parties that may result
+                              from its use. No license is granted by implication of otherwise under any patent rights of NVIDIA Corporation. Specifications
+                              mentioned in this publication are subject to change without notice. This publication supersedes and replaces all other information
+                              previously supplied. NVIDIA Corporation products are not authorized as critical components in life support devices or systems
+                              without express written approval of NVIDIA Corporation.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="trademarks"><a name="trademarks" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#trademarks" name="trademarks" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Trademarks</h3>
+                           <p class="p">NVIDIA and the NVIDIA logo are trademarks or registered trademarks of NVIDIA Corporation
+                              in the U.S. and other countries.  Other company and product names may be trademarks of
+                              the respective companies with which they are associated.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="copyright"><a name="copyright" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#copyright" name="copyright" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Copyright</h3>
+                           <p class="p">© 2010-<span class="ph">2020</span> NVIDIA Corporation. All rights reserved.
+                           </p>
+                           <p class="p">This product includes software developed by the Syncro Soft SRL (http://www.sync.ro/).</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="fn"><a name="fntarg_1" href="#fnsrc_1" shape="rect"><sup>1</sup></a>   Just-in-time compilation
+               </div>
+               <div class="fn"><a name="fntarg_2" href="#fnsrc_2" shape="rect"><sup>2</sup></a>   Warp-synchronous
+                  refers to an assumption that threads in the same warp are
+                  synchronized at every instruction and can, for example, communicate
+                  values without explicit synchronization.
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

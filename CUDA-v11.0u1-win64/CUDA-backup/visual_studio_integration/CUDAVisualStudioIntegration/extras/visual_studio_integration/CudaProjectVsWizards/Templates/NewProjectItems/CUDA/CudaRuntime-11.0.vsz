@@ -1,0 +1,10 @@
+VSWIZARD 7.0
+Wizard={ec91a663-e340-4931-bd9d-eb443499fdff}
+
+Param="WizardName = CudaRuntime-11.0"
+
+Param="TemplateRelativePath-11.0 = Templates\Projects\CUDA\CudaRuntime\CudaRuntime-VS11.0-Cuda11.0.vstemplate"
+Param="TemplateRelativePath-12.0 = Templates\Projects\CUDA\CudaRuntime\CudaRuntime-VS12.0-Cuda11.0.vstemplate"
+Param="TemplateRelativePath-14.0 = Templates\Projects\CUDA\CudaRuntime\CudaRuntime-VS14.0-Cuda11.0.vstemplate"
+Param="TemplateRelativePath-15.0 = Templates\Projects\CUDA\CudaRuntime\CudaRuntime-VS15.0-Cuda11.0.vstemplate"
+Param="TemplateRelativePath-16.0 = Templates\Projects\CUDA\CudaRuntime\CudaRuntime-VS16.0-Cuda11.0.vstemplate"

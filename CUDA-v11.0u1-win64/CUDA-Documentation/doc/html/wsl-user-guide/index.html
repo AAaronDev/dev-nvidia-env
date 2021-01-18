@@ -1,0 +1,912 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="concept"></meta>
+      <meta name="DC.Title" content="CUDA on WSL User Guide"></meta>
+      <meta name="abstract" content="The guide for using NVIDIA CUDA on Windows Subsystem for Linux."></meta>
+      <meta name="description" content="The guide for using NVIDIA CUDA on Windows Subsystem for Linux."></meta>
+      <meta name="DC.Coverage" content="Miscellaneous"></meta>
+      <meta name="DC.subject" content="CUDA WSL User Guide, WSL, Microsoft Windows"></meta>
+      <meta name="keywords" content="CUDA WSL User Guide, WSL, Microsoft Windows"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="abstract"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUDA on WSL :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/scripts/tynt/tynt.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/wsl-user-guide/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v11.0.228</a></div>
+            <div class="category"><a href="index.html" title="CUDA on WSL">CUDA on WSL</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="#changelog">1.&nbsp;Changelog</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#introduction">2.&nbsp;Introduction</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#getting-started">3.&nbsp;Getting Started</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#installing-wip">3.1.&nbsp;Installing Microsoft Windows Insider Program Builds</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#installing-nvidia-drivers">3.2.&nbsp;Installing NVIDIA Drivers</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#installing-wsl2">3.3.&nbsp;Installing WSL 2</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#running-cuda">4.&nbsp;Setting up CUDA Toolkit</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#unique_1465951596">5.&nbsp;Running CUDA Applications</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#setting-containers">6.&nbsp;Setting up to Run Containers</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#installing-docker">6.1.&nbsp;Install Docker</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#installing-nvidia-docker">6.2.&nbsp;Install NVIDIA Container Toolkit</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#running-containers">7.&nbsp;Running CUDA Containers</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#running-simple-containers">7.1.&nbsp;Simple CUDA Containers</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#running-jupyter">7.2.&nbsp;Jupyter Notebooks</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#running-dlfw">7.3.&nbsp;Deep Learning Framework Containers</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#known-limitations">8.&nbsp;Known Limitations</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#troubleshooting">9.&nbsp;Troubleshooting</a></div>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="release-info">CUDA on WSL
+                  (<a href="../../pdf/CUDA_on_WSL_User_Guide.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v11.0.228
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated August 3, 2020
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: CUDA on WSL">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested0" id="abstract"><a name="abstract" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#abstract" name="abstract" shape="rect">CUDA on WSL User Guide</a></h2>
+                  <div class="body conbody">
+                     <p class="shortdesc">The guide for using NVIDIA CUDA on Windows Subsystem for Linux.</p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="changelog"><a name="changelog" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#changelog" name="changelog" shape="rect">Changelog</a></h2>
+                  <div class="body conbody"><a name="changelog__ul_pfg_czt_4fb" shape="rect">
+                        <!-- --></a><ul class="ul" id="changelog__ul_pfg_czt_4fb">
+                        <li class="li">
+                           <p class="p">
+                              6/19/2020: Updated driver release to address cache coherency issues on some CPU systems, including AMD Ryzen. 
+                              
+                           </p>
+                           <div class="p">
+                              The following software versions are supported with this preview release for WSL 2:
+                              
+                              <ul class="ul">
+                                 <li class="li">NVIDIA Driver for Windows 10: 455.41</li>
+                              </ul>
+                           </div>
+                        </li>
+                        <li class="li">
+                           <p class="p">
+                              6/17/2020: Initial Version. 
+                              
+                           </p>
+                           <div class="p">
+                              The following software versions are supported with this preview release for WSL 2:
+                              
+                              <ul class="ul">
+                                 <li class="li">NVIDIA Driver for Windows 10: 455.38</li>
+                                 <li class="li">NVIDIA Container Toolkit: nvidia-docker2 (2.3) and libnvidia-container (&gt;= 1.2.0-rc.1)</li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="introduction"><a name="introduction" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#introduction" name="introduction" shape="rect">Introduction</a></h2>
+                  <div class="body conbody">
+                     <p class="p"> 
+                        Windows Subsystem for Linux (WSL) is a Windows 10 feature that enables users to run native 
+                        Linux command-line tools directly on Windows. WSL is a containerized environment within which 
+                        users can run Linux native applications from the command line of the Windows 10 shell without 
+                        requiring the complexity of a dual boot environment. Internally, WSL is tightly integrated with 
+                        the Microsoft Windows operating system, which allows it to run Linux applications alongside 
+                        traditional Windows desktop and modern store apps. 
+                        
+                     </p>
+                     <div class="fig fignone" id="introduction__cuda-wsl-stack"><a name="introduction__cuda-wsl-stack" shape="rect">
+                           <!-- --></a><span class="figcap">Figure 1. CUDA on WSL Overview</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" height="480" width="480" src="graphics/wsl-launch-upt-0625-rz.png" alt="CUDA on WSL Overview."></img></div><br clear="none"></br></div>
+                     <p class="p">
+                        With WSL 2 and GPU paravirtualization technology, Microsoft enables developers to run GPU 
+                        accelerated applications on Windows.
+                        
+                     </p>
+                     <p class="p">
+                        The following document describes a workflow for getting started with running CUDA applications 
+                        or containers in a WSL 2 environment.
+                        
+                     </p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="getting-started"><a name="getting-started" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#getting-started" name="getting-started" shape="rect">Getting Started</a></h2>
+                  <div class="body conbody">
+                     <p class="p"> 
+                        Getting started with running CUDA on WSL requires you to complete these steps in order:
+                        
+                     </p>
+                     <ol class="ol">
+                        <li class="li"><a class="xref" href="index.html#installing-wip" shape="rect">Installing the latest builds from the Microsoft Windows Insider Program</a></li>
+                        <li class="li"><a class="xref" href="index.html#installing-nvidia-drivers" shape="rect">Installing the NVIDIA preview driver for WSL 2</a></li>
+                        <li class="li"><a class="xref" href="index.html#installing-wsl2" shape="rect">Installing WSL 2</a></li>
+                     </ol>
+                  </div>
+                  <div class="topic concept nested1" id="installing-wip"><a name="installing-wip" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#installing-wip" name="installing-wip" shape="rect">Installing Microsoft Windows Insider Program Builds</a></h3>
+                     <div class="body conbody">
+                        <p class="p"> 
+                           Install the latest builds from the Microsoft Windows Insider Program
+                           
+                        </p>
+                        <ul class="ul">
+                           <li class="li">
+                              <p class="p">Register for the <a class="xref" href="https://insider.windows.com/en-us/getting-started/#register" target="_blank" shape="rect"> Microsoft Windows Insider Program</a>.
+                                 
+                              </p>
+                           </li>
+                           <li class="li">
+                              <p class="p">Install the latest build from the <a class="xref" href="https://insider.windows.com/en-us/getting-started/#install" target="_blank" shape="rect"> Fast ring</a>.
+                                 
+                              </p>
+                              <div class="note note"><span class="notetitle">Note:</span><p class="p">
+                                    Ensure that you install Build version 20145 or higher.
+                                    
+                                 </p>
+                                 <p class="p">
+                                    You can check your build version number by running <samp class="ph codeph">winver</samp> via the Windows Run command.
+                                    
+                                 </p>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="installing-nvidia-drivers"><a name="installing-nvidia-drivers" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#installing-nvidia-drivers" name="installing-nvidia-drivers" shape="rect">Installing NVIDIA Drivers</a></h3>
+                     <div class="body conbody">
+                        <ul class="ul">
+                           <li class="li">
+                              <p class="p">
+                                 Download the NVIDIA Driver from the download section on the 
+                                 <a class="xref" href="https://developer.nvidia.com/cuda/wsl" target="_blank" shape="rect"> 
+                                    CUDA on WSL</a> page. 
+                                 Choose the appropriate driver depending on the type of NVIDIA GPU in your system - GeForce and Quadro. 
+                                 
+                              </p>
+                           </li>
+                           <li class="li">
+                              <p class="p">
+                                 Install the driver using the executable. This is the only driver you need to install. 
+                                 
+                              </p>
+                              <div class="note note"><span class="notetitle">Note:</span><p class="p">
+                                    Do not install any Linux display driver in WSL. The Windows Display Driver will install 
+                                    both the regular driver components for native Windows and for WSL support.
+                                    
+                                 </p>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="installing-wsl2"><a name="installing-wsl2" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#installing-wsl2" name="installing-wsl2" shape="rect">Installing WSL 2</a></h3>
+                     <div class="body conbody">
+                        <p class="p"> 
+                           This section includes details about installing WSL 2, including setting up a 
+                           Linux distribution of your choice from the <a class="xref" href="https://aka.ms/wslstore" target="_blank" shape="rect"> 
+                              Microsoft Store</a>.
+                           
+                        </p>
+                        <ol class="ol">
+                           <li class="li">
+                              Install WSL 2 by following the instructions in the Microsoft documentation 
+                              available <a class="xref" href="https://docs.microsoft.com/windows/wsl/install-win10" target="_blank" shape="rect">
+                                 here</a>.
+                              
+                           </li>
+                           <li class="li">
+                              Ensure you have the latest kernel by hitting “Check for updates” in the “Windows Update” 
+                              section of the Settings app. If the right update with the kernel 4.19.121+ is installed, 
+                              you should be able to see it in the Windows Update history. Alternatively, you can check 
+                              the version number by running the following command in PowerShell:
+                              
+                              <div class="p"><pre class="pre screen" xml:space="preserve">
+
+wsl cat /proc/version
+                    </pre></div><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/wsl2-kernel-version.png" alt="WSL Kernel Version."></img></div><br clear="none"></br></li>
+                           <li class="li">
+                              If you don’t see this update, then in the Windows Update Advanced options, 
+                              make sure to enable recommended Microsoft updates and run the check again:
+                              
+                              
+                              <br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/wsl2-windows-update.png" alt="Windows Update Options."></img></div><br clear="none"></br></li>
+                           <li class="li">
+                              If you don’t have the last WSL kernel updated, you will see the following 
+                              blocking warning upon trying to launch a Linux distribution within WSL 2.
+                              
+                              <br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/wsl2-ubuntu-lts.png" alt="Insufficient Kernel version Error."></img></div><br clear="none"></br></li>
+                           <li class="li">
+                              Launch the Linux distribution and make sure it runs in WSL 2 mode using 
+                              the following command:
+                              
+                              <div class="p"><pre class="pre screen" xml:space="preserve">
+
+wsl.exe --list -v command
+                    </pre></div>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="running-cuda"><a name="running-cuda" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#running-cuda" name="running-cuda" shape="rect">Setting up CUDA Toolkit</a></h2>
+                  <div class="body conbody">
+                     <p class="p"> 
+                        It is recommended to use the Linux package manager to install the CUDA for the 
+                        Linux distributions supported under WSL 2. Follow these instructions to install the CUDA Toolkit.
+                        
+                     </p>
+                     <p class="p">
+                        First, set up the CUDA network repository. The instructions shown here are for Ubuntu 18.04. 
+                        See the <a class="xref" href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html" target="_blank" shape="rect"> CUDA Linux Installation Guide</a> for more information 
+                        on other distributions. 
+                        
+                     </p>
+                     <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+
+$ sh -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" &gt; /etc/apt/sources.list.d/cuda.list'
+
+$ apt-get update
+        </pre></div>
+                     <p class="p">
+                        Now install CUDA. Note that for WSL 2, you should use the <samp class="ph codeph">cuda-toolkit-&lt;version&gt;</samp> meta-package to avoid installing the 
+                        NVIDIA driver that is typically bundled with the toolkit. You can also install other components of the toolkit by choosing
+                        the right 
+                        <a class="xref" href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#package-manager-metas" target="_blank" shape="rect"> meta-package</a>.
+                        
+                     </p>
+                     <p class="p">
+                        Do not choose the <samp class="ph codeph">cuda</samp>, <samp class="ph codeph">cuda-11-0</samp>, or <samp class="ph codeph">cuda-drivers</samp> meta-packages under 
+                        WSL 2 since these packages will result in an attempt to install the Linux NVIDIA driver under WSL 2. 
+                        
+                     </p>
+                     <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ apt-get install -y cuda-toolkit-11-0
+        </pre></div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="unique_1465951596"><a name="unique_1465951596" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#unique_1465951596" name="unique_1465951596" shape="rect">Running CUDA Applications</a></h2>
+                  <div class="body conbody">
+                     <p class="p"> 
+                        Just run your CUDA app as you would run it under Linux! Once the driver is installed there is 
+                        nothing more to do to run existing CUDA applications that were built on Linux.
+                        
+                     </p>
+                     <p class="p">
+                        A snippet of running the BlackScholes Linux application from the 
+                        <a class="xref" href="https://github.com/NVIDIA/cuda-samples" target="_blank" shape="rect"> CUDA samples</a> is shown below.
+                        
+                     </p>
+                     <p class="p">
+                        Build the CUDA samples available under <samp class="ph codeph">/usr/local/cuda/samples</samp> from your installation 
+                        of the CUDA Toolkit in the previous section. The BlackScholes application is located under 
+                        <samp class="ph codeph">/usr/local/cuda/samples/4_Finance/BlackScholes</samp>. Alternatively, you can transfer a binary 
+                        built on Linux to WSL 2!
+                        
+                     </p>
+                     <div class="p"><pre class="pre screen" xml:space="preserve">
+        
+C:\&gt; wsl
+To run a command as administrator (user “root”), use “sudo &lt;command&gt;”.
+See “man sudo_root” for details.
+
+$ ./BlackScholes
+
+Initializing data...
+...allocating CPU memory for options.
+...allocating GPU memory for options.
+...generating input data in CPU mem.
+...copying input data to GPU mem.
+Data init done.
+
+Executing Black-Scholes GPU kernel (131072 iterations)...
+Options count             : 8000000
+BlackScholesGPU() time    : 1.314299 msec
+Effective memory bandwidth: 60.868973 GB/s
+Gigaoptions per second    : 6.086897
+
+...
+        </pre></div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="setting-containers"><a name="setting-containers" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#setting-containers" name="setting-containers" shape="rect">Setting up to Run Containers</a></h2>
+                  <div class="body conbody">
+                     <p class="p"> 
+                        This chapter describes the workflow for setting up the NVIDIA Container Toolkit 
+                        in preparation for running GPU accelerated containers.
+                        
+                     </p>
+                  </div>
+                  <div class="topic concept nested1" id="installing-docker"><a name="installing-docker" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#installing-docker" name="installing-docker" shape="rect">Install Docker</a></h3>
+                     <div class="body conbody">
+                        <p class="p"> 
+                           Use the Docker installation script to install Docker for your choice of WSL 2 Linux distribution. 
+                           Note that NVIDIA Container Toolkit does not yet support <a class="xref" href="https://docs.docker.com/docker-for-windows/wsl/" target="_blank" shape="rect"> Docker Desktop WSL 2</a> backend.
+                           
+                           
+                        </p>
+                        <div class="note note"><span class="notetitle">Note:</span> 
+                           For this release, install the standard Docker-CE for Linux distributions. 
+                           
+                        </div>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+        
+curl https://get.docker.com | sh
+        </pre></div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="installing-nvidia-docker"><a name="installing-nvidia-docker" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#installing-nvidia-docker" name="installing-nvidia-docker" shape="rect">Install NVIDIA Container Toolkit</a></h3>
+                     <div class="body conbody">
+                        <p class="p"> 
+                           Now install the NVIDIA Container Toolkit (previously known as nvidia-docker2). 
+                           WSL 2 support is available starting with <samp class="ph codeph">nvidia-docker2</samp> v2.3 and 
+                           the underlying runtime library (<samp class="ph codeph">libnvidia-container</samp> &gt;= 1.2.0-rc.1). 
+                           
+                        </p>
+                        <p class="p">
+                           For brevity, the installation instructions provided here are for Ubuntu 18.04 LTS. 
+                           
+                        </p>
+                        <p class="p">
+                           Setup the <samp class="ph codeph">stable</samp> and <samp class="ph codeph">experimental</samp> repositories and the GPG key. 
+                           The changes to the runtime to support WSL 2 are available in the experimental repository. 
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+
+$ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+
+$ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+$ curl -s -L https://nvidia.github.io/libnvidia-container/experimental/$distribution/libnvidia-container-experimental.list | sudo tee /etc/apt/sources.list.d/libnvidia-container-experimental.list
+        </pre></div>
+                        <p class="p">
+                           Install the NVIDIA runtime packages (and their dependencies) after updating the package listing.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ sudo apt-get update
+
+$ sudo apt-get install -y nvidia-docker2
+        </pre></div>
+                        <p class="p">
+                           Open a separate WSL 2 window and start the Docker daemon again using the following commands to complete the installation.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ sudo service docker stop
+
+$ sudo service docker start
+        </pre></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="running-containers"><a name="running-containers" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#running-containers" name="running-containers" shape="rect">Running CUDA Containers</a></h2>
+                  <div class="body conbody">
+                     <p class="p"> 
+                        In this section, we will walk through some examples of running GPU containers in a WSL 2 environment.
+                        
+                     </p>
+                  </div>
+                  <div class="topic concept nested1" id="running-simple-containers"><a name="running-simple-containers" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#running-simple-containers" name="running-simple-containers" shape="rect">Simple CUDA Containers</a></h3>
+                     <div class="body conbody">
+                        <p class="p"> 
+                           In this example, let’s run an N-body simulation CUDA sample. This example has already been containerized and available from
+                           NGC. 
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark        
+        </pre></div>
+                        <p class="p">
+                           From the console, you should see an output as shown below. 
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark
+Run "nbody -benchmark [-numbodies=&lt;numBodies&gt;]" to measure performance.
+        -fullscreen       (run n-body simulation in fullscreen mode)
+        -fp64             (use double precision floating point values for simulation)
+        -hostmem          (stores simulation data in host memory)
+        -benchmark        (run benchmark to measure performance)
+        -numbodies=&lt;N&gt;    (number of bodies (&gt;= 1) to run in simulation)
+        -device=&lt;d&gt;       (where d=0,1,2.... for the CUDA device to use)
+        -numdevices=&lt;i&gt;   (where i=(number of CUDA devices &gt; 0) to use for simulation)
+        -compare          (compares simulation results running once on the default GPU and once on the CPU)
+        -cpu              (run n-body simulation on the CPU)
+        -tipsy=&lt;file.bin&gt; (load a tipsy model file for simulation)
+
+NOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.
+
+&gt; Windowed mode
+&gt; Simulation data stored in video memory
+&gt; Single precision floating point simulation
+&gt; 1 Devices used for simulation
+GPU Device 0: "GeForce GTX 1070" with compute capability 6.1
+
+&gt; Compute 6.1 CUDA device: [GeForce GTX 1070]
+15360 bodies, total time for 10 iterations: 11.949 ms
+= 197.446 billion interactions per second
+= 3948.925 single-precision GFLOP/s at 20 flops per interaction
+
+        </pre></div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="running-jupyter"><a name="running-jupyter" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#running-jupyter" name="running-jupyter" shape="rect">Jupyter Notebooks</a></h3>
+                     <div class="body conbody">
+                        <p class="p"> 
+                           In this example, let’s run Jupyter notebook.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ docker run -it --gpus all -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter
+
+        </pre></div>
+                        <p class="p">
+                           After the container starts, you can see the following output on the console.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+________                               _______________
+___  __/__________________________________  ____/__  /________      __
+__  /  _  _ \_  __ \_  ___/  __ \_  ___/_  /_   __  /_  __ \_ | /| / /
+_  /   /  __/  / / /(__  )/ /_/ /  /   _  __/   _  / / /_/ /_ |/ |/ /
+/_/    \___//_/ /_//____/ \____//_/    /_/      /_/  \____/____/|__/
+
+WARNING: You are running this container as root, which can cause new files in
+mounted volumes to be created as the root user on your host machine.
+
+To avoid this, run the container by specifying your user's userid:
+
+$ docker run -u $(id -u):$(id -g) args...
+
+[I 04:00:11.167 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
+jupyter_http_over_ws extension initialized. Listening on /http_over_websocket
+[I 04:00:11.447 NotebookApp] Serving notebooks from local directory: /tf
+[I 04:00:11.447 NotebookApp] The Jupyter Notebook is running at:
+[I 04:00:11.447 NotebookApp] http://72b6a6dfac02:8888/?token=6f8af846634535243512de1c0b5721e6350d7dbdbd5e4a1b
+[I 04:00:11.447 NotebookApp]  or http://127.0.0.1:8888/?token=6f8af846634535243512de1c0b5721e6350d7dbdbd5e4a1b
+[I 04:00:11.447 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 04:00:11.451 NotebookApp]
+
+    To access the notebook, open this file in a browser:
+        file:///root/.local/share/jupyter/runtime/nbserver-1-open.html
+    Or copy and paste one of these URLs:
+        http://72b6a6dfac02:8888/?token=6f8af846634535243512de1c0b5721e6350d7dbdbd5e4a1b
+     or http://127.0.0.1:8888/?token=6f8af846634535243512de1c0b5721e6350d7dbdbd5e4a1b
+
+        </pre></div>
+                        <p class="p">
+                           After the URL is available from the console output, input the URL into your browser to start developing with the Jupyter notebook.
+                           Ensure that you replace <samp class="ph codeph">127.0.0.1</samp> with <samp class="ph codeph">localhost</samp> in the URL when connecting to the Jupyter notebook from the browser. 
+                           
+                        </p>
+                        <p class="p">
+                           If you navigate to the Cell menu and select the Run All item, then check the log within the Jupyter notebook WSL 2 container
+                           
+                           to see the work accelerated by the GPU of your Windows PC.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+...
+[I 04:56:16.535 NotebookApp] 302 GET /?token=102d547c256eee3661b25d957de93331e02107f8b8ef5f2e (172.17.0.1) 0.46ms
+[I 04:56:24.409 NotebookApp] Writing notebook-signing key to /root/.local/share/jupyter/notebook_secret
+[W 04:56:24.410 NotebookApp] Notebook tensorflow-tutorials/classification.ipynb is not trusted
+[I 04:56:25.223 NotebookApp] Kernel started: 6b4f715b-4d0d-4b3b-936c-0aa74a4e14a0
+2020-06-14 04:57:14.728110: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libnvinfer.so.6
+...
+2020-06-14 04:57:28.524537: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1324] Could not identify NUMA node of platform GPU id 0, defaulting to 0.  Your kernel may not have been built with NUMA support.
+2020-06-14 04:57:28.524837: E tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:967] could not open file to read NUMA node: /sys/bus/pci/devices/0000:01:00.0/numa_node
+Your kernel may have been built without NUMA support.
+2020-06-14 04:57:28.525120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6750 MB memory) -&gt; physical GPU (device: 0, name: GeForce GTX 1070, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2020-06-14 04:57:30.755782: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+[I 04:58:26.083 NotebookApp] Saving file at /tensorflow-tutorials/classification.ipynb
+[I 05:00:26.093 NotebookApp] Saving file at /tensorflow-tutorials/classification.ipynb        
+        </pre></div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="running-dlfw"><a name="running-dlfw" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#running-dlfw" name="running-dlfw" shape="rect">Deep Learning Framework Containers</a></h3>
+                     <div class="body conbody">
+                        <p class="p"> 
+                           In this example, let’s run a TensorFlow container to do a ResNet-50 training run using GPUs using the 20.03 container from
+                           NGC.
+                           This is done by launching the container and then running the training script from the <samp class="ph codeph">nvidia-examples</samp> directory.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ docker run --gpus all -it --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 nvcr.io/nvidia/tensorflow:20.03-tf2-py3
+
+================
+== TensorFlow ==
+================
+
+NVIDIA Release 20.03-tf2 (build 11026100)
+TensorFlow Version 2.1.0
+
+Container image Copyright (c) 2019, NVIDIA CORPORATION.  All rights reserved.
+Copyright 2017-2019 The TensorFlow Authors.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION.  All rights reserved.
+NVIDIA modifications are covered by the license terms that apply to the underlying project or file.
+
+NOTE: MOFED driver for multi-node communication was not detected.
+      Multi-node communication performance may be reduced.
+
+root@c64bb1f70737:/workspace# cd nvidia-examples/
+root@c64bb1f70737:/workspace/nvidia-examples# ls
+big_lstm  build_imagenet_data  cnn  tensorrt
+root@c64bb1f70737:/workspace/nvidia-examples# python cnn/resnet.py
+...
+WARNING:tensorflow:Expected a shuffled dataset but input dataset `x` is not shuffled. Please invoke `shuffle()` on input dataset.
+2020-06-15 00:01:49.476393: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-06-15 00:01:49.701149: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+global_step: 10 images_per_sec: 93.2
+global_step: 20 images_per_sec: 276.8
+global_step: 30 images_per_sec: 276.4
+
+        </pre></div>
+                        <p class="p">
+                           Let's look at another example from <a class="xref" href="https://learningtensorflow.com/using-gpu/" target="_blank" shape="rect">Lesson 15</a> of the Learning TensorFlow tutorial. In this example, 
+                           the code creates a random matrix with a given size as input and then does a element wise operation on the input tensor. 
+                           
+                        </p>
+                        <p class="p">
+                           The example also allows you to observe the speedup when the code is run on the GPU. The source code is shown below.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+import sys
+import numpy as np
+import tensorflow as tf
+from datetime import datetime
+
+device_name = sys.argv[1]  # Choose device from cmd line. Options: gpu or cpu
+shape = (int(sys.argv[2]), int(sys.argv[2]))
+if device_name == "gpu":
+    device_name = "/gpu:0"
+else:
+    device_name = "/cpu:0"
+
+tf.compat.v1.disable_eager_execution()
+with tf.device(device_name):
+    random_matrix = tf.random.uniform(shape=shape, minval=0, maxval=1)
+    dot_operation = tf.matmul(random_matrix, tf.transpose(random_matrix))
+    sum_operation = tf.reduce_sum(dot_operation)
+
+
+startTime = datetime.now()
+with tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(log_device_placement=True)) as session:
+        result = session.run(sum_operation)
+        print(result)
+
+# Print the results
+print("Shape:", shape, "Device:", device_name)
+print("Time taken:", datetime.now() - startTime)
+        </pre></div>
+                        <p class="p">
+                           Save the code as <samp class="ph codeph">matmul.py</samp> on the host's C drive, which is mapped as <samp class="ph codeph">/mnt/c</samp> in WSL 2. 
+                           Run the code using the same 20.03 TensorFlow container in the previous example. 
+                           The results of running this script, launched from the mounted drive C, on a GPU and a CPU are shown below. For simplicity
+                           the output is reduced.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ docker run --gpus all --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -v "${PWD}:/mnt/c" nvcr.io/nvidia/tensorflow:20.03-tf2-py3 python /mnt/c/matmul.py gpu 20000
+
+...
+/job:localhost/replica:0/task:0/device:GPU:0 -&gt; device: 0, name: GeForce GTX 1070, pci bus id: 0000:01:00.0, compute capability: 6.1
+2020-06-16 02:47:23.142774: I tensorflow/core/common_runtime/direct_session.cc:359] Device mapping:
+/job:localhost/replica:0/task:0/device:XLA_CPU:0 -&gt; device: XLA_CPU device
+/job:localhost/replica:0/task:0/device:XLA_GPU:0 -&gt; device: XLA_GPU device
+/job:localhost/replica:0/task:0/device:GPU:0 -&gt; device: 0, name: GeForce GTX 1070, pci bus id: 0000:01:00.0, compute capability: 6.1
+
+random_uniform/RandomUniform: (RandomUniform): /job:localhost/replica:0/task:0/device:GPU:0
+...
+
+Shape: (20000, 20000) Device: /gpu:0
+Time taken: 0:00:06.160917
+        </pre></div>
+                        <p class="p">
+                           The same example is now run on the CPU.
+                           
+                        </p>
+                        <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ docker run --gpus all --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -v "${PWD}:/mnt/c" nvcr.io/nvidia/tensorflow:20.03-tf2-py3 python /mnt/c/matmul.py cpu 20000
+
+...
+random_uniform/RandomUniform: (RandomUniform): /job:localhost/replica:0/task:0/device:CPU:0
+2020-06-16 02:35:37.554425: I tensorflow/core/common_runtime/placer.cc:114] random_uniform/RandomUniform: (RandomUniform): /job:localhost/replica:0/task:0/device:CPU:0
+transpose: (Transpose): /job:localhost/replica:0/task:0/device:CPU:0
+...
+
+Shape: (20000, 20000) Device: /cpu:0
+Time taken: 0:00:28.294706
+        </pre></div>
+                        <p class="p">
+                           Get started quickly with AI training using pre-trained models available from NVIDIA and the 
+                           <a class="xref" href="https://ngc.nvidia.com/" target="_blank" shape="rect">NGC catalog</a>. Follow the 
+                           instructions in this <a class="xref" href="https://devblogs.nvidia.com/jump-start-ai-training-with-ngc-pretrained-models-on-premises-and-in-the-cloud/" target="_blank" shape="rect">post</a> for more details. 
+                           
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="known-limitations"><a name="known-limitations" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#known-limitations" name="known-limitations" shape="rect">Known Limitations</a></h2>
+                  <div class="body conbody">
+                     <p class="p"> 
+                        The following features are not supported in this release:
+                        
+                     </p>
+                     <ol class="ol">
+                        <li class="li">
+                           Performance has not yet been tuned on the preview driver. This is especially true for 
+                           small workloads which suffer from a high overhead at this point.
+                           
+                        </li>
+                        <li class="li">
+                           Note that NVIDIA Container Toolkit does not yet support <a class="xref" href="https://docs.docker.com/docker-for-windows/wsl/" target="_blank" shape="rect"> Docker Desktop WSL 2</a> backend. Use Docker-CE for Linux instead inside 
+                           your WSL 2 Linux distribution.
+                           
+                        </li>
+                        <li class="li">
+                           NVIDIA Management Library (NVML) APIs are not supported. Consequently, <samp class="ph codeph">nvidia-smi</samp> may not be 
+                           functional in WSL 2.
+                           
+                        </li>
+                        <li class="li">
+                           CUDA debugging or profiling tools are not supported in WSL 2. This capability will be added in a future release.
+                           
+                        </li>
+                        <li class="li">
+                           PTX JIT is not supported (so PTX code will not be loaded from CUDA binaries for runtime compilation).
+                           
+                        </li>
+                        <li class="li">
+                           The following APIs in CUDA are not yet available in WSL 2:
+                           
+                           <ul class="ul">
+                              <li class="li">IPC related APIs</li>
+                              <li class="li">Memmap APIs with file descriptors</li>
+                           </ul>
+                        </li>
+                        <li class="li">
+                           Unified Memory is limited to the same feature set as on native Windows systems.
+                           
+                        </li>
+                        <li class="li">
+                           With the NVIDIA Container Toolkit for Docker 19.03, only <samp class="ph codeph">--gpus all</samp> is supported. 
+                           This means that on multi-GPU systems it is not possible to filter for specific GPU devices by using 
+                           specific index numbers to enumerate GPUs. 
+                           
+                        </li>
+                        <li class="li">
+                           When installing CUDA using the package manager, do not use the <samp class="ph codeph">cuda</samp>, <samp class="ph codeph">cuda-11-0</samp>, 
+                           or <samp class="ph codeph">cuda-drivers</samp> meta-packages under WSL 2. These packages have dependencies on the NVIDIA driver 
+                           and the package manager will attempt to install the NVIDIA Linux driver which may result in issues. 
+                           The NVIDIA Windows 10 driver should be the only driver present in the system.
+                           
+                        </li>
+                        <li class="li">
+                           When running the NGC Deep Learning (DL) Framework GPU containers in WSL 2, you may encounter a message: 
+                           
+                           <div class="p"><pre class="pre screen" xml:space="preserve">
+The NVIDIA Driver was not detected.  GPU functionality will not be available.
+                </pre></div>
+                           
+                           Note that this message is an incorrect warning for WSL 2 and will be fixed in future releases of the DL Framework containers
+                           
+                           to correctly detect the NVIDIA GPUs. The DL Framework containers will still continue to be accelerated using CUDA on WSL 2.
+                           
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="troubleshooting"><a name="troubleshooting" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#troubleshooting" name="troubleshooting" shape="rect">Troubleshooting</a></h2>
+                  <div class="body conbody">
+                     <p class="p"> 
+                        Here is a collection of potential errors that you may encounter when using CUDA on WSL 2:
+                        
+                     </p>
+                     <div class="section">
+                        <h2 class="title sectiontitle">Container Runtime Initialization Errors</h2>
+                        <ul class="ul">
+                           <li class="li">
+                              In some cases, when running a Docker container, you may encounter <samp class="ph codeph">nvidia-container-cli : initialization error</samp>:
+                              
+                              <div class="p"><pre class="pre screen" xml:space="preserve">
+
+$ sudo docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:349: starting container process caused "process_linux.go:449: container init caused \"process_linux.go:432: running prestart hook 0 caused \\\"error running hook: exit status 1, stdout: , stderr: nvidia-container-cli: initialization error: driver error: failed to process request\\\\n\\\"\"": unknown.
+ERRO[0000] error waiting for container: context canceled
+                    </pre></div>
+                              <p class="p"></p>
+                           </li>
+                           <li class="li">
+                              This usually indicates that the right Microsoft Windows Insider Preview Builds, WSL 2, NVIDIA drivers and 
+                              NVIDIA Container Toolkit may not be installed correctly. Use the <samp class="ph codeph">dxdiag</samp> tools from the Run dialog and provide 
+                              the diagnostic logs to NVIDIA. You can also use the CUDA on WSL 2 
+                              <a class="xref" href="https://forums.developer.nvidia.com/c/accelerated-computing/cuda/cuda-on-windows-subsystem-for-linux/303Developer" target="_blank" shape="rect">Forums</a> to get in touch with 
+                              NVIDIA product and engineering teams for help.
+                              
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="notices-header"><a name="notices-header" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#notices-header" name="notices-header" shape="rect">Notices</a></h2>
+                  <div class="topic reference nested1" id="notice"><a name="notice" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#notice" name="notice" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Notice</h3>
+                           <p class="p">ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND
+                              SEPARATELY, "MATERIALS") ARE BEING PROVIDED "AS IS." NVIDIA MAKES NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE
+                              WITH RESPECT TO THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS
+                              FOR A PARTICULAR PURPOSE. 
+                           </p>
+                           <p class="p">Information furnished is believed to be accurate and reliable. However, NVIDIA Corporation assumes no responsibility for the
+                              consequences of use of such information or for any infringement of patents or other rights of third parties that may result
+                              from its use. No license is granted by implication of otherwise under any patent rights of NVIDIA Corporation. Specifications
+                              mentioned in this publication are subject to change without notice. This publication supersedes and replaces all other information
+                              previously supplied. NVIDIA Corporation products are not authorized as critical components in life support devices or systems
+                              without express written approval of NVIDIA Corporation.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="trademarks"><a name="trademarks" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#trademarks" name="trademarks" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Trademarks</h3>
+                           <p class="p">NVIDIA and the NVIDIA logo are trademarks or registered trademarks of NVIDIA Corporation
+                              in the U.S. and other countries.  Other company and product names may be trademarks of
+                              the respective companies with which they are associated.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="copyright-past-to-present"><a name="copyright-past-to-present" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#copyright-past-to-present" name="copyright-past-to-present" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Copyright</h3>
+                           <p class="p">© <span class="ph">2007</span>-<span class="ph">2020</span> NVIDIA
+                              Corporation. All rights reserved.
+                           </p>
+                           <p class="p">This product includes software developed by the Syncro Soft SRL (http://www.sync.ro/).</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

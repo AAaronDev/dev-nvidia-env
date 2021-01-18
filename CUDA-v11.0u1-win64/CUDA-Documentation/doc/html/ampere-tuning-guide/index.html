@@ -1,0 +1,592 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="concept"></meta>
+      <meta name="DC.Title" content="Tuning CUDA Applications for NVIDIA Ampere GPU Architecture"></meta>
+      <meta name="abstract" content="The programming guide for tuning CUDA Applications for GPUs based on the NVIDIA Ampere GPU Architecture."></meta>
+      <meta name="description" content="The programming guide for tuning CUDA Applications for GPUs based on the NVIDIA Ampere GPU Architecture."></meta>
+      <meta name="DC.Coverage" content="Programming Guides"></meta>
+      <meta name="DC.subject" content="CUDA NVIDIA Ampere GPU Architecture, CUDA NVIDIA Ampere GPU Architecture tuning, CUDA NVIDIA Ampere GPU Architecture best practices, CUDA NVIDIA Ampere GPU Architecture performance"></meta>
+      <meta name="keywords" content="CUDA NVIDIA Ampere GPU Architecture, CUDA NVIDIA Ampere GPU Architecture tuning, CUDA NVIDIA Ampere GPU Architecture best practices, CUDA NVIDIA Ampere GPU Architecture performance"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="abstract"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>NVIDIA Ampere GPU Architecture Tuning Guide :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/scripts/tynt/tynt.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/ampere-tuning-guide/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v11.0.228</a></div>
+            <div class="category"><a href="index.html" title="NVIDIA Ampere GPU Architecture Tuning Guide">NVIDIA Ampere GPU Architecture Tuning Guide</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="#tuning-cuda-applications-for-ampere">1.&nbsp;NVIDIA Ampere GPU Architecture Tuning Guide</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#nvidia-ampere-compute-architecture">1.1.&nbsp;NVIDIA Ampere GPU Architecture</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#cuda-best-practices">1.2.&nbsp;CUDA Best Practices</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#application-compatibility">1.3.&nbsp;Application Compatibility</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#ampere-tuning">1.4.&nbsp;NVIDIA Ampere GPU Architecture Tuning</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#sm">1.4.1.&nbsp;Streaming Multiprocessor</a></div>
+                              <ul>
+                                 <li>
+                                    <div class="section-link"><a href="#sm-occupancy">1.4.1.1.&nbsp;Occupancy</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="#async_copy">1.4.1.2.&nbsp;Asynchronous Data Copy from Global Memory to Shared Memory</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="#arrive_wait">1.4.1.3.&nbsp;Hardware Acceleration for Split Arrive/Wait Barrier</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="#warp-reductions">1.4.1.4.&nbsp;Warp level support for Reduction Operations</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="#tensor-operations">1.4.1.5.&nbsp;Improved Tensor Core Operations</a></div>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#memory-system">1.4.2.&nbsp;Memory System</a></div>
+                              <ul>
+                                 <li>
+                                    <div class="section-link"><a href="#hbm2">1.4.2.1.&nbsp;Increased Memory Capacity and High Bandwidth Memory</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="#l2_cache">1.4.2.2.&nbsp;Increased L2 capacity and L2 Residency Controls</a></div>
+                                 </li>
+                                 <li>
+                                    <div class="section-link"><a href="#l1-cache">1.4.2.3.&nbsp;Unified Shared Memory/L1/Texture Cache</a></div>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#nvlink">1.4.3.&nbsp;Third Generation NVLink</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#revision-history">A.&nbsp;Revision History</a></div>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="release-info">NVIDIA Ampere GPU Architecture Tuning Guide
+                  (<a href="../../pdf/Ampere_Tuning_Guide.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v11.0.228
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated August 3, 2020
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: NVIDIA Ampere GPU Architecture Tuning Guide">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested0" id="abstract"><a name="abstract" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#abstract" name="abstract" shape="rect">Tuning CUDA Applications for NVIDIA Ampere GPU Architecture</a></h2>
+                  <div class="body conbody">
+                     <p class="shortdesc">The programming guide for tuning CUDA Applications for GPUs based
+                        on the NVIDIA Ampere GPU Architecture.
+                     </p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" xml:lang="en-US" id="tuning-cuda-applications-for-ampere"><a name="tuning-cuda-applications-for-ampere" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#tuning-cuda-applications-for-ampere" name="tuning-cuda-applications-for-ampere" shape="rect">1.&nbsp;NVIDIA Ampere GPU Architecture Tuning Guide</a></h2>
+                  <div class="topic concept nested1" xml:lang="en-US" id="nvidia-ampere-compute-architecture"><a name="nvidia-ampere-compute-architecture" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#nvidia-ampere-compute-architecture" name="nvidia-ampere-compute-architecture" shape="rect">1.1.&nbsp;NVIDIA Ampere GPU Architecture</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The NVIDIA Ampere GPU architecture is NVIDIA's latest architecture for CUDA compute applications.
+                           The NVIDIA Ampere GPU architecture retains and extends the same CUDA programming model provided by
+                           previous NVIDIA GPU architectures such as Turing and Volta, and applications
+                           that follow the best practices for those architectures should typically
+                           see speedups on the NVIDIA A100 GPU without any code changes. This
+                           guide summarizes the ways that an application can be fine-tuned to gain
+                           additional speedups by leveraging the NVIDIA Ampere GPU architecture's features.<a name="fnsrc_1" href="#fntarg_1" shape="rect"><sup>1</sup></a></p>
+                        <p class="p">For further details on the programming features discussed in this
+                           guide, please refer to the <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/" target="_blank" shape="rect">CUDA C++ Programming Guide</a>.
+                        </p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="cuda-best-practices"><a name="cuda-best-practices" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#cuda-best-practices" name="cuda-best-practices" shape="rect">1.2.&nbsp;CUDA Best Practices</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The performance guidelines and best practices described in the <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/" target="_blank" shape="rect">CUDA C++ Programming Guide</a> and the
+                           <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-best-practices-guide/" target="_blank" shape="rect">CUDA C++ Best Practices Guide</a> apply
+                           to all CUDA-capable GPU architectures. Programmers must primarily focus
+                           on following those recommendations to achieve the best performance.
+                        </p>
+                        <div class="p">The high-priority recommendations from those guides are as follows:
+                           
+                           <ul class="ul">
+                              <li class="li">Find ways to parallelize sequential code.</li>
+                              <li class="li">Minimize data transfers between the host and the device.</li>
+                              <li class="li">Adjust kernel launch configuration to maximize device
+                                 utilization.
+                              </li>
+                              <li class="li">Ensure global memory accesses are coalesced.</li>
+                              <li class="li">Minimize redundant accesses to global memory whenever
+                                 possible.
+                              </li>
+                              <li class="li">Avoid long sequences of diverged execution by threads within
+                                 the same warp.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="application-compatibility"><a name="application-compatibility" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#application-compatibility" name="application-compatibility" shape="rect">1.3.&nbsp;Application Compatibility</a></h3>
+                     <div class="body conbody">
+                        <p class="p">Before addressing specific performance tuning issues
+                           covered in this guide, refer to the <a class="xref" href="http://docs.nvidia.com/cuda/ampere-compatibility-guide/" target="_blank" shape="rect">NVIDIA Ampere GPU Architecture Compatibility Guide for CUDA
+                              Applications</a> to ensure that your application is compiled in a
+                           way that is compatible with the NVIDIA Ampere GPU Architecture.
+                        </p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="ampere-tuning"><a name="ampere-tuning" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#ampere-tuning" name="ampere-tuning" shape="rect">1.4.&nbsp;NVIDIA Ampere GPU Architecture Tuning</a></h3>
+                     <div class="topic concept nested2" xml:lang="en-US" id="sm"><a name="sm" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#sm" name="sm" shape="rect">1.4.1.&nbsp;Streaming Multiprocessor</a></h3>
+                        <div class="body conbody">
+                           <p class="p">The NVIDIA Ampere GPU architecture's Streaming Multiprocessor (SM) provides the following improvements
+                              over Volta and Turing.
+                           </p>
+                        </div>
+                        <div class="topic concept nested3" xml:lang="en-US" id="sm-occupancy"><a name="sm-occupancy" shape="rect">
+                              <!-- --></a><h3 class="title topictitle2"><a href="#sm-occupancy" name="sm-occupancy" shape="rect">1.4.1.1.&nbsp;Occupancy</a></h3>
+                           <div class="body conbody">
+                              <div class="p">The maximum number of concurrent warps per SM remains the
+                                 same as in Volta (i.e., 64), and other <a class="xref" href="http://developer.download.nvidia.com/compute/cuda/CUDA_Occupancy_calculator.xls" target="_blank" shape="rect">factors influencing warp
+                                    occupancy</a> are:
+                                 
+                                 <ul class="ul">
+                                    <li class="li">The register file size is 64K 32-bit registers per SM.</li>
+                                    <li class="li">The maximum number of registers per thread is 255.</li>
+                                    <li class="li">The maximum number of thread blocks per SM is 32.</li>
+                                    <li class="li">Shared memory capacity per SM is 164 KB, a 71% increase compared to GV100's capacity of 96 KB.</li>
+                                    <li class="li">Maximum shared memory per thread block is 160 KB.</li>
+                                 </ul>
+                              </div>
+                              <p class="p">Overall, developers can expect similar occupancy as on Volta
+                                 without changes to their application.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="topic concept nested3" xml:lang="en-US" id="async_copy"><a name="async_copy" shape="rect">
+                              <!-- --></a><h3 class="title topictitle2"><a href="#async_copy" name="async_copy" shape="rect">1.4.1.2.&nbsp;Asynchronous Data Copy from Global Memory to Shared Memory</a></h3>
+                           <div class="body conbody">
+                              <p class="p">The NVIDIA Ampere GPU architecture adds hardware acceleration for copying data from global memory to shared memory.
+                                 These copy instructions are asynchronous, with respect to computation and allow users to explicitly control overlap 
+                                 of compute with data movement from global memory into the SM. These instructions also avoid using extra registers for 
+                                 memory copies and can also bypass the L1 cache. This new feature is exposed via the <samp class="ph codeph">pipeline</samp> API in CUDA. 
+                                 For more information please refer to the section on Async Copy in the
+                                 <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#async-copy" target="_blank" shape="rect">CUDA C++ Programming Guide</a>.
+                                 
+                              </p>
+                           </div>
+                        </div>
+                        <div class="topic concept nested3" xml:lang="en-US" id="arrive_wait"><a name="arrive_wait" shape="rect">
+                              <!-- --></a><h3 class="title topictitle2"><a href="#arrive_wait" name="arrive_wait" shape="rect">1.4.1.3.&nbsp;Hardware Acceleration for Split Arrive/Wait Barrier</a></h3>
+                           <div class="body conbody">
+                              <p class="p">The NVIDIA Ampere GPU architecture adds hardware acceleration for a split arrive/wait barrier in shared memory. 
+                                 These barriers can be used to implement fine grained thread controls, producer-consumer computation pipeline and divergence
+                                 code patterns in CUDA. 
+                                 These barriers can also be used alongside the asynchronous copy.
+                                 For more information on the Arrive/Wait Barriers refer to the Arrive/Wait Barrier section in the
+                                 <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#aw-barrier" target="_blank" shape="rect">CUDA C++ Programming Guide</a>.
+                                 
+                              </p>
+                           </div>
+                        </div>
+                        <div class="topic concept nested3" xml:lang="en-US" id="warp-reductions"><a name="warp-reductions" shape="rect">
+                              <!-- --></a><h3 class="title topictitle2"><a href="#warp-reductions" name="warp-reductions" shape="rect">1.4.1.4.&nbsp;Warp level support for Reduction Operations</a></h3>
+                           <div class="body conbody">
+                              <p class="p">The NVIDIA Ampere GPU architecture adds native support for warp wide reduction operations 
+                                 for 32-bit signed and unsigned integer operands. The warp wide reduction operations support 
+                                 arithmetic <samp class="ph codeph">add</samp>, <samp class="ph codeph">min</samp>, and <samp class="ph codeph">max</samp> operations 
+                                 on 32-bit signed and unsigned integers and bitwise <samp class="ph codeph">and</samp>, <samp class="ph codeph">or</samp> 
+                                 and <samp class="ph codeph">xor</samp> operations on 32-bit unsigned integers.
+                              </p>
+                              <p class="p">For more details on the new warp wide reduction operations refer to Warp Reduce Functions in the
+                                 <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#warp-reduce-functions" target="_blank" shape="rect">CUDA C++ Programming Guide</a>.
+                                 
+                              </p>
+                           </div>
+                        </div>
+                        <div class="topic concept nested3" xml:lang="en-US" id="tensor-operations"><a name="tensor-operations" shape="rect">
+                              <!-- --></a><h3 class="title topictitle2"><a href="#tensor-operations" name="tensor-operations" shape="rect">1.4.1.5.&nbsp;Improved Tensor Core Operations</a></h3>
+                           <div class="body conbody">
+                              <p class="p">The NVIDIA Ampere GPU architecture includes new Third Generation Tensor Cores that are more powerful than the 
+                                 Tensor Cores used in Volta and Turing SMs. The new Tensor Cores use a larger base matrix size and add powerful 
+                                 new math modes including:
+                              </p>
+                              <ul class="ul">
+                                 <li class="li">Support for FP64 Tensor Core, using new DMMA instructions.</li>
+                                 <li class="li">Support for Bfloat16 Tensor Core, through HMMA instructions. 
+                                    BFloat16 format is especially effective for DL training scenarios. Bfloat16 provides 8-bit exponent i.e., 
+                                    same range as FP32, 7-bit mantissa and 1 sign-bit.
+                                 </li>
+                                 <li class="li">Support for TF32 Tensor Core, through HMMA instructions. 
+                                    TF32 is a new 19-bit Tensor Core format that can be easily integrated into programs for more accurate DL training than 
+                                    16-bit HMMA formats. TF32 provides 8-bit exponent, 10-bit mantissa and 1 sign-bit.
+                                 </li>
+                              </ul>
+                              <p class="p">The following table presents the evolution of matrix instruction sizes and supported data types for Tensor Cores 
+                                 across different GPU architecture generations.
+                              </p>
+                              <div class="tablenoborder"><a name="tensor-operations__tensor-core-inst-size-table" shape="rect">
+                                    <!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="tensor-operations__tensor-core-inst-size-table" class="table" frame="border" border="1" rules="all">
+                                    <thead class="thead" align="left">
+                                       <tr class="row" valign="middle">
+                                          <th class="entry" align="center" valign="middle" width="20%" id="d54e321" rowspan="1" colspan="1">Instruction</th>
+                                          <th class="entry" align="center" valign="middle" width="20%" id="d54e324" rowspan="1" colspan="1">GPU Architecture</th>
+                                          <th class="entry" align="center" valign="middle" width="20%" id="d54e327" rowspan="1" colspan="1">Input Matrix format</th>
+                                          <th class="entry" align="center" valign="middle" width="20%" id="d54e330" rowspan="1" colspan="1">Output Accumulator format</th>
+                                          <th class="entry" align="center" valign="middle" width="20%" id="d54e333" rowspan="1" colspan="1">Matrix Instruction Size (MxNxK)</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody class="tbody">
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" rowspan="3" align="center" valign="middle" width="20%" headers="d54e321" colspan="1">HMMA (16-bit precision)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Volta Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">FP16</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">FP16 / FP32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x4</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Turing Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">FP16</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">FP16 / FP32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x4 / 16x8x8 / 16x8x16</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Ampere Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">FP16 / BFloat16</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">FP16 / FP32 
+                                             <p class="p">(BFloat16 only supports FP32 as accumulator)</p>
+                                          </td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">16x8x8 / 16x8x16</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" rowspan="3" align="center" valign="middle" width="20%" headers="d54e321" colspan="1">HMMA (19-bit precision)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Volta Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">N/A</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Turing Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">N/A</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Ampere Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">TF32 (19-bits)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">FP32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">16x8x4</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" rowspan="3" align="center" valign="middle" width="20%" headers="d54e321" colspan="1">IMMA (Integer MMA)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Volta Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">N/A</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Turing Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">unsigned char/signed char (8-bit precision)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">int32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x16</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Ampere Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">unsigned char/signed char (8-bit precision)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">int32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x16 / 16x8x16 / 16x8x32</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" rowspan="3" align="center" valign="middle" width="20%" headers="d54e321" colspan="1">IMMA (Integer sub-byte MMA)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Volta Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">N/A</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Turing Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">unsigned u4/signed u4 (4-bit precision)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">int32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x32</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Ampere Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">unsigned u4/signed u4 (4-bit precision)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">int32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x32 / 16x8x32 / 16x8x64</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" rowspan="3" align="center" valign="middle" width="20%" headers="d54e321" colspan="1">BMMA (Binary MMA)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Volta Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">N/A</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Turing Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">single bit</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">int32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x128</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Ampere Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">single bit</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">int32</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x128 / 16x8x128 / 16x8x256</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" rowspan="3" align="center" valign="middle" width="20%" headers="d54e321" colspan="1">DMMA (64-bit precision)</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Volta Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">N/A</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Turing Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">N/A</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">N/A</td>
+                                       </tr>
+                                       <tr class="row" valign="middle">
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e324" rowspan="1" colspan="1">NVIDIA Ampere Architecture</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e327" rowspan="1" colspan="1">FP64</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e330" rowspan="1" colspan="1">FP64</td>
+                                          <td class="entry" align="center" valign="middle" width="20%" headers="d54e333" rowspan="1" colspan="1">8x8x4</td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                              <p class="p">For more details on the new Tensor Core operations refer to the Warp Matrix Multiply section in the
+                                 <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#wmma" target="_blank" shape="rect">CUDA C++ Programming Guide</a>.
+                                 
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="memory-system"><a name="memory-system" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#memory-system" name="memory-system" shape="rect">1.4.2.&nbsp;Memory System</a></h3>
+                        <div class="topic concept nested3" xml:lang="en-US" id="hbm2"><a name="hbm2" shape="rect">
+                              <!-- --></a><h3 class="title topictitle2"><a href="#hbm2" name="hbm2" shape="rect">1.4.2.1.&nbsp;Increased Memory Capacity and High Bandwidth Memory</a></h3>
+                           <div class="body conbody">
+                              <p class="p">The NVIDIA A100 GPU increases the HBM2 memory capacity from 32 GB in V100 GPU to
+                                 40 GB in A100 GPU. Along with the increased memory capacity, the bandwidth is increased by 72%. From 900 GB/s
+                                 on Volta V100 to 1550 GB/s on A100.
+                                 
+                              </p>
+                           </div>
+                        </div>
+                        <div class="topic concept nested3" xml:lang="en-US" id="l2_cache"><a name="l2_cache" shape="rect">
+                              <!-- --></a><h3 class="title topictitle2"><a href="#l2_cache" name="l2_cache" shape="rect">1.4.2.2.&nbsp;Increased L2 capacity and L2 Residency Controls</a></h3>
+                           <div class="body conbody">
+                              <p class="p">The NVIDIA Ampere GPU architecture increases the capacity of the L2 cache to 40 MB in Tesla A100, which is 7x larger than
+                                 Tesla V100.
+                                 Along with the increased capacity, the bandwidth of the L2 Cache to the SMs is also increased. The NVIDIA Ampere GPU architecture
+                                 
+                                 allows CUDA users to control the persistence of data in L2 cache. For more information on the persistence of data in L2 cache,
+                                 
+                                 refer to the section on managing L2 cache in the 
+                                 <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#L2_access_intro" target="_blank" shape="rect">CUDA C++ Programming Guide</a>.
+                                 
+                              </p>
+                           </div>
+                        </div>
+                        <div class="topic concept nested3" xml:lang="en-US" id="l1-cache"><a name="l1-cache" shape="rect">
+                              <!-- --></a><h3 class="title topictitle2"><a href="#l1-cache" name="l1-cache" shape="rect">1.4.2.3.&nbsp;Unified Shared Memory/L1/Texture Cache</a></h3>
+                           <div class="body conbody">
+                              <p class="p">The NVIDIA A100 GPU increases the maximum capacity of the L1 cache to 192 KB,
+                                 50% larger than the L1 cache in NVIDIA V100 GPU.
+                              </p>
+                              <p class="p">In the NVIDIA Ampere GPU architecture the L1 cache, texture cache, and shared memory are backed by
+                                 a combined 192 KB data cache. As in previous architectures, such as Volta,
+                                 the portion of the cache dedicated to shared memory (known as the 
+                                 <dfn class="term">carveout</dfn>) can be selected at runtime using 
+                                 <samp class="ph codeph">cudaFuncSetAttribute()</samp> with the attribute 
+                                 <samp class="ph codeph">cudaFuncAttributePreferredSharedMemoryCarveout</samp>. The NVIDIA A100 GPU
+                                 supports shared memory capacities of 0, 8, 16, 32, 64, 100, 132 or 164 KB per SM.
+                              </p>
+                              <p class="p">The NVIDIA Ampere GPU architecture enables a single thread block to address up to
+                                 160 KB of shared memory. To maintain architectural compatibility, static 
+                                 shared memory allocations remain limited to 48 KB, and an explicit opt-in 
+                                 is also required to enable dynamic allocations above this limit. See the
+                                 <a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/" target="_blank" shape="rect">CUDA C++ Programming Guide</a> 
+                                 for details.
+                              </p>
+                              <p class="p">Like Volta, the NVIDIA Ampere GPU architecture combines the functionality of the L1
+                                 and texture caches into a unified L1/Texture cache which acts
+                                 as a coalescing buffer for memory accesses, gathering up the
+                                 data requested by the threads of a warp prior to delivery of
+                                 that data to the warp. Another benefit of its union with shared memory,
+                                 similar to Volta L1 is improvement in terms of both latency and bandwidth.
+                                 
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="nvlink"><a name="nvlink" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#nvlink" name="nvlink" shape="rect">1.4.3.&nbsp;Third Generation NVLink</a></h3>
+                        <div class="body conbody">
+                           <p class="p">The third generation of NVIDIA’s high-speed NVLink interconnect is implemented in A100 GPUs, which significantly enhances
+                              
+                              multi-GPU scalability, performance, and reliability with more links per GPU, much faster communication 
+                              bandwidth, and improved error-detection and recovery features. 
+                              The third generation NVLink has the same bi-directional data rate of 50 GB/s per link, but uses half the number of signal
+                              pairs 
+                              to achieve this bandwidth. Therefore, the total number of links available is increased to twelve in A100, versus 
+                              six in V100, yielding 600 GB/s bidirectional bandwidth versus 300 GB/s for V100.
+                              
+                           </p>
+                           <p class="p">NVLink operates transparently within the existing CUDA
+                              model. Transfers between NVLink-connected endpoints are
+                              automatically routed through NVLink, rather than PCIe. The
+                              <samp class="ph codeph">cudaDeviceEnablePeerAccess()</samp> API call remains
+                              necessary to enable direct transfers (over either PCIe or
+                              NVLink) between GPUs.  The
+                              <samp class="ph codeph">cudaDeviceCanAccessPeer()</samp> can be used to
+                              determine if peer access is possible between any pair of
+                              GPUs.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic reference nested0" id="revision-history"><a name="revision-history" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#revision-history" name="revision-history" shape="rect">A.&nbsp;Revision History</a></h2>
+                  <div class="body refbody">
+                     <div class="section">
+                        <h2 class="title sectiontitle">Version 1.0</h2>
+                        <ul class="ul">
+                           <li class="li">Initial Public Release</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="notices-header"><a name="notices-header" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#notices-header" name="notices-header" shape="rect">Notices</a></h2>
+                  <div class="topic reference nested1" id="notice"><a name="notice" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#notice" name="notice" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Notice</h3>
+                           <p class="p">ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND
+                              SEPARATELY, "MATERIALS") ARE BEING PROVIDED "AS IS." NVIDIA MAKES NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE
+                              WITH RESPECT TO THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS
+                              FOR A PARTICULAR PURPOSE. 
+                           </p>
+                           <p class="p">Information furnished is believed to be accurate and reliable. However, NVIDIA Corporation assumes no responsibility for the
+                              consequences of use of such information or for any infringement of patents or other rights of third parties that may result
+                              from its use. No license is granted by implication of otherwise under any patent rights of NVIDIA Corporation. Specifications
+                              mentioned in this publication are subject to change without notice. This publication supersedes and replaces all other information
+                              previously supplied. NVIDIA Corporation products are not authorized as critical components in life support devices or systems
+                              without express written approval of NVIDIA Corporation.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="trademarks"><a name="trademarks" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#trademarks" name="trademarks" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Trademarks</h3>
+                           <p class="p">NVIDIA and the NVIDIA logo are trademarks or registered trademarks of NVIDIA Corporation
+                              in the U.S. and other countries.  Other company and product names may be trademarks of
+                              the respective companies with which they are associated.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="copyright"><a name="copyright" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#copyright" name="copyright" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Copyright</h3>
+                           <p class="p">© 2012-<span class="ph">2020</span> NVIDIA Corporation. All rights reserved.
+                           </p>
+                           <p class="p">This product includes software developed by the Syncro Soft SRL (http://www.sync.ro/).</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="fn"><a name="fntarg_1" href="#fnsrc_1" shape="rect"><sup>1</sup></a>  Throughout this guide,
+                  <dfn class="term">Kepler</dfn> refers to devices of compute capability 3.x,
+                  <dfn class="term">Maxwell</dfn> refers to devices of compute capability 5.x,
+                  <dfn class="term">Pascal</dfn> refers to device of compute capability 6.x,
+                  <dfn class="term">Volta</dfn> refers to devices of compute capability 7.0,
+                  <dfn class="term">Turing</dfn> refers to devices of compute capability 7.5,
+                  and <dfn class="term">NVIDIA Ampere GPU Architecture</dfn> refers to devices of compute capability 8.0
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

@@ -1,0 +1,26 @@
+﻿<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
+    <Metadata>
+        <Identity Id="CudaWizards.NVIDIA" Version="11.0" Language="en-US" Publisher="NVIDIA" />
+        <DisplayName>CUDA 11.0 Wizards</DisplayName>
+        <Description>Project and source wizards for NVIDIA CUDA.</Description>
+    </Metadata>
+
+    <Installation AllUsers="true" SystemComponent="true" InstalledByMsi="false">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Premium" Version="[15.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Ultimate" Version="[15.0,17.0)" />
+    </Installation>
+
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="[4.5,)" />
+    </Dependencies>
+
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" Path="Nvda.Vsip.CudaWizards.dll.pkgdef" />
+    </Assets>
+</PackageManifest>

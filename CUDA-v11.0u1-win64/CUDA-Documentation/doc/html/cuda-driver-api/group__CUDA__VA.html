@@ -1,0 +1,897 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="cppModule"></meta>
+      <meta name="DC.Title" content="Virtual Memory Management"></meta>
+      <meta name="abstract" content=""></meta>
+      <meta name="description" content=""></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="group__CUDA__VA"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUDA Driver API :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/scripts/tynt/tynt.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/cuda-driver-api/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v11.0.228</a></div>
+            <div class="category"><a href="index.html" title="CUDA Driver API">CUDA Driver API</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="driver-vs-runtime-api.html#driver-vs-runtime-api">1.&nbsp;Difference between the driver and runtime APIs </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="api-sync-behavior.html#api-sync-behavior">2.&nbsp;API synchronization behavior </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="stream-sync-behavior.html#stream-sync-behavior">3.&nbsp;Stream synchronization behavior</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="graphs-thread-safety.html#graphs-thread-safety">4.&nbsp;Graph object thread safety</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="modules.html#modules">5.&nbsp;Modules</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES">5.1.&nbsp;Data types used by CUDA driver</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__ERROR.html#group__CUDA__ERROR">5.2.&nbsp;Error Handling</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__INITIALIZE.html#group__CUDA__INITIALIZE">5.3.&nbsp;Initialization</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__VERSION.html#group__CUDA__VERSION">5.4.&nbsp;Version Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__DEVICE.html#group__CUDA__DEVICE">5.5.&nbsp;Device Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__DEVICE__DEPRECATED.html#group__CUDA__DEVICE__DEPRECATED">5.6.&nbsp;Device Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__PRIMARY__CTX.html#group__CUDA__PRIMARY__CTX">5.7.&nbsp;Primary Context Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__CTX.html#group__CUDA__CTX">5.8.&nbsp;Context Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__CTX__DEPRECATED.html#group__CUDA__CTX__DEPRECATED">5.9.&nbsp;Context Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MODULE.html#group__CUDA__MODULE">5.10.&nbsp;Module Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MEM.html#group__CUDA__MEM">5.11.&nbsp;Memory Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__VA.html#group__CUDA__VA">5.12.&nbsp;Virtual Memory Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__UNIFIED.html#group__CUDA__UNIFIED">5.13.&nbsp;Unified Addressing</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__STREAM.html#group__CUDA__STREAM">5.14.&nbsp;Stream Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EVENT.html#group__CUDA__EVENT">5.15.&nbsp;Event Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP">5.16.&nbsp;External Resource Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MEMOP.html#group__CUDA__MEMOP">5.17.&nbsp;Stream memory operations</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EXEC.html#group__CUDA__EXEC">5.18.&nbsp;Execution Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EXEC__DEPRECATED.html#group__CUDA__EXEC__DEPRECATED">5.19.&nbsp;Execution Control [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__GRAPH.html#group__CUDA__GRAPH">5.20.&nbsp;Graph Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__OCCUPANCY.html#group__CUDA__OCCUPANCY">5.21.&nbsp;Occupancy</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__TEXREF__DEPRECATED.html#group__CUDA__TEXREF__DEPRECATED">5.22.&nbsp;Texture Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__SURFREF__DEPRECATED.html#group__CUDA__SURFREF__DEPRECATED">5.23.&nbsp;Surface Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__TEXOBJECT.html#group__CUDA__TEXOBJECT">5.24.&nbsp;Texture Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__SURFOBJECT.html#group__CUDA__SURFOBJECT">5.25.&nbsp;Surface Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__PEER__ACCESS.html#group__CUDA__PEER__ACCESS">5.26.&nbsp;Peer Context Memory Access</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__GRAPHICS.html#group__CUDA__GRAPHICS">5.27.&nbsp;Graphics Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__PROFILER__DEPRECATED.html#group__CUDA__PROFILER__DEPRECATED">5.28.&nbsp;Profiler Control [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__PROFILER.html#group__CUDA__PROFILER">5.29.&nbsp;Profiler Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__GL.html#group__CUDA__GL">5.30.&nbsp;OpenGL Interoperability</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__GL__DEPRECATED.html#group__CUDA__GL__DEPRECATED">5.30.1.&nbsp;OpenGL Interoperability [DEPRECATED]</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__D3D9.html#group__CUDA__D3D9">5.31.&nbsp;Direct3D 9 Interoperability</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__D3D9__DEPRECATED.html#group__CUDA__D3D9__DEPRECATED">5.31.1.&nbsp;Direct3D 9 Interoperability [DEPRECATED]</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__D3D10.html#group__CUDA__D3D10">5.32.&nbsp;Direct3D 10 Interoperability</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__D3D10__DEPRECATED.html#group__CUDA__D3D10__DEPRECATED">5.32.1.&nbsp;Direct3D 10 Interoperability [DEPRECATED]</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__D3D11.html#group__CUDA__D3D11">5.33.&nbsp;Direct3D 11 Interoperability</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__D3D11__DEPRECATED.html#group__CUDA__D3D11__DEPRECATED">5.33.1.&nbsp;Direct3D 11 Interoperability [DEPRECATED]</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__VDPAU.html#group__CUDA__VDPAU">5.34.&nbsp;VDPAU Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EGL.html#group__CUDA__EGL">5.35.&nbsp;EGL Interoperability</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="annotated.html#annotated">6.&nbsp;Data Structures</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="structCUaccessPolicyWindow.html#structCUaccessPolicyWindow">6.1.&nbsp;CUaccessPolicyWindow</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__ARRAY3D__DESCRIPTOR.html#structCUDA__ARRAY3D__DESCRIPTOR">6.2.&nbsp;CUDA_ARRAY3D_DESCRIPTOR</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__ARRAY__DESCRIPTOR.html#structCUDA__ARRAY__DESCRIPTOR">6.3.&nbsp;CUDA_ARRAY_DESCRIPTOR</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC">6.4.&nbsp;CUDA_EXTERNAL_MEMORY_BUFFER_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC">6.5.&nbsp;CUDA_EXTERNAL_MEMORY_HANDLE_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC">6.6.&nbsp;CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC">6.7.&nbsp;CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__SEMAPHORE__SIGNAL__PARAMS.html#structCUDA__EXTERNAL__SEMAPHORE__SIGNAL__PARAMS">6.8.&nbsp;CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__SEMAPHORE__WAIT__PARAMS.html#structCUDA__EXTERNAL__SEMAPHORE__WAIT__PARAMS">6.9.&nbsp;CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__HOST__NODE__PARAMS.html#structCUDA__HOST__NODE__PARAMS">6.10.&nbsp;CUDA_HOST_NODE_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__KERNEL__NODE__PARAMS.html#structCUDA__KERNEL__NODE__PARAMS">6.11.&nbsp;CUDA_KERNEL_NODE_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__LAUNCH__PARAMS.html#structCUDA__LAUNCH__PARAMS">6.12.&nbsp;CUDA_LAUNCH_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__MEMCPY2D.html#structCUDA__MEMCPY2D">6.13.&nbsp;CUDA_MEMCPY2D</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__MEMCPY3D.html#structCUDA__MEMCPY3D">6.14.&nbsp;CUDA_MEMCPY3D</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__MEMCPY3D__PEER.html#structCUDA__MEMCPY3D__PEER">6.15.&nbsp;CUDA_MEMCPY3D_PEER</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__MEMSET__NODE__PARAMS.html#structCUDA__MEMSET__NODE__PARAMS">6.16.&nbsp;CUDA_MEMSET_NODE_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__POINTER__ATTRIBUTE__P2P__TOKENS.html#structCUDA__POINTER__ATTRIBUTE__P2P__TOKENS">6.17.&nbsp;CUDA_POINTER_ATTRIBUTE_P2P_TOKENS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__RESOURCE__DESC.html#structCUDA__RESOURCE__DESC">6.18.&nbsp;CUDA_RESOURCE_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__RESOURCE__VIEW__DESC.html#structCUDA__RESOURCE__VIEW__DESC">6.19.&nbsp;CUDA_RESOURCE_VIEW_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__TEXTURE__DESC.html#structCUDA__TEXTURE__DESC">6.20.&nbsp;CUDA_TEXTURE_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUdevprop.html#structCUdevprop">6.21.&nbsp;CUdevprop</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUeglFrame.html#structCUeglFrame">6.22.&nbsp;CUeglFrame</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUipcEventHandle.html#structCUipcEventHandle">6.23.&nbsp;CUipcEventHandle</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUipcMemHandle.html#structCUipcMemHandle">6.24.&nbsp;CUipcMemHandle</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="unionCUkernelNodeAttrValue.html#unionCUkernelNodeAttrValue">6.25.&nbsp;CUkernelNodeAttrValue</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUmemAccessDesc.html#structCUmemAccessDesc">6.26.&nbsp;CUmemAccessDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUmemAllocationProp.html#structCUmemAllocationProp">6.27.&nbsp;CUmemAllocationProp</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUmemLocation.html#structCUmemLocation">6.28.&nbsp;CUmemLocation</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="unionCUstreamAttrValue.html#unionCUstreamAttrValue">6.29.&nbsp;CUstreamAttrValue</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="unionCUstreamBatchMemOpParams.html#unionCUstreamBatchMemOpParams">6.30.&nbsp;CUstreamBatchMemOpParams</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="functions.html#functions">7.&nbsp;Data Fields</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="deprecated.html#deprecated">8.&nbsp;Deprecated List</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="notices-header.html#notices-header">Notices</a></div>
+                  <ul></ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="breadcrumbs"><a href="group__CUDA__MEM.html" shape="rect">&lt; Previous</a> | <a href="group__CUDA__UNIFIED.html" shape="rect">Next &gt;</a></div>
+               <div id="release-info">CUDA Driver API
+                  (<a href="../../pdf/CUDA_Driver_API.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v11.0.228
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated August 3, 2020
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: CUDA Driver API">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic reference apiRef apiPackage cppModule" id="group__CUDA__VA"><a name="group__CUDA__VA" shape="rect">
+                     <!-- --></a><h2 class="topictitle2 cppModule">5.12.&nbsp;Virtual Memory Management</h2>
+                  <div class="section">
+                     <p>This section describes the virtual memory management functions of the low-level CUDA driver application programming interface.
+                        
+                     </p>
+                  </div>
+                  <h3 class="fake_sectiontitle member_header">Functions</h3>
+                  <dl class="members">
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g6993ecea2ea03e1b802b8255edc2da5b" shape="rect">cuMemAddressFree</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Free an address range reservation. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1ge489256c107df2a07ddf96d80c86cd9b" shape="rect">cuMemAddressReserve</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">alignment</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">addr</span>, unsigned long long<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Allocate an address range reservation. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" shape="rect">cuMemCreate</a> (  CUmemGenericAllocationHandle*<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span>, const <a href="structCUmemAllocationProp.html#structCUmemAllocationProp" title="" shape="rect">CUmemAllocationProp</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">prop</span>, unsigned long long<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Create a shareable memory handle representing a memory allocation of a given size described by the given properties. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g633f273b155815f23c1d70e7d9384c56" shape="rect">cuMemExportToShareableHandle</a> (  void*<span>&nbsp;</span><span class="keyword keyword apiItemName">shareableHandle</span>, CUmemGenericAllocationHandle<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g450a23153d86fce0afe30e25d63caef9" title="" shape="rect">CUmemAllocationHandleType</a><span>&nbsp;</span><span class="keyword keyword apiItemName">handleType</span>, unsigned long long<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Exports an allocation to a requested shareable handle type. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g4b5627b4f2d3972d0b62cc4ba1931125" shape="rect">cuMemGetAccess</a> (  unsigned long long*<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span>, const <a href="structCUmemLocation.html#structCUmemLocation" title="" shape="rect">CUmemLocation</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">location</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Get the access <tt class="ph tt code">flags</tt> set for the given <tt class="ph tt code">location</tt> and <tt class="ph tt code">ptr</tt>. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g30ee906c2cf66a0347b3dfec3d7eb31a" shape="rect">cuMemGetAllocationGranularity</a> (  size_t*<span>&nbsp;</span><span class="keyword keyword apiItemName">granularity</span>, const <a href="structCUmemAllocationProp.html#structCUmemAllocationProp" title="" shape="rect">CUmemAllocationProp</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">prop</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g3a202e4d32ae296db1af7efe75ce365d" title="" shape="rect">CUmemAllocationGranularity_flags</a><span>&nbsp;</span><span class="keyword keyword apiItemName">option</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Calculates either the minimal or recommended granularity. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1gc1c4c812caba5a21401c2cb4ab4512b1" shape="rect">cuMemGetAllocationPropertiesFromHandle</a> (  <a href="structCUmemAllocationProp.html#structCUmemAllocationProp" title="" shape="rect">CUmemAllocationProp</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">prop</span>, CUmemGenericAllocationHandle<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Retrieve the contents of the property structure defining properties for this handle. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" shape="rect">cuMemImportFromShareableHandle</a> (  CUmemGenericAllocationHandle*<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, void*<span>&nbsp;</span><span class="keyword keyword apiItemName">osHandle</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g450a23153d86fce0afe30e25d63caef9" title="" shape="rect">CUmemAllocationHandleType</a><span>&nbsp;</span><span class="keyword keyword apiItemName">shHandleType</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Imports an allocation from a requested shareable handle type. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" shape="rect">cuMemMap</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">offset</span>, CUmemGenericAllocationHandle<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, unsigned long long<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Maps an allocation handle to a reserved virtual address range. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g3014f0759f43a8d82db951b8e4b91d68" shape="rect">cuMemRelease</a> (  CUmemGenericAllocationHandle<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g1ddca5437c502782155f95bf98e775c6" shape="rect">cuMemRetainAllocationHandle</a> (  CUmemGenericAllocationHandle*<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, void*<span>&nbsp;</span><span class="keyword keyword apiItemName">addr</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Given an address <tt class="ph tt code">addr</tt>, returns the allocation handle of the backing memory allocation. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" shape="rect">cuMemSetAccess</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span>, const <a href="structCUmemAccessDesc.html#structCUmemAccessDesc" title="" shape="rect">CUmemAccessDesc</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">desc</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">count</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Set the access flags for each location specified in <tt class="ph tt code">desc</tt> for the given virtual address range. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__VA_1gfb50aac00c848fd7087e858f59bf7e2a" shape="rect">cuMemUnmap</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Unmap the backing memory of a given address range. </span></dd>
+                  </dl>
+                  <div class="description">
+                     <h3 class="sectiontitle">Functions</h3>
+                     <dl class="description">
+                        <dt class="description"><a name="group__CUDA__VA_1g6993ecea2ea03e1b802b8255edc2da5b" id="group__CUDA__VA_1g6993ecea2ea03e1b802b8255edc2da5b" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemAddressFree (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Free an address range reservation. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">ptr</span></tt></dt>
+                                 <dd>- Starting address of the virtual address range to free </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">size</span></tt></dt>
+                                 <dd>- Size of the virtual address region to free </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Frees a virtual address range reserved by cuMemAddressReserve. The size must match what was given to memAddressReserve and
+                                 the ptr given must match what was returned from memAddressReserve.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1ge489256c107df2a07ddf96d80c86cd9b" title="Allocate an address range reservation." shape="rect">cuMemAddressReserve</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1ge489256c107df2a07ddf96d80c86cd9b" id="group__CUDA__VA_1ge489256c107df2a07ddf96d80c86cd9b" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemAddressReserve (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">alignment</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">addr</span>, unsigned long long<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Allocate an address range reservation. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">ptr</span></tt></dt>
+                                 <dd>- Resulting pointer to start of virtual address range allocated </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">size</span></tt></dt>
+                                 <dd>- Size of the reserved virtual address range requested </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">alignment</span></tt></dt>
+                                 <dd>- Alignment of the reserved virtual address range requested </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">addr</span></tt></dt>
+                                 <dd>- Fixed starting address range requested </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">flags</span></tt></dt>
+                                 <dd>- Currently unused, must be zero </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9264c50688ed110e8476b591befe60c02" shape="rect">CUDA_ERROR_OUT_OF_MEMORY</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Reserves a virtual address range based on the given parameters, giving the starting address of the range in <tt class="ph tt code">ptr</tt>. This API requires a system that supports UVA. The size and address parameters must be a multiple of the host page size and
+                                 the alignment must be a power of two or zero for default alignment.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g6993ecea2ea03e1b802b8255edc2da5b" title="Free an address range reservation." shape="rect">cuMemAddressFree</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" id="group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemCreate (  CUmemGenericAllocationHandle*<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span>, const <a href="structCUmemAllocationProp.html#structCUmemAllocationProp" title="" shape="rect">CUmemAllocationProp</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">prop</span>, unsigned long long<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Create a shareable memory handle representing a memory allocation of a given size described by the given properties. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">handle</span></tt></dt>
+                                 <dd>- Value of handle returned. All operations on this allocation are to be performed using this handle. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">size</span></tt></dt>
+                                 <dd>- Size of the allocation requested </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">prop</span></tt></dt>
+                                 <dd>- Properties of the allocation to create. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">flags</span></tt></dt>
+                                 <dd>- flags for future use, must be zero now. </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9264c50688ed110e8476b591befe60c02" shape="rect">CUDA_ERROR_OUT_OF_MEMORY</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e96f047e7215788ca96c81af92a04bfb6c" shape="rect">CUDA_ERROR_INVALID_DEVICE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>This creates a memory allocation on the target device specified through the <tt class="ph tt code">prop</tt> strcuture. The created allocation will not have any device or host mappings. The generic memory <tt class="ph tt code">handle</tt> for the allocation can be mapped to the address space of calling process via <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a>. This handle cannot be transmitted directly to other processes (see <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g633f273b155815f23c1d70e7d9384c56" title="Exports an allocation to a requested shareable handle type." shape="rect">cuMemExportToShareableHandle</a>). On Windows, the caller must also pass an LPSECURITYATTRIBUTE in <tt class="ph tt code">prop</tt> to be associated with this handle which limits or allows access to this handle for a recepient process (see <a class="xref" href="structCUmemAllocationProp.html#structCUmemAllocationProp_16ff47d450fde73c3e5d46a01a6bf272d" shape="rect">CUmemAllocationProp::win32HandleMetaData</a> for more). The <tt class="ph tt code">size</tt> of this allocation must be a multiple of the the value given via <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g30ee906c2cf66a0347b3dfec3d7eb31a" title="Calculates either the minimal or recommended granularity." shape="rect">cuMemGetAllocationGranularity</a> with the <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gg3a202e4d32ae296db1af7efe75ce365dc74872d07341bb1ac24ccc4a1c9c2f56" shape="rect">CU_MEM_ALLOC_GRANULARITY_MINIMUM</a> flag.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g3014f0759f43a8d82db951b8e4b91d68" title="Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate." shape="rect">cuMemRelease</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g633f273b155815f23c1d70e7d9384c56" title="Exports an allocation to a requested shareable handle type." shape="rect">cuMemExportToShareableHandle</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" title="Imports an allocation from a requested shareable handle type." shape="rect">cuMemImportFromShareableHandle</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1g633f273b155815f23c1d70e7d9384c56" id="group__CUDA__VA_1g633f273b155815f23c1d70e7d9384c56" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemExportToShareableHandle (  void*<span>&nbsp;</span><span class="keyword keyword apiItemName">shareableHandle</span>, CUmemGenericAllocationHandle<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g450a23153d86fce0afe30e25d63caef9" title="" shape="rect">CUmemAllocationHandleType</a><span>&nbsp;</span><span class="keyword keyword apiItemName">handleType</span>, unsigned long long<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Exports an allocation to a requested shareable handle type. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">shareableHandle</span></tt></dt>
+                                 <dd>- Pointer to the location in which to store the requested handle type </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">handle</span></tt></dt>
+                                 <dd>- CUDA handle for the memory allocation </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">handleType</span></tt></dt>
+                                 <dd>- Type of shareable handle requested (defines type and size of the <tt class="ph tt code">shareableHandle</tt> output parameter) 
+                                 </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">flags</span></tt></dt>
+                                 <dd>- Reserved, must be zero </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Given a CUDA memory handle, create a shareable memory allocation handle that can be used to share the memory with other processes.
+                                 The recipient process can convert the shareable handle back into a CUDA memory handle using <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" title="Imports an allocation from a requested shareable handle type." shape="rect">cuMemImportFromShareableHandle</a> and map it with <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a>. The implementation of what this handle is and how it can be transferred is defined by the requested handle type in <tt class="ph tt code">handleType</tt></p>
+                              <p class="p">Once all shareable handles are closed and the allocation is released, the allocated memory referenced will be released back
+                                 to the OS and uses of the CUDA handle afterward will lead to undefined behavior.
+                              </p>
+                              <p class="p">This API can also be used in conjunction with other APIs (e.g. Vulkan, OpenGL) that support importing memory from the shareable
+                                 type
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" title="Imports an allocation from a requested shareable handle type." shape="rect">cuMemImportFromShareableHandle</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1g4b5627b4f2d3972d0b62cc4ba1931125" id="group__CUDA__VA_1g4b5627b4f2d3972d0b62cc4ba1931125" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemGetAccess (  unsigned long long*<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span>, const <a href="structCUmemLocation.html#structCUmemLocation" title="" shape="rect">CUmemLocation</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">location</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Get the access <tt class="ph tt code">flags</tt> set for the given <tt class="ph tt code">location</tt> and <tt class="ph tt code">ptr</tt>. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">flags</span></tt></dt>
+                                 <dd>- Flags set for this location </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">location</span></tt></dt>
+                                 <dd>- Location in which to check the flags for </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">ptr</span></tt></dt>
+                                 <dd>- Address in which to check the access flags for </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e96f047e7215788ca96c81af92a04bfb6c" shape="rect">CUDA_ERROR_INVALID_DEVICE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p></p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" title="Set the access flags for each location specified in desc for the given virtual address range." shape="rect">cuMemSetAccess</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1g30ee906c2cf66a0347b3dfec3d7eb31a" id="group__CUDA__VA_1g30ee906c2cf66a0347b3dfec3d7eb31a" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemGetAllocationGranularity (  size_t*<span>&nbsp;</span><span class="keyword keyword apiItemName">granularity</span>, const <a href="structCUmemAllocationProp.html#structCUmemAllocationProp" title="" shape="rect">CUmemAllocationProp</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">prop</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g3a202e4d32ae296db1af7efe75ce365d" title="" shape="rect">CUmemAllocationGranularity_flags</a><span>&nbsp;</span><span class="keyword keyword apiItemName">option</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Calculates either the minimal or recommended granularity. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">granularity</span></tt></dt>
+                                 <dd>Returned granularity. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">prop</span></tt></dt>
+                                 <dd>Property for which to determine the granularity for </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">option</span></tt></dt>
+                                 <dd>Determines which granularity to return </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Calculates either the minimal or recommended granularity for a given allocation specification and returns it in granularity.
+                                 This granularity can be used as a multiple for alignment, size, or address mapping.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1gc1c4c812caba5a21401c2cb4ab4512b1" id="group__CUDA__VA_1gc1c4c812caba5a21401c2cb4ab4512b1" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemGetAllocationPropertiesFromHandle (  <a href="structCUmemAllocationProp.html#structCUmemAllocationProp" title="" shape="rect">CUmemAllocationProp</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">prop</span>, CUmemGenericAllocationHandle<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Retrieve the contents of the property structure defining properties for this handle. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">prop</span></tt></dt>
+                                 <dd>- Pointer to a properties structure which will hold the information about this handle </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">handle</span></tt></dt>
+                                 <dd>- Handle which to perform the query on </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p></p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" title="Imports an allocation from a requested shareable handle type." shape="rect">cuMemImportFromShareableHandle</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" id="group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemImportFromShareableHandle (  CUmemGenericAllocationHandle*<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, void*<span>&nbsp;</span><span class="keyword keyword apiItemName">osHandle</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g450a23153d86fce0afe30e25d63caef9" title="" shape="rect">CUmemAllocationHandleType</a><span>&nbsp;</span><span class="keyword keyword apiItemName">shHandleType</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Imports an allocation from a requested shareable handle type. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">handle</span></tt></dt>
+                                 <dd>- CUDA Memory handle for the memory allocation. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">osHandle</span></tt></dt>
+                                 <dd>- Shareable Handle representing the memory allocation that is to be imported. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">shHandleType</span></tt></dt>
+                                 <dd>- handle type of the exported handle <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g450a23153d86fce0afe30e25d63caef9" shape="rect">CUmemAllocationHandleType</a>. 
+                                 </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>If the current process cannot support the memory described by this shareable handle, this API will error as CUDA_ERROR_NOT_SUPPORTED.</p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Importing shareable handles exported from some graphics APIs(Vulkan, OpenGL, etc) created on devices under an SLI group may
+                                       not be supported, and thus this API will return CUDA_ERROR_NOT_SUPPORTED. There is no guarantee that the contents of <tt class="ph tt code">handle</tt> will be the same CUDA memory handle for the same given OS shareable handle, or the same underlying allocation.
+                                    </p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g633f273b155815f23c1d70e7d9384c56" title="Exports an allocation to a requested shareable handle type." shape="rect">cuMemExportToShareableHandle</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g3014f0759f43a8d82db951b8e4b91d68" title="Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate." shape="rect">cuMemRelease</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" id="group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemMap (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">offset</span>, CUmemGenericAllocationHandle<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, unsigned long long<span>&nbsp;</span><span class="keyword keyword apiItemName">flags</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Maps an allocation handle to a reserved virtual address range. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">ptr</span></tt></dt>
+                                 <dd>- Address where memory will be mapped. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">size</span></tt></dt>
+                                 <dd>- Size of the memory mapping. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">offset</span></tt></dt>
+                                 <dd>- Offset into the memory represented by
+                                    
+                                    <ul>
+                                       <li><tt class="ph tt code">handle</tt> from which to start mapping
+                                       </li>
+                                       <li>Note: currently must be zero. </li>
+                                    </ul>
+                                 </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">handle</span></tt></dt>
+                                 <dd>- Handle to a shareable memory </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">flags</span></tt></dt>
+                                 <dd>- flags for future use, must be zero now. </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e96f047e7215788ca96c81af92a04bfb6c" shape="rect">CUDA_ERROR_INVALID_DEVICE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9264c50688ed110e8476b591befe60c02" shape="rect">CUDA_ERROR_OUT_OF_MEMORY</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Maps bytes of memory represented by <tt class="ph tt code">handle</tt> starting from byte <tt class="ph tt code">offset</tt> to <tt class="ph tt code">size</tt> to address range [<tt class="ph tt code">addr</tt>, <tt class="ph tt code">addr</tt> + <tt class="ph tt code">size</tt>]. This range must be an address reservation previously reserved with <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1ge489256c107df2a07ddf96d80c86cd9b" title="Allocate an address range reservation." shape="rect">cuMemAddressReserve</a>, and <tt class="ph tt code">offset</tt> + <tt class="ph tt code">size</tt> must be less than the size of the memory allocation. Both <tt class="ph tt code">ptr</tt>, <tt class="ph tt code">size</tt>, and <tt class="ph tt code">offset</tt> must be a multiple of the value given via <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g30ee906c2cf66a0347b3dfec3d7eb31a" title="Calculates either the minimal or recommended granularity." shape="rect">cuMemGetAllocationGranularity</a> with the <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gg3a202e4d32ae296db1af7efe75ce365dc74872d07341bb1ac24ccc4a1c9c2f56" shape="rect">CU_MEM_ALLOC_GRANULARITY_MINIMUM</a> flag.
+                              </p>
+                              <p class="p">Please note calling <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a> does not make the address accessible, the caller needs to update accessibility of a contiguous mapped VA range by calling
+                                 <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" title="Set the access flags for each location specified in desc for the given virtual address range." shape="rect">cuMemSetAccess</a>.
+                              </p>
+                              <p class="p">Once a recipient process obtains a shareable memory handle from <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" title="Imports an allocation from a requested shareable handle type." shape="rect">cuMemImportFromShareableHandle</a>, the process must use <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a> to map the memory into its address ranges before setting accessibility with <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" title="Set the access flags for each location specified in desc for the given virtual address range." shape="rect">cuMemSetAccess</a>.
+                              </p>
+                              <p class="p"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a> can only create mappings on VA range reservations that are not currently mapped.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gfb50aac00c848fd7087e858f59bf7e2a" title="Unmap the backing memory of a given address range." shape="rect">cuMemUnmap</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" title="Set the access flags for each location specified in desc for the given virtual address range." shape="rect">cuMemSetAccess</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1ge489256c107df2a07ddf96d80c86cd9b" title="Allocate an address range reservation." shape="rect">cuMemAddressReserve</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1577822cc83ea896b4892f2d69630463" title="Imports an allocation from a requested shareable handle type." shape="rect">cuMemImportFromShareableHandle</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1g3014f0759f43a8d82db951b8e4b91d68" id="group__CUDA__VA_1g3014f0759f43a8d82db951b8e4b91d68" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemRelease (  CUmemGenericAllocationHandle<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">handle</span></tt></dt>
+                                 <dd>Value of handle which was returned previously by cuMemCreate. </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Frees the memory that was allocated on a device through cuMemCreate.</p>
+                              <p class="p">The memory allocation will be freed when all outstanding mappings to the memory are unmapped and when all outstanding references
+                                 to the handle (including it's shareable counterparts) are also released. The generic memory handle can be freed when there
+                                 are still outstanding mappings made with this handle. Each time a recepient process imports a shareable handle, it needs to
+                                 pair it with <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g3014f0759f43a8d82db951b8e4b91d68" title="Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate." shape="rect">cuMemRelease</a> for the handle to be freed. If <tt class="ph tt code">handle</tt> is not a valid handle the behavior is undefined.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1g1ddca5437c502782155f95bf98e775c6" id="group__CUDA__VA_1g1ddca5437c502782155f95bf98e775c6" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemRetainAllocationHandle (  CUmemGenericAllocationHandle*<span>&nbsp;</span><span class="keyword keyword apiItemName">handle</span>, void*<span>&nbsp;</span><span class="keyword keyword apiItemName">addr</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Given an address <tt class="ph tt code">addr</tt>, returns the allocation handle of the backing memory allocation. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">handle</span></tt></dt>
+                                 <dd>CUDA Memory handle for the backing memory allocation. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">addr</span></tt></dt>
+                                 <dd>Memory address to query, that has been mapped previously. </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>The handle is guaranteed to be the same handle value used to map the memory. If the address requested is not mapped, the function
+                                 will fail. The returned handle must be released with corresponding number of calls to <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g3014f0759f43a8d82db951b8e4b91d68" title="Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate." shape="rect">cuMemRelease</a>.
+                              </p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">The address <tt class="ph tt code">addr</tt>, can be any address in a range previously mapped by <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a>, and not necessarily the start address.
+                                    </p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g3014f0759f43a8d82db951b8e4b91d68" title="Release a memory handle representing a memory allocation which was previously allocated through cuMemCreate." shape="rect">cuMemRelease</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" id="group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemSetAccess (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span>, const <a href="structCUmemAccessDesc.html#structCUmemAccessDesc" title="" shape="rect">CUmemAccessDesc</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">desc</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">count</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Set the access flags for each location specified in <tt class="ph tt code">desc</tt> for the given virtual address range. 
+                           </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">ptr</span></tt></dt>
+                                 <dd>- Starting address for the virtual address range </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">size</span></tt></dt>
+                                 <dd>- Length of the virtual address range </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">desc</span></tt></dt>
+                                 <dd>- Array of <a class="xref" href="structCUmemAccessDesc.html#structCUmemAccessDesc" shape="rect">CUmemAccessDesc</a> that describe how to change the
+                                    
+                                    <ul>
+                                       <li>mapping for each location specified </li>
+                                    </ul>
+                                 </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">count</span></tt></dt>
+                                 <dd>- Number of <a class="xref" href="structCUmemAccessDesc.html#structCUmemAccessDesc" shape="rect">CUmemAccessDesc</a> in <tt class="ph tt code">desc</tt></dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e96f047e7215788ca96c81af92a04bfb6c" shape="rect">CUDA_ERROR_INVALID_DEVICE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Given the virtual address range via <tt class="ph tt code">ptr</tt> and <tt class="ph tt code">size</tt>, and the locations in the array given by <tt class="ph tt code">desc</tt> and <tt class="ph tt code">count</tt>, set the access flags for the target locations. The range must be a fully mapped address range containing all allocations
+                                 created by <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a> / <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a>.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><ul class="ul">
+                                       <li class="li">
+                                          <p class="p">Note that this function may also return error codes from previous, asynchronous launches. </p>
+                                       </li>
+                                       <li class="li">
+                                          <p class="p">This function exhibits  <a class="xref xmlonly" href="api-sync-behavior.html#api-sync-behavior__memcpy-sync" shape="rect">synchronous</a> behavior for most use cases.
+                                          </p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" title="Set the access flags for each location specified in desc for the given virtual address range." shape="rect">cuMemSetAccess</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a>, :<a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__VA_1gfb50aac00c848fd7087e858f59bf7e2a" id="group__CUDA__VA_1gfb50aac00c848fd7087e858f59bf7e2a" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuMemUnmap (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a><span>&nbsp;</span><span class="keyword keyword apiItemName">ptr</span>, size_t<span>&nbsp;</span><span class="keyword keyword apiItemName">size</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Unmap the backing memory of a given address range. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">ptr</span></tt></dt>
+                                 <dd>- Starting address for the virtual address range to unmap </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">size</span></tt></dt>
+                                 <dd>- Size of the virtual address range to unmap </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e990696c86fcee1f536a1ec7d25867feeb" shape="rect">CUDA_ERROR_INVALID_VALUE</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9acf52f132faf29b473cdda6061f0f44a" shape="rect">CUDA_ERROR_DEINITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9e23d0197c490ec332a43e55b167968a3" shape="rect">CUDA_ERROR_NOT_PERMITTED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e954756ae7ade0dfd09faeccb513dd831b" shape="rect">CUDA_ERROR_NOT_SUPPORTED</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>The range must be the entire contiguous address range that was mapped to. In other words, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gfb50aac00c848fd7087e858f59bf7e2a" title="Unmap the backing memory of a given address range." shape="rect">cuMemUnmap</a> cannot unmap a sub-range of an address range mapped by <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a> / <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a>. Any backing memory allocations will be freed if there are no existing mappings and there are no unreleased memory handles.
+                              </p>
+                              <p class="p">When <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gfb50aac00c848fd7087e858f59bf7e2a" title="Unmap the backing memory of a given address range." shape="rect">cuMemUnmap</a> returns successfully the address range is converted to an address reservation and can be used for a future calls to <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1gff1d395423af5c5c75375516959dae56" title="Maps an allocation handle to a reserved virtual address range." shape="rect">cuMemMap</a>. Any new mapping to this virtual address will need to have access granted through <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g1b6b12b10e8324bf462ecab4e7ef30e1" title="Set the access flags for each location specified in desc for the given virtual address range." shape="rect">cuMemSetAccess</a>, as all mappings start with no accessibility setup.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><ul class="ul">
+                                       <li class="li">
+                                          <p class="p">Note that this function may also return error codes from previous, asynchronous launches. </p>
+                                       </li>
+                                       <li class="li">
+                                          <p class="p">This function exhibits  <a class="xref xmlonly" href="api-sync-behavior.html#api-sync-behavior__memcpy-sync" shape="rect">synchronous</a> behavior for most use cases.
+                                          </p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1g899d69a862bba36449789c64b430dc7c" title="Create a shareable memory handle representing a memory allocation of a given size described by the given properties." shape="rect">cuMemCreate</a>, <a class="xref" href="group__CUDA__VA.html#group__CUDA__VA_1ge489256c107df2a07ddf96d80c86cd9b" title="Allocate an address range reservation." shape="rect">cuMemAddressReserve</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>
