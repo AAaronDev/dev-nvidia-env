@@ -1,0 +1,7 @@
+CUDA-v11.0u1-win64/CUDA-Toolkit/bin/cusolver64_10.dll filter=lfs diff=lfs merge=lfs -text
+CUDA-v11.0u1-win64/CUDA-Toolkit/cudnn/bin/cudnn_cnn_infer64_8.dll filter=lfs diff=lfs merge=lfs -text
+CUDA-v11.0u1-win64/CUDA-Toolkit/bin/cusolverMg64_10.dll filter=lfs diff=lfs merge=lfs -text
+CUDA-v11.0u1-win64/CUDA-Toolkit/cudnn/bin/cudnn_ops_infer64_8.dll filter=lfs diff=lfs merge=lfs -text
+CUDA-v11.0u1-win64/CUDA-Toolkit/bin/cublasLt64_11.dll filter=lfs diff=lfs merge=lfs -text
+CUDA-v11.0u1-win64/CUDA-Toolkit/bin/cufft64_10.dll filter=lfs diff=lfs merge=lfs -text
+CUDA-v11.0u1-win64/CUDA-Toolkit/bin/cusparse64_11.dll filter=lfs diff=lfs merge=lfs -text
